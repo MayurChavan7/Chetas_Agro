@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Carousel from "../components/Carousel.jsx";
+import Carousel from "../components/Carousel.jsx"; // Make sure Carousel works
 
+// Use images from public folder
 const ecoIcons = [
-  { src: "/leaf1.png", alt: "Leaf", size: 40, delay: 0 },
-  { src: "/leaf2.png", alt: "Leaf", size: 30, delay: 1000 },
-  { src: "/sprout.png", alt: "Sprout", size: 35, delay: 2000 },
+  { src: "/Image5.png", alt: "Leaf", size: 40, delay: 0 },
+  { src: "/Image5.png", alt: "Leaf", size: 30, delay: 1000 },
+  { src: "/Image5.png", alt: "Sprout", size: 35, delay: 2000 },
 ];
 
 const productsInfo = [
