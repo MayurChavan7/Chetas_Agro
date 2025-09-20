@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import React, { useEffect } from "react";
+import { motion } from "framer-motion";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const slogans = [
   "Growing greener and smarter for a sustainable tomorrow",
@@ -15,7 +15,7 @@ const About = () => {
   useEffect(() => {
     AOS.init({
       duration: 900,
-      easing: 'ease-out-cubic',
+      easing: "ease-out-cubic",
       once: true,
       offset: 150,
     });
@@ -23,174 +23,206 @@ const About = () => {
 
   const features = [
     {
-      title: 'Cutting-Edge Technology',
+      title: "Cutting-Edge Technology",
       description:
-        'Leveraging the latest advancements in agricultural tools and AI-powered techniques to optimize crop health and yield.',
-      iconPath: 'M12 5v14m7-7H5',
-      aos: 'fade-right',
+        "Leveraging AI-powered monitoring, precision farming, and smart irrigation to maximize yields.",
+      iconPath: "M12 5v14m7-7H5",
+      aos: "fade-right",
     },
     {
-      title: 'Sustainable Practices',
+      title: "Sustainable Practices",
       description:
-        'Implementing eco-friendly solutions that ensure long-term soil health and reduce environmental footprint.',
-      iconPath: 'M3 10h18M3 14h18',
-      aos: 'fade-left',
+        "Adopting eco-friendly techniques that nurture soil health, conserve water, and reduce carbon footprint.",
+      iconPath: "M3 10h18M3 14h18",
+      aos: "fade-left",
     },
   ];
 
   const reasons = [
-    { icon: '🌱', text: 'Sustainably sourced from our own dairy farm with 10,000+ cattle' },
-    { icon: '🌍', text: 'Global presence across Asia, Middle East, Africa & Europe' },
-    { icon: '🧪', text: 'Tested for purity and nutrient content' },
-    { icon: '📦', text: 'Custom packaging and labeling options' },
-    { icon: '🕒', text: 'Timely global delivery and logistics support' },
+    { icon: "🌱", text: "Sustainably sourced from our dairy farm with 10,000+ cattle" },
+    { icon: "🌍", text: "Trusted global presence across Asia, Middle East, Africa & Europe" },
+    { icon: "🧪", text: "Scientifically tested for purity and nutrient richness" },
+    { icon: "📦", text: "Flexible custom packaging and private labeling options" },
+    { icon: "🚚", text: "Timely worldwide delivery with strong logistics support" },
+  ];
+
+  const stats = [
+    { number: "10,000+", label: "Happy Cattle" },
+    { number: "30+", label: "Export Countries" },
+    { number: "25+", label: "Years Experience" },
+    { number: "1M+", label: "Farmers Impacted" },
   ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.15, delayChildren: 0.2 },
+      transition: { staggerChildren: 0.2, delayChildren: 0.2 },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, x: -30 },
-    visible: { opacity: 1, x: 0 },
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0 },
   };
 
   return (
-    <section className="py-24 px-6 bg-gray-100 text-gray-900 relative overflow-hidden">
-      {/* Large background image behind slogan */}
-      <div
-        className="absolute inset-0"
-        // style={{
-        //   backgroundImage: "url('/Image39.jpg')",
-        //   backgroundSize: "cover",
-        //   backgroundPosition: "center",
-        //   filter: "brightness(0.3)",
-        //   zIndex: 0,
-        // }}
-        aria-hidden="true"
-      />
+    <section className="py-24 px-6 bg-gradient-to-br from-green-50 via-white to-green-100 text-gray-900 relative overflow-hidden">
+      {/* Floating background blobs */}
+      <div className="absolute top-[-50px] left-[-50px] w-72 h-72 bg-green-200 rounded-full filter blur-3xl opacity-30 animate-blob"></div>
+      <div className="absolute bottom-[-100px] right-[-80px] w-96 h-96 bg-green-300 rounded-full filter blur-3xl opacity-25 animate-blob animation-delay-2000"></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto space-y-20">
-        {/* Slogan marquee container */}
-        <div className="relative max-w-4xl mx-auto h-24 overflow-hidden flex items-center rounded-lg">
+      <div className="relative z-10 max-w-7xl mx-auto space-y-24">
+        {/* Slogan Carousel */}
+        <motion.div className="relative max-w-5xl mx-auto h-24 overflow-hidden flex items-center justify-start rounded-2xl border bg-green-900/90 shadow-lg">
           <motion.div
-            className="flex whitespace-nowrap gap-16 text-green-200 font-semibold uppercase text-2xl select-none"
-            initial={{ x: '100%' }}
-            animate={{ x: ['100%', '-100%'] }}
+            className="flex whitespace-nowrap gap-16 text-green-100 font-bold uppercase text-2xl tracking-wide select-none"
+            animate={{ x: ["0%", "-50%"] }}
             transition={{
-              duration: slogans.length * 6,
-              repeat: Infinity,
-              ease: 'linear',
+              x: { repeat: Infinity, repeatType: "loop", duration: slogans.length * 3, ease: "linear" },
             }}
-            aria-label="Company slogans scrolling horizontally"
           >
-            {slogans.map((text, i) => (
+            {slogans.concat(slogans).map((text, i) => (
               <span key={i} className="px-4">{text}</span>
             ))}
           </motion.div>
-        </div>
 
-        {/* Main Content & Features */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center max-w-6xl mx-auto relative z-10">
+          {/* Floating eco-icons */}
+          <motion.div
+            className="absolute top-0 left-0 w-full h-full pointer-events-none"
+            animate={{ rotate: [0, 360] }}
+            transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+          >
+            {Array.from({ length: 6 }).map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute text-green-200 text-xl"
+                style={{
+                  top: `${Math.random() * 100}%`,
+                  left: `${Math.random() * 100}%`,
+                }}
+                animate={{ y: [0, 10, 0], x: [0, 10, 0] }}
+                transition={{ repeat: Infinity, duration: 6 + i }}
+              >
+                🌿
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+
+        {/* About Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center max-w-6xl mx-auto">
           <div>
-            <h3 className="text-xl font-semibold text-yellow-600 uppercase mb-4">ABOUT COMPANY</h3>
-            <h1 className="text-5xl font-bold mb-6 leading-tight">
-              Organic & Healthy Foods Provider Farming
+            <h3 className="text-lg font-semibold text-green-700 uppercase mb-3">
+              About Harshil Agrotech
+            </h3>
+            <h1 className="text-5xl font-extrabold mb-6 leading-tight text-green-900">
+              Organic & Sustainable Agriculture Leader
             </h1>
-            <p className="mb-8 text-lg leading-relaxed max-w-xl text-gray-800">
-              Harshil Agrotech Limited is committed to innovating sustainable agriculture through cutting-edge technology and eco-friendly practices. We empower farmers worldwide by providing premium organic inputs that improve crop quality and protect the environment.
+            <p className="mb-8 text-lg leading-relaxed max-w-xl text-gray-700">
+              At Harshil Agrotech Limited, we blend innovation with tradition — ensuring sustainable farming practices while empowering farmers with technology-driven solutions for a healthier planet.
             </p>
 
-            {/* Feature Cards */}
             <div className="space-y-10">
               {features.map(({ title, description, iconPath, aos }, i) => (
                 <motion.div
                   key={i}
                   data-aos={aos}
-                  whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(16, 185, 129, 0.3)' }}
-                  transition={{ type: 'spring', stiffness: 250 }}
-                  className="flex items-start gap-6 p-6 bg-white rounded-2xl shadow-lg"
-                  tabIndex={0}
-                  aria-label={`${title}: ${description}`}
+                  whileHover={{ scale: 1.05, rotate: [0, 2, -2, 0] }}
+                  transition={{ type: "spring", stiffness: 250 }}
+                  className="flex items-start gap-6 p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-10 h-10 text-green-700 flex-shrink-0"
+                    className="w-10 h-10 text-green-600 flex-shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    aria-hidden="true"
-                    focusable="false"
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={iconPath} />
                   </svg>
                   <div>
                     <h4 className="text-2xl font-semibold text-green-900 mb-2">{title}</h4>
-                    <p className="text-gray-700">{description}</p>
+                    <p className="text-gray-600">{description}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
           </div>
 
-          <div data-aos="fade-left" className="relative" tabIndex={-1} aria-label="Gallery of agricultural activities">
+          {/* Right Images */}
+          <div className="relative" data-aos="fade-left">
             <motion.img
               src="/Image3.jpg"
-              alt="Farmers working on field"
-              className="rounded-3xl shadow-xl mb-8 hover:scale-105 transition-transform duration-400"
-              initial={{ scale: 0.97 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 1 }}
+              alt="Farming innovation"
+              className="rounded-3xl shadow-2xl mb-8 hover:scale-105 transition-transform duration-500"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
             />
             <motion.div
-              className="absolute bottom-16 left-8 w-80 bg-green-900 text-white p-8 rounded-3xl drop-shadow-xl"
-              initial={{ x: -60, opacity: 0 }}
+              className="absolute bottom-16 left-8 w-80 bg-green-800 text-white p-8 rounded-3xl shadow-xl"
+              initial={{ x: -80, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              role="region"
-              aria-live="polite"
-              aria-atomic="true"
+              transition={{ duration: 0.8 }}
             >
-              Our mission is to improve farming efficiency through innovation and sustainable practices.
+              Our mission: to make farming efficient, eco-friendly, and globally impactful.
             </motion.div>
             <motion.img
-              src="/Image3.jpg"
-              alt="Farmers consulting each other"
-              className="rounded-3xl shadow-xl mt-12 hover:rotate-3 hover:scale-105 transition-transform duration-400"
-              whileHover={{ rotate: 3, scale: 1.06 }}
-              transition={{ type: 'spring', stiffness: 280 }}
+              src="/Image2.jpg"
+              alt="Farmers collaboration"
+              className="rounded-3xl shadow-lg mt-12 hover:rotate-2 hover:scale-105 transition-transform duration-400"
+              whileHover={{ rotate: 2, scale: 1.05 }}
             />
           </div>
         </div>
 
-        {/* Why Choose Us and Call to Action side by side */}
-        <div className="flex flex-col md:flex-row gap-16 max-w-7xl mx-auto px-6 relative z-10">
-          {/* Why Choose Us Section */}
-          <section className="flex-1 bg-gray-50 rounded-xl p-10 shadow-lg text-center">
+        {/* Stats Section */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center max-w-5xl mx-auto"
+        >
+          {stats.map(({ number, label }, i) => (
+            <motion.div
+              key={i}
+              variants={itemVariants}
+              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow hover:-translate-y-2 transform"
+            >
+              <h3 className="text-4xl font-extrabold text-green-800">{number}</h3>
+              <p className="text-gray-600 mt-2">{label}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Why Choose Us + CTA */}
+        <div className="flex flex-col md:flex-row gap-16 max-w-7xl mx-auto px-6">
+          {/* Why Choose Us */}
+          <section className="flex-1 bg-white rounded-2xl p-10 shadow-lg">
             <motion.h2
-              className="text-4xl font-extrabold mb-10 text-green-900"
-              initial={{ opacity: 0, y: -40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              className="text-4xl font-extrabold mb-10 text-green-900 text-center"
+              initial={{ opacity: 0, y: -30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
             >
               Why Choose Us?
             </motion.h2>
 
             <motion.ul
-              className="text-xl space-y-6 text-gray-700 font-medium select-none"
+              className="text-lg space-y-6 text-gray-700 font-medium"
               variants={containerVariants}
               initial="hidden"
-              animate="visible"
+              whileInView="visible"
+              viewport={{ once: true }}
             >
               {reasons.map(({ icon, text }, index) => (
                 <motion.li
                   key={index}
-                  className="flex items-center justify-center gap-4 max-w-2xl mx-auto cursor-default rounded-xl p-4 bg-white shadow-lg hover:shadow-2xl transition-shadow duration-300"
+                  className="flex items-center gap-4 bg-gray-50 p-5 rounded-xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1"
                   variants={itemVariants}
                 >
                   <span className="text-3xl">{icon}</span>
@@ -200,25 +232,27 @@ const About = () => {
             </motion.ul>
           </section>
 
-          {/* Call To Action Section */}
+          {/* Call To Action */}
           <motion.div
-            className="flex-1 text-center py-24 bg-green-900 rounded-3xl text-white shadow-lg px-12"
+            className="flex-1 text-center py-24 px-12 bg-gradient-to-r from-green-800 to-green-600 rounded-3xl text-white shadow-2xl relative overflow-hidden"
             initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            role="region"
-            aria-label="Proven Expertise Call to Action"
           >
-            <h3 className="text-4xl font-extrabold mb-6 tracking-wide">Proven Expertise</h3>
-            <h2 className="text-5xl font-extrabold mb-12 leading-tight">
-              Unbeatable Organic and Agriculture Services
-            </h2>
-            <motion.button
-              whileHover={{ scale: 1.1, backgroundColor: '#FFC107' }}
-              className="bg-yellow-500 hover:bg-yellow-600 text-green-900 font-bold py-4 px-14 rounded-full shadow-lg transition-colors focus:ring-4 focus:ring-yellow-300 focus:outline-none"
-            >
-              About More
-            </motion.button>
+            <div className="relative z-10">
+              <h3 className="text-4xl font-extrabold mb-6">Proven Expertise</h3>
+              <h2 className="text-5xl font-extrabold mb-12 leading-tight">
+                Unbeatable Organic Agriculture Services
+              </h2>
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                className="bg-yellow-500 hover:bg-yellow-600 text-green-900 font-bold py-4 px-14 rounded-full shadow-lg transition focus:ring-4 focus:ring-yellow-300"
+              >
+                Learn More
+              </motion.button>
+            </div>
+            <div className="absolute inset-0 bg-yellow-500 opacity-10 blur-3xl rounded-3xl"></div>
           </motion.div>
         </div>
       </div>
@@ -226,4 +260,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default About
