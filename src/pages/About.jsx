@@ -4,11 +4,11 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 const slogans = [
-  "Growing greener and smarter for a sustainable tomorrow",
-  "Empowering farmers with innovation",
-  "Committed to eco-friendly agriculture",
-  "Harvesting healthy and organic produce",
-  "Leading the way in sustainable farming",
+  "Transforming Waste into Wealth – Cow Dung to Fertilizer",
+  "From Grains to Green Energy – Renewable Ethanol",
+  "Sustainable Solutions for Farmers & Industries",
+  "Global Standards, Local Roots",
+  "Fueling Growth, Nurturing Nature",
 ];
 
 const About = () => {
@@ -23,34 +23,49 @@ const About = () => {
 
   const features = [
     {
-      title: "Cutting-Edge Technology",
+      title: "Organic Fertilizers",
       description:
-        "Leveraging AI-powered monitoring, precision farming, and smart irrigation to maximize yields.",
+        "Eco-friendly fertilizers derived from cow dung. Rich in nutrients, certified, and tested in modern labs for organic farming worldwide.",
       iconPath: "M12 5v14m7-7H5",
       aos: "fade-right",
     },
     {
-      title: "Sustainable Practices",
+      title: "Ethanol Production",
       description:
-        "Adopting eco-friendly techniques that nurture soil health, conserve water, and reduce carbon footprint.",
+        "65 KLPD distillery with Zero Liquid Discharge (ZLD). Supplying pharma, fuel, and industrial-grade ethanol to global markets.",
       iconPath: "M3 10h18M3 14h18",
+      aos: "fade-left",
+    },
+    {
+      title: "Global Standards",
+      description:
+        "Complying with international certifications. Flexible packaging and private labeling for global clients.",
+      iconPath: "M12 4.354l6 6V20H6V10.354l6-6z",
+      aos: "fade-right",
+    },
+    {
+      title: "Sustainability First",
+      description:
+        "Closed-loop circular economy: cattle → fertilizers → crops → ethanol → renewable energy, reducing carbon footprint.",
+      iconPath: "M5 13l4 4L19 7",
       aos: "fade-left",
     },
   ];
 
   const reasons = [
-    { icon: "🌱", text: "Sustainably sourced from our dairy farm with 10,000+ cattle" },
-    { icon: "🌍", text: "Trusted global presence across Asia, Middle East, Africa & Europe" },
-    { icon: "🧪", text: "Scientifically tested for purity and nutrient richness" },
-    { icon: "📦", text: "Flexible custom packaging and private labeling options" },
-    { icon: "🚚", text: "Timely worldwide delivery with strong logistics support" },
+    { icon: "🐄", text: "10,000+ cattle ensuring consistent organic raw material" },
+    { icon: "⚡", text: "65 KLPD ethanol plant with Zero Liquid Discharge (ZLD)" },
+    { icon: "🌍", text: "Exports across Asia, Africa, Europe & Middle East" },
+    { icon: "🧪", text: "Strict quality testing in modern labs" },
+    { icon: "📦", text: "Custom packaging & private labeling options" },
+    { icon: "🌱", text: "Supports organic farming and reduces chemical usage" },
   ];
 
   const stats = [
-    { number: "10,000+", label: "Happy Cattle" },
+    { number: "10,000+", label: "Cattle Managed" },
+    { number: "65 KLPD", label: "Ethanol Capacity" },
     { number: "30+", label: "Export Countries" },
-    { number: "25+", label: "Years Experience" },
-    { number: "1M+", label: "Farmers Impacted" },
+    { number: "25+ Yrs", label: "Experience in Agro Industry" },
   ];
 
   const containerVariants = {
@@ -68,12 +83,12 @@ const About = () => {
 
   return (
     <section className="py-24 px-6 bg-gradient-to-br from-green-50 via-white to-green-100 text-gray-900 relative overflow-hidden">
-      {/* Floating background blobs */}
+      {/* Floating animated blobs (kept from earlier version) */}
       <div className="absolute top-[-50px] left-[-50px] w-72 h-72 bg-green-200 rounded-full filter blur-3xl opacity-30 animate-blob"></div>
       <div className="absolute bottom-[-100px] right-[-80px] w-96 h-96 bg-green-300 rounded-full filter blur-3xl opacity-25 animate-blob animation-delay-2000"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto space-y-24">
-        {/* Slogan Carousel */}
+        {/* Scrolling slogan carousel (kept from earlier) */}
         <motion.div className="relative max-w-5xl mx-auto h-24 overflow-hidden flex items-center justify-start rounded-2xl border bg-green-900/90 shadow-lg">
           <motion.div
             className="flex whitespace-nowrap gap-16 text-green-100 font-bold uppercase text-2xl tracking-wide select-none"
@@ -87,7 +102,7 @@ const About = () => {
             ))}
           </motion.div>
 
-          {/* Floating eco-icons */}
+          {/* Floating eco-icons animation (preserved) */}
           <motion.div
             className="absolute top-0 left-0 w-full h-full pointer-events-none"
             animate={{ rotate: [0, 360] }}
@@ -114,21 +129,23 @@ const About = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center max-w-6xl mx-auto">
           <div>
             <h3 className="text-lg font-semibold text-green-700 uppercase mb-3">
-              About Harshil Agrotech
+              About Chetas Agrotech
             </h3>
             <h1 className="text-5xl font-extrabold mb-6 leading-tight text-green-900">
-              Organic & Sustainable Agriculture Leader
+              From Soil to Energy – A Complete Eco-Solution
             </h1>
             <p className="mb-8 text-lg leading-relaxed max-w-xl text-gray-700">
-              At Harshil Agrotech Limited, we blend innovation with tradition — ensuring sustainable farming practices while empowering farmers with technology-driven solutions for a healthier planet.
+              At Chetas Agrotech Limited, we integrate traditional wisdom with modern innovation.  
+              From nutrient-rich fertilizers to renewable ethanol, we’re committed to sustainable farming and energy for the future.
             </p>
 
+            {/* Feature cards (animated) */}
             <div className="space-y-10">
               {features.map(({ title, description, iconPath, aos }, i) => (
                 <motion.div
                   key={i}
                   data-aos={aos}
-                  whileHover={{ scale: 1.05, rotate: [0, 2, -2, 0] }}
+                  whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 250 }}
                   className="flex items-start gap-6 p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl"
                 >
@@ -150,11 +167,11 @@ const About = () => {
             </div>
           </div>
 
-          {/* Right Images */}
+          {/* Right Images with animations (kept + updated content) */}
           <div className="relative" data-aos="fade-left">
             <motion.img
-              src="/Image3.jpg"
-              alt="Farming innovation"
+              src="/Image2.jpg"
+              alt="Cattle farm"
               className="rounded-3xl shadow-2xl mb-8 hover:scale-105 transition-transform duration-500"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -167,11 +184,11 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              Our mission: to make farming efficient, eco-friendly, and globally impactful.
+              “Turning organic resources into sustainable solutions for farming and energy.”
             </motion.div>
             <motion.img
-              src="/Image2.jpg"
-              alt="Farmers collaboration"
+              src="/Image3.jpg"
+              alt="Ethanol Plant"
               className="rounded-3xl shadow-lg mt-12 hover:rotate-2 hover:scale-105 transition-transform duration-400"
               whileHover={{ rotate: 2, scale: 1.05 }}
             />
@@ -190,7 +207,7 @@ const About = () => {
             <motion.div
               key={i}
               variants={itemVariants}
-              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow hover:-translate-y-2 transform"
+              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition hover:-translate-y-2"
             >
               <h3 className="text-4xl font-extrabold text-green-800">{number}</h3>
               <p className="text-gray-600 mt-2">{label}</p>
@@ -211,7 +228,6 @@ const About = () => {
             >
               Why Choose Us?
             </motion.h2>
-
             <motion.ul
               className="text-lg space-y-6 text-gray-700 font-medium"
               variants={containerVariants}
@@ -222,7 +238,7 @@ const About = () => {
               {reasons.map(({ icon, text }, index) => (
                 <motion.li
                   key={index}
-                  className="flex items-center gap-4 bg-gray-50 p-5 rounded-xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1"
+                  className="flex items-center gap-4 bg-gray-50 p-5 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1"
                   variants={itemVariants}
                 >
                   <span className="text-3xl">{icon}</span>
@@ -241,16 +257,17 @@ const About = () => {
             transition={{ duration: 0.7 }}
           >
             <div className="relative z-10">
-              <h3 className="text-4xl font-extrabold mb-6">Proven Expertise</h3>
+              <h3 className="text-4xl font-extrabold mb-6">One Stop Agro-Energy Hub</h3>
               <h2 className="text-5xl font-extrabold mb-12 leading-tight">
-                Unbeatable Organic Agriculture Services
+                From Organic Fertilizers to Renewable Ethanol
               </h2>
-              <motion.button
+              <motion.a
+                href="/contact"
                 whileHover={{ scale: 1.1 }}
                 className="bg-yellow-500 hover:bg-yellow-600 text-green-900 font-bold py-4 px-14 rounded-full shadow-lg transition focus:ring-4 focus:ring-yellow-300"
               >
-                Learn More
-              </motion.button>
+                Get in Touch
+              </motion.a>
             </div>
             <div className="absolute inset-0 bg-yellow-500 opacity-10 blur-3xl rounded-3xl"></div>
           </motion.div>
@@ -260,4 +277,4 @@ const About = () => {
   );
 };
 
-export default About
+export default About;

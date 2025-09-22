@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Carousel from "../components/Carousel.jsx"; // Make sure Carousel works
+import Carousel from "../components/Carousel.jsx";
 
-// Use images from public folder
 const ecoIcons = [
   { src: "/Image5.png", alt: "Leaf", size: 40, delay: 0 },
   { src: "/Image5.png", alt: "Leaf", size: 30, delay: 1000 },
@@ -30,11 +29,24 @@ const productsInfo = [
   },
 ];
 
+const applications = [
+  { icon: "🥕", text: "Organic farming & horticulture" },
+  { icon: "🌴", text: "Soil rehabilitation & landscaping" },
+  { icon: "🌻", text: "Greenhouse & floriculture" },
+  { icon: "🍇", text: "Vineyards & fruit cultivation" },
+];
+
+const stats = [
+  { number: "30+", label: "Export Countries" },
+  { number: "25+", label: "Years Experience" },
+  { number: "1M+", label: "Farmers Benefited" },
+  { number: "100%", label: "Organic Certified" },
+];
+
 const Products = () => {
   const { scrollY } = useScroll();
   const [scrollOffset, setScrollOffset] = useState(0);
 
-  // Parallax transforms
   const heroParallax = useTransform(scrollY, [0, 300], [0, -50]);
   const blobsParallax = useTransform(scrollY, [0, 500], [0, 80]);
 
@@ -73,12 +85,14 @@ const Products = () => {
         </h2>
         <div className="h-1 w-28 bg-green-600 mx-auto rounded-full mb-6"></div>
         <p className="max-w-3xl mx-auto text-lg md:text-xl text-gray-700 leading-relaxed">
-          We specialize in processing and exporting{" "}
-          <span className="font-semibold text-green-800">dewatered cow dung</span>, 
-          a nutrient-rich, eco-friendly fertilizer ideal for{" "}
+          We specialize in{" "}
+          <span className="font-semibold text-green-800">
+            dewatered cow dung
+          </span>
+          , a nutrient-rich, eco-friendly fertilizer ideal for{" "}
           <span className="italic">organic farming, horticulture</span> and{" "}
-          <span className="italic">soil rehabilitation</span>. Enhance soil fertility
-          while promoting sustainability.
+          <span className="italic">soil rehabilitation</span>. Enhance soil
+          fertility while promoting sustainability.
         </p>
       </motion.div>
 
@@ -122,7 +136,6 @@ const Products = () => {
           alt="Dewatered Cow Dung Fertilizer"
           className="w-full object-cover max-h-[500px] border-4 border-white rounded-3xl shadow-lg"
         />
-        {/* Floating Badge */}
         <motion.div
           className="absolute top-4 right-4 bg-green-700 text-white px-4 py-2 rounded-full shadow-lg text-sm font-semibold"
           initial={{ opacity: 0, y: -20 }}
@@ -169,6 +182,60 @@ const Products = () => {
         ))}
       </motion.div>
 
+      {/* Applications Section */}
+      <motion.div
+        className="mt-24 max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <div>
+          <h3 className="text-3xl font-bold text-green-900 mb-6">
+            Applications of Our Fertilizer
+          </h3>
+          <ul className="space-y-4 text-lg text-gray-700">
+            {applications.map((app, idx) => (
+              <li
+                key={idx}
+                className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl shadow-sm hover:shadow-md"
+              >
+                <span className="text-2xl">{app.icon}</span>
+                <p>{app.text}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <motion.img
+          src="/Image2.jpg"
+          alt="Fertilizer Application"
+          className="rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500"
+          whileHover={{ rotate: 2 }}
+        />
+      </motion.div>
+
+      {/* Stats Section */}
+      <motion.div
+        className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center mt-24 max-w-6xl mx-auto"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        {stats.map((stat, i) => (
+          <motion.div
+            key={i}
+            custom={i}
+            variants={cardVariants}
+            className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-transform hover:-translate-y-2"
+          >
+            <h3 className="text-3xl md:text-4xl font-extrabold text-green-800">
+              {stat.number}
+            </h3>
+            <p className="text-gray-600 mt-2">{stat.label}</p>
+          </motion.div>
+        ))}
+      </motion.div>
+
       {/* Call to Action */}
       <motion.div
         className="mt-24 text-center py-20 px-10 bg-gradient-to-r from-green-800 to-green-600 rounded-3xl text-white shadow-2xl relative overflow-hidden max-w-5xl mx-auto"
@@ -181,7 +248,8 @@ const Products = () => {
           Ready to Upgrade Your Soil?
         </h3>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
-          Join thousands of farmers worldwide using our 100% organic, eco-friendly fertilizers for better yield and sustainable growth.
+          Join thousands of farmers worldwide using our 100% organic,
+          eco-friendly fertilizers for better yield and sustainable growth.
         </p>
         <motion.a
           href="/contact"

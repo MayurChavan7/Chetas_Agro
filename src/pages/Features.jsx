@@ -3,28 +3,40 @@ import { motion } from "framer-motion";
 
 const featuresData = [
   {
-    title: "🐄 Cow Care",
+    title: "🐄 Cow Care & Sustainability",
     description:
-      "Tailored diet for cows based on age & health, with hygiene ensured by automated dung clearing and round-the-clock supervision.",
-    image: "/Image.jpg",
+      "Our cattle are given tailored diets based on age and health, with round-the-clock supervision and automated hygiene systems. This ensures both animal well-being and consistent, nutrient-rich cow dung for fertilizers.",
+    image: "/images/cow-care.jpg",
   },
   {
-    title: "⚙️ Technology",
+    title: "⚙️ Advanced Technology",
     description:
-      "RFID tracking and Remote Health Monitoring (RHM) ensure precision livestock management, maximizing efficiency and animal well-being.",
-    image: "/Image3.jpg",
+      "RFID tracking and Remote Health Monitoring (RHM) bring precision livestock management, while modern distillation technology powers our 65 KLPD ethanol plant with Zero Liquid Discharge (ZLD).",
+    image: "/images/technology.jpg",
   },
   {
-    title: "🏭 Machinery",
+    title: "🏭 World-Class Facilities",
     description:
-      "State-of-the-art dewatering machines maintain international standards, ensuring premium quality in every production batch.",
-    image: "/Image3.jpg",
+      "From dewatering machines for premium fertilizer production to GMP-compliant ethanol distillation units, our infrastructure meets global quality benchmarks across agriculture and renewable energy.",
+    image: "/images/facilities.jpg",
   },
   {
-    title: "✅ Quality",
+    title: "✅ Quality & Certifications",
     description:
-      "Every product undergoes strict lab testing for compliance with international organic farming standards before it reaches our customers.",
-    image: "/Image2.jpg",
+      "Every batch undergoes rigorous testing in certified labs. Our fertilizers comply with international organic standards, and our ethanol is trusted for pharma, industrial, and fuel applications worldwide.",
+    image: "/images/quality.jpg",
+  },
+  {
+    title: "🌍 Global Reach",
+    description:
+      "Serving clients across Asia, Africa, Europe, and the Middle East with reliable logistics, export-ready packaging, and timely delivery. Farmers and industries alike trust us as long-term partners.",
+    image: "/images/global.jpg",
+  },
+  {
+    title: "♻️ Eco-Friendly Approach",
+    description:
+      "We transform waste into wealth: cow dung into organic fertilizer and grains into renewable ethanol. Our closed-loop, sustainable model reduces chemical usage, enhances soil health, and cuts carbon emissions.",
+    image: "/images/eco-friendly.jpg",
   },
 ];
 
@@ -36,17 +48,18 @@ const Features = () => {
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
           <h2 className="text-5xl font-extrabold text-green-900 mb-4">
-            Features of Our Farm
+            Why Choose Chetas Agrotech?
           </h2>
           <div className="h-1 w-28 bg-green-600 mx-auto rounded-full"></div>
           <p className="text-lg text-gray-700 mt-6 max-w-3xl mx-auto leading-relaxed">
-            At Chetas Agro, we combine traditional farming wisdom with modern
-            technology to deliver sustainable solutions that are both
-            eco-friendly and globally compliant.
+            Blending tradition with innovation — from organic fertilizers to
+            renewable ethanol — we deliver sustainable, eco-friendly, and
+            globally compliant solutions that empower farmers and industries.
           </p>
         </motion.div>
 
@@ -61,7 +74,7 @@ const Features = () => {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: index * 0.2 }}
+              transition={{ duration: 0.7, delay: index * 0.15 }}
             >
               {/* Image */}
               <motion.div
@@ -72,7 +85,7 @@ const Features = () => {
                 <img
                   src={image}
                   alt={title}
-                  className="w-full h-72 object-cover rounded-2xl shadow-xl border-4 border-white"
+                  className="w-full h-80 object-cover rounded-2xl shadow-xl border-4 border-white"
                   loading="lazy"
                 />
               </motion.div>
