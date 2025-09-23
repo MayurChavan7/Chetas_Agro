@@ -40,7 +40,7 @@ const About = () => {
   ];
 
   const Timeline = ({ steps, color }) => (
-    <div className="relative max-w-4xl mx-auto px-2 sm:px-4">
+    <div className="relative max-w-3xl mx-auto px-4">
       {steps.map((step, i) => (
         <motion.div
           key={i}
@@ -78,7 +78,7 @@ const About = () => {
       <Navbar />
 
       {/* Slogan Carousel */}
-      <div className="relative z-10 py-8 sm:py-12 max-w-7xl mx-auto px-4 sm:px-8 mt-20 sm:mt-24">
+      <div className="relative z-10 py-8 sm:py-12 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 sm:mt-24">
         <motion.div className="relative h-20 sm:h-24 overflow-hidden flex items-center justify-start rounded-2xl border bg-green-900/90 shadow-lg">
           <motion.div
             className="flex whitespace-nowrap gap-4 sm:gap-12 text-green-100 font-bold uppercase text-sm sm:text-xl md:text-3xl tracking-wide select-none"
@@ -95,34 +95,36 @@ const About = () => {
       </div>
 
       {/* Main Content */}
-      <main className="flex-1 max-w-7xl mx-auto space-y-28 sm:space-y-32 px-2 sm:px-8 lg:px-16 py-12 sm:py-16">
+      <main className="flex-1 max-w-6xl mx-auto space-y-20 sm:space-y-28 px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         {/* Cow Dung Fertilizer Section */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-12 items-center rounded-3xl shadow-md p-4 sm:p-6 md:p-12 bg-green-50">
-          <motion.img
-            src="/CowFertilizer.jpg"
-            alt="Organic Fertilizers"
-            className="rounded-3xl shadow-xl w-full h-auto object-cover"
-            initial={{ opacity: 0, x: -80 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          />
-          <div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-green-900 mb-4 sm:mb-6">Organic Fertilizers</h2>
-            <p className="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base md:text-lg leading-relaxed">
-              Premium export-quality cow dung fertilizers, nutrient-rich, hygienically processed, and certified to meet global standards.
-            </p>
-            <ul className="space-y-2 sm:space-y-3 list-disc list-inside text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed">
-              <li>🌱 Enhances soil fertility and stimulates beneficial microbial life.</li>
-              <li>🥕 Ideal for horticulture, vineyards, and sustainable farming.</li>
-              <li>🧪 Certified lab-tested for quality assurance and safety.</li>
-              <li>📦 Customizable packaging and export-ready options.</li>
-            </ul>
+        <section className="rounded-3xl shadow-md p-6 sm:p-10 bg-green-50">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-12 items-center">
+            <motion.img
+              src="/CowFertilizer.jpg"
+              alt="Organic Fertilizers"
+              className="rounded-3xl shadow-xl w-full h-auto object-cover"
+              initial={{ opacity: 0, x: -80 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            />
+            <div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-green-900 mb-6">Organic Fertilizers</h2>
+              <p className="text-gray-700 mb-6 text-base md:text-lg leading-relaxed">
+                Premium export-quality cow dung fertilizers, nutrient-rich, hygienically processed, and certified to meet global standards.
+              </p>
+              <ul className="space-y-3 list-disc list-inside text-gray-800 text-base md:text-lg leading-relaxed">
+                <li>🌱 Enhances soil fertility and stimulates beneficial microbial life.</li>
+                <li>🥕 Ideal for horticulture, vineyards, and sustainable farming.</li>
+                <li>🧪 Certified lab-tested for quality assurance and safety.</li>
+                <li>📦 Customizable packaging and export-ready options.</li>
+              </ul>
+            </div>
           </div>
 
           {/* Timeline */}
-          <div className="col-span-2 py-12 sm:py-16">
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-8 sm:mb-12 text-green-900 text-center">
+          <div className="py-12">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-10 text-green-900 text-center">
               Organic Fertilizer Process
             </h3>
             <Timeline steps={cowDungProcessSteps} color="green" />
@@ -130,32 +132,34 @@ const About = () => {
         </section>
 
         {/* Ethanol Section */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-12 items-center rounded-3xl shadow-md p-4 sm:p-6 md:p-12 bg-yellow-50">
-          <div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-yellow-700 mb-4 sm:mb-6">Renewable Ethanol</h2>
-            <p className="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base md:text-lg leading-relaxed">
-              Our 65 KLPD ethanol plant produces fuel ethanol, pharma-grade ethanol, ENA, and EQRS worldwide with zero liquid discharge.
-            </p>
-            <ul className="space-y-2 sm:space-y-3 list-disc list-inside text-yellow-800 text-sm sm:text-base md:text-lg leading-relaxed">
-              <li>⚡ Compliant with E20 fuel blending standards for cleaner energy.</li>
-              <li>💊 Pharma & healthcare-grade ethanol for rigorous global standards.</li>
-              <li>♻️ Environmentally responsible with advanced Zero Liquid Discharge systems.</li>
-              <li>🌍 Exporting across Asia, Africa, Europe, & the Middle East.</li>
-            </ul>
+        <section className="rounded-3xl shadow-md p-6 sm:p-10 bg-yellow-50">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-12 items-center">
+            <div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-yellow-700 mb-6">Renewable Ethanol</h2>
+              <p className="text-gray-700 mb-6 text-base md:text-lg leading-relaxed">
+                Our 65 KLPD ethanol plant produces fuel ethanol, pharma-grade ethanol, ENA, and EQRS worldwide with zero liquid discharge.
+              </p>
+              <ul className="space-y-3 list-disc list-inside text-yellow-800 text-base md:text-lg leading-relaxed">
+                <li>⚡ Compliant with E20 fuel blending standards for cleaner energy.</li>
+                <li>💊 Pharma & healthcare-grade ethanol for rigorous global standards.</li>
+                <li>♻️ Environmentally responsible with advanced Zero Liquid Discharge systems.</li>
+                <li>🌍 Exporting across Asia, Africa, Europe, & the Middle East.</li>
+              </ul>
+            </div>
+            <motion.img
+              src="/EthonolFertilizer.jpg"
+              alt="Renewable Ethanol Plant"
+              className="rounded-3xl shadow-xl w-full h-auto object-cover"
+              initial={{ opacity: 0, x: 80 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            />
           </div>
-          <motion.img
-            src="/EthonolFertilizer.jpg"
-            alt="Renewable Ethanol Plant"
-            className="rounded-3xl shadow-xl w-full h-auto object-cover"
-            initial={{ opacity: 0, x: 80 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          />
 
           {/* Timeline */}
-          <div className="col-span-2 py-12 sm:py-16">
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-8 sm:mb-12 text-yellow-700 text-center">
+          <div className="py-12">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-10 text-yellow-700 text-center">
               Renewable Ethanol Process
             </h3>
             <Timeline steps={ethanolProcessSteps} color="yellow" />
@@ -163,13 +167,13 @@ const About = () => {
         </section>
 
         {/* Team Section */}
-        <section className="py-12 sm:py-20 text-center max-w-7xl mx-auto px-2 sm:px-8">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-900 mb-12 sm:mb-16">Our Leadership Team</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-12">
+        <section className="py-12 sm:py-20 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-900 mb-16">Our Leadership Team</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
             {teamMembers.map((member, i) => (
               <motion.div
                 key={i}
-                className="space-y-3 sm:space-y-5"
+                className="space-y-5"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -178,7 +182,7 @@ const About = () => {
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="rounded-full mx-auto w-24 h-24 sm:w-32 sm:h-32 object-cover shadow-lg"
+                  className="rounded-full mx-auto w-28 h-28 sm:w-32 sm:h-32 object-cover shadow-lg"
                 />
                 <h3 className="text-lg sm:text-xl md:text-2xl font-semibold">{member.name}</h3>
                 <p className="text-gray-700 text-sm sm:text-base md:text-lg">{member.role}</p>
@@ -188,14 +192,14 @@ const About = () => {
         </section>
 
         {/* CTA Section */}
-        <div className="py-12 sm:py-16 px-4 sm:px-10 md:px-20 text-center bg-gradient-to-r from-green-800 to-green-600 text-white rounded-3xl max-w-4xl mx-auto shadow-2xl mt-auto">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-4 sm:mb-6">One Stop Agro-Energy Hub</h2>
-          <p className="max-w-2xl mx-auto mb-6 sm:mb-8 text-sm sm:text-base md:text-lg leading-relaxed">
+        <div className="py-12 px-6 sm:px-10 text-center bg-gradient-to-r from-green-800 to-green-600 text-white rounded-3xl max-w-3xl mx-auto shadow-2xl">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-6">One Stop Agro-Energy Hub</h2>
+          <p className="max-w-2xl mx-auto mb-8 text-base md:text-lg leading-relaxed">
             From organic fertilizers to renewable ethanol — we deliver complete, sustainable agro-energy solutions for farmers, industry, and the planet.
           </p>
           <a
             href="/contact"
-            className="bg-yellow-400 text-green-900 font-bold px-6 sm:px-10 py-2 sm:py-3 rounded-full shadow-lg hover:bg-yellow-500 transition text-sm sm:text-base md:text-lg"
+            className="bg-yellow-400 text-green-900 font-bold px-8 py-3 rounded-full shadow-lg hover:bg-yellow-500 transition text-base md:text-lg"
           >
             Contact Us
           </a>
