@@ -13,267 +13,198 @@ const slogans = [
 
 const About = () => {
   useEffect(() => {
-    AOS.init({
-      duration: 900,
-      easing: "ease-out-cubic",
-      once: true,
-      offset: 150,
-    });
+    AOS.init({ duration: 900, once: true });
   }, []);
 
-  const features = [
-    {
-      title: "Organic Fertilizers",
-      description:
-        "Eco-friendly fertilizers derived from cow dung. Rich in nutrients, certified, and tested in modern labs for organic farming worldwide.",
-      iconPath: "M12 5v14m7-7H5",
-      aos: "fade-right",
-    },
-    {
-      title: "Ethanol Production",
-      description:
-        "65 KLPD distillery with Zero Liquid Discharge (ZLD). Supplying pharma, fuel, and industrial-grade ethanol to global markets.",
-      iconPath: "M3 10h18M3 14h18",
-      aos: "fade-left",
-    },
-    {
-      title: "Global Standards",
-      description:
-        "Complying with international certifications. Flexible packaging and private labeling for global clients.",
-      iconPath: "M12 4.354l6 6V20H6V10.354l6-6z",
-      aos: "fade-right",
-    },
-    {
-      title: "Sustainability First",
-      description:
-        "Closed-loop circular economy: cattle → fertilizers → crops → ethanol → renewable energy, reducing carbon footprint.",
-      iconPath: "M5 13l4 4L19 7",
-      aos: "fade-left",
-    },
+  const cowDungProcessSteps = [
+    { step: "1", title: "Collection", desc: "Sustainably gathering fresh cow dung from our own dairy farm with over 10,000 cattle." },
+    { step: "2", title: "Dewatering", desc: "Removing excess moisture to concentrate nutrients and improve handling." },
+    { step: "3", title: "Sanitization", desc: "Hygienic processing to eliminate pathogens, ensuring safety and quality." },
+    { step: "4", title: "Testing & Certification", desc: "Lab analysis for nutrient content and compliance with international organic standards." },
+    { step: "5", title: "Packaging & Export", desc: "Custom packaging with private labeling options, ready for global distribution." },
   ];
 
-  const reasons = [
-    { icon: "🐄", text: "10,000+ cattle ensuring consistent organic raw material" },
-    { icon: "⚡", text: "65 KLPD ethanol plant with Zero Liquid Discharge (ZLD)" },
-    { icon: "🌍", text: "Exports across Asia, Africa, Europe & Middle East" },
-    { icon: "🧪", text: "Strict quality testing in modern labs" },
-    { icon: "📦", text: "Custom packaging & private labeling options" },
-    { icon: "🌱", text: "Supports organic farming and reduces chemical usage" },
+  const ethanolProcessSteps = [
+    { step: "1", title: "Grain Handling", desc: "Cleaning, milling, and slurry preparation from maize & broken rice." },
+    { step: "2", title: "Liquefaction", desc: "Enzymatic breakdown of starch into dextrin using high-temp cooking." },
+    { step: "3", title: "Saccharification & Fermentation", desc: "Conversion into fermentable sugars and ethanol by yeast." },
+    { step: "4", title: "Distillation & Dehydration", desc: "Multi-column distillation & molecular sieve dehydration." },
+    { step: "5", title: "Co-Products", desc: "DDGS, CO₂, power & biogas from by-products ensuring zero waste." },
   ];
 
-  const stats = [
-    { number: "10,000+", label: "Cattle Managed" },
-    { number: "65 KLPD", label: "Ethanol Capacity" },
-    { number: "30+", label: "Export Countries" },
-    { number: "25+ Yrs", label: "Experience in Agro Industry" },
+  const teamMembers = [
+    { name: "Mr. Ramesh Patel", role: "Founder & CEO", image: "/team1.jpg" },
+    { name: "Ms. Priya Sharma", role: "Head of Operations", image: "/team2.jpg" },
+    { name: "Dr. Anil Kumar", role: "Sustainability Lead", image: "/team3.jpg" },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2, delayChildren: 0.2 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 },
-  };
+  const Timeline = ({ steps }) => (
+    <div className="relative max-w-4xl mx-auto">
+      {steps.map((step, i) => (
+        <motion.div
+          key={i}
+          className="flex flex-col md:flex-row items-start md:items-center mb-12 relative"
+          initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: i * 0.2 }}
+        >
+          <div className="absolute md:relative flex items-center justify-center w-12 h-12 bg-green-600 text-white font-bold rounded-full shadow-md md:mr-6 md:ml-0 -left-6 md:left-0">
+            {step.step}
+          </div>
+          <div className="md:ml-16">
+            <h3 className="text-xl md:text-2xl font-semibold text-green-800">{step.title}</h3>
+            <p className="text-gray-700 mt-1 text-base md:text-lg">{step.desc}</p>
+          </div>
+        </motion.div>
+      ))}
+      <div className="absolute left-0 md:left-5 top-0 w-1 bg-green-600 h-full"></div>
+    </div>
+  );
 
   return (
-    <section className="py-24 px-6 bg-gradient-to-br from-green-50 via-white to-green-100 text-gray-900 relative overflow-hidden">
-      {/* Floating animated blobs (kept from earlier version) */}
-      <div className="absolute top-[-50px] left-[-50px] w-72 h-72 bg-green-200 rounded-full filter blur-3xl opacity-30 animate-blob"></div>
-      <div className="absolute bottom-[-100px] right-[-80px] w-96 h-96 bg-green-300 rounded-full filter blur-3xl opacity-25 animate-blob animation-delay-2000"></div>
+    <div className="bg-gradient-to-br from-green-50 via-white to-green-100 min-h-screen flex flex-col">
+      {/* Navbar */}
+      <nav className="bg-green-900 text-white py-4 px-6 md:px-12 flex justify-between items-center">
+        <h1 className="text-xl md:text-2xl font-bold">AgroEnergy Hub</h1>
+        <ul className="hidden md:flex gap-8 font-semibold">
+          <li>Home</li>
+          <li>About</li>
+          <li>Products</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
 
-      <div className="relative z-10 max-w-7xl mx-auto space-y-24">
-        {/* Scrolling slogan carousel (kept from earlier) */}
-        <motion.div className="relative max-w-5xl mx-auto h-24 overflow-hidden flex items-center justify-start rounded-2xl border bg-green-900/90 shadow-lg">
+      {/* Slogan Carousel */}
+      <div className="relative z-10 py-12 max-w-7xl mx-auto px-4 sm:px-8">
+        <motion.div className="relative h-24 overflow-hidden flex items-center justify-start rounded-2xl border bg-green-900/90 shadow-lg">
           <motion.div
-            className="flex whitespace-nowrap gap-16 text-green-100 font-bold uppercase text-2xl tracking-wide select-none"
+            className="flex whitespace-nowrap gap-16 text-green-100 font-bold uppercase text-xl sm:text-2xl md:text-3xl tracking-wide select-none"
             animate={{ x: ["0%", "-50%"] }}
             transition={{
-              x: { repeat: Infinity, repeatType: "loop", duration: slogans.length * 3, ease: "linear" },
+              x: { repeat: Infinity, repeatType: "loop", duration: slogans.length * 2, ease: "linear" },
             }}
           >
             {slogans.concat(slogans).map((text, i) => (
               <span key={i} className="px-4">{text}</span>
             ))}
           </motion.div>
+        </motion.div>
+      </div>
 
-          {/* Floating eco-icons animation (preserved) */}
-          <motion.div
-            className="absolute top-0 left-0 w-full h-full pointer-events-none"
-            animate={{ rotate: [0, 360] }}
-            transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
-          >
-            {Array.from({ length: 6 }).map((_, i) => (
+      {/* Main Content */}
+      <main className="flex-1 max-w-7xl mx-auto space-y-32 px-4 sm:px-8 lg:px-16 py-16">
+        {/* Cow Dung Fertilizer Section */}
+        <section className="grid md:grid-cols-2 gap-16 items-center rounded-3xl shadow-md p-8 md:p-12 bg-green-50">
+          <motion.img
+            src="/Image3.jpg"
+            alt="Organic Fertilizers"
+            className="rounded-3xl shadow-xl w-full h-auto object-cover"
+            initial={{ opacity: 0, x: -80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          />
+          <div>
+            <h2 className="text-4xl lg:text-5xl font-bold text-green-900 mb-6">Organic Fertilizers</h2>
+            <p className="text-gray-700 mb-6 text-base md:text-lg leading-relaxed">
+              Premium export-quality cow dung fertilizers, nutrient-rich, hygienically processed, and certified to meet global standards.
+            </p>
+            <ul className="space-y-3 list-disc list-inside text-gray-800 text-base md:text-lg leading-relaxed">
+              <li>🌱 Enhances soil fertility and stimulates beneficial microbial life.</li>
+              <li>🥕 Ideal for horticulture, vineyards, and sustainable farming.</li>
+              <li>🧪 Certified lab-tested for quality assurance and safety.</li>
+              <li>📦 Customizable packaging and export-ready options.</li>
+            </ul>
+          </div>
+
+          {/* Timeline */}
+          <div className="col-span-2 py-16">
+            <h3 className="text-3xl md:text-4xl font-bold mb-12 text-green-900 text-center">
+              Organic Fertilizer Process
+            </h3>
+            <Timeline steps={cowDungProcessSteps} />
+          </div>
+        </section>
+
+        {/* Ethanol Section */}
+        <section className="grid md:grid-cols-2 gap-16 items-center rounded-3xl shadow-md p-8 md:p-12 bg-yellow-50">
+          <div>
+            <h2 className="text-4xl lg:text-5xl font-bold text-yellow-700 mb-6">Renewable Ethanol</h2>
+            <p className="text-gray-700 mb-6 text-base md:text-lg leading-relaxed">
+              Our 65 KLPD ethanol plant produces fuel ethanol, pharma-grade ethanol, ENA, and EQRS worldwide with zero liquid discharge.
+            </p>
+            <ul className="space-y-3 list-disc list-inside text-yellow-800 text-base md:text-lg leading-relaxed">
+              <li>⚡ Compliant with E20 fuel blending standards for cleaner energy.</li>
+              <li>💊 Pharma & healthcare-grade ethanol for rigorous global standards.</li>
+              <li>♻️ Environmentally responsible with advanced Zero Liquid Discharge systems.</li>
+              <li>🌍 Exporting across Asia, Africa, Europe, & the Middle East.</li>
+            </ul>
+          </div>
+          <motion.img
+            src="/Image1st.jpg"
+            alt="Renewable Ethanol Plant"
+            className="rounded-3xl shadow-xl w-full h-auto object-cover"
+            initial={{ opacity: 0, x: 80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          />
+
+          {/* Timeline */}
+          <div className="col-span-2 py-16">
+            <h3 className="text-3xl md:text-4xl font-bold mb-12 text-yellow-700 text-center">
+              Renewable Ethanol Process
+            </h3>
+            <Timeline steps={ethanolProcessSteps} />
+          </div>
+        </section>
+
+        {/* Team Section */}
+        <section className="py-20 text-center max-w-7xl mx-auto px-6 sm:px-12">
+          <h2 className="text-4xl lg:text-5xl font-bold text-green-900 mb-16">Our Leadership Team</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 sm:gap-16">
+            {teamMembers.map((member, i) => (
               <motion.div
                 key={i}
-                className="absolute text-green-200 text-xl"
-                style={{
-                  top: `${Math.random() * 100}%`,
-                  left: `${Math.random() * 100}%`,
-                }}
-                animate={{ y: [0, 10, 0], x: [0, 10, 0] }}
-                transition={{ repeat: Infinity, duration: 6 + i }}
+                className="space-y-5"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.2 }}
               >
-                🌿
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="rounded-full mx-auto w-40 h-40 sm:w-44 sm:h-44 object-cover shadow-lg"
+                />
+                <h3 className="text-2xl font-semibold">{member.name}</h3>
+                <p className="text-gray-700 text-lg">{member.role}</p>
               </motion.div>
             ))}
-          </motion.div>
-        </motion.div>
-
-        {/* About Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center max-w-6xl mx-auto">
-          <div>
-            <h3 className="text-lg font-semibold text-green-700 uppercase mb-3">
-              About Chetas Agrotech
-            </h3>
-            <h1 className="text-5xl font-extrabold mb-6 leading-tight text-green-900">
-              From Soil to Energy – A Complete Eco-Solution
-            </h1>
-            <p className="mb-8 text-lg leading-relaxed max-w-xl text-gray-700">
-              At Chetas Agrotech Limited, we integrate traditional wisdom with modern innovation.  
-              From nutrient-rich fertilizers to renewable ethanol, we’re committed to sustainable farming and energy for the future.
-            </p>
-
-            {/* Feature cards (animated) */}
-            <div className="space-y-10">
-              {features.map(({ title, description, iconPath, aos }, i) => (
-                <motion.div
-                  key={i}
-                  data-aos={aos}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 250 }}
-                  className="flex items-start gap-6 p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-10 h-10 text-green-600 flex-shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={iconPath} />
-                  </svg>
-                  <div>
-                    <h4 className="text-2xl font-semibold text-green-900 mb-2">{title}</h4>
-                    <p className="text-gray-600">{description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
           </div>
+        </section>
 
-          {/* Right Images with animations (kept + updated content) */}
-          <div className="relative" data-aos="fade-left">
-            <motion.img
-              src="/Image2.jpg"
-              alt="Cattle farm"
-              className="rounded-3xl shadow-2xl mb-8 hover:scale-105 transition-transform duration-500"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-            />
-            <motion.div
-              className="absolute bottom-16 left-8 w-80 bg-green-800 text-white p-8 rounded-3xl shadow-xl"
-              initial={{ x: -80, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              “Turning organic resources into sustainable solutions for farming and energy.”
-            </motion.div>
-            <motion.img
-              src="/Image3.jpg"
-              alt="Ethanol Plant"
-              className="rounded-3xl shadow-lg mt-12 hover:rotate-2 hover:scale-105 transition-transform duration-400"
-              whileHover={{ rotate: 2, scale: 1.05 }}
-            />
-          </div>
-        </div>
-
-        {/* Stats Section */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center max-w-5xl mx-auto"
-        >
-          {stats.map(({ number, label }, i) => (
-            <motion.div
-              key={i}
-              variants={itemVariants}
-              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition hover:-translate-y-2"
-            >
-              <h3 className="text-4xl font-extrabold text-green-800">{number}</h3>
-              <p className="text-gray-600 mt-2">{label}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Why Choose Us + CTA */}
-        <div className="flex flex-col md:flex-row gap-16 max-w-7xl mx-auto px-6">
-          {/* Why Choose Us */}
-          <section className="flex-1 bg-white rounded-2xl p-10 shadow-lg">
-            <motion.h2
-              className="text-4xl font-extrabold mb-10 text-green-900 text-center"
-              initial={{ opacity: 0, y: -30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              Why Choose Us?
-            </motion.h2>
-            <motion.ul
-              className="text-lg space-y-6 text-gray-700 font-medium"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              {reasons.map(({ icon, text }, index) => (
-                <motion.li
-                  key={index}
-                  className="flex items-center gap-4 bg-gray-50 p-5 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1"
-                  variants={itemVariants}
-                >
-                  <span className="text-3xl">{icon}</span>
-                  <p>{text}</p>
-                </motion.li>
-              ))}
-            </motion.ul>
-          </section>
-
-          {/* Call To Action */}
-          <motion.div
-            className="flex-1 text-center py-24 px-12 bg-gradient-to-r from-green-800 to-green-600 rounded-3xl text-white shadow-2xl relative overflow-hidden"
-            initial={{ scale: 0.9, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
+        {/* CTA Section */}
+        <div className="py-16 sm:py-24 px-6 sm:px-10 md:px-20 text-center bg-gradient-to-r from-green-800 to-green-600 text-white rounded-3xl max-w-4xl mx-auto shadow-2xl mt-auto">
+          <h2 className="text-4xl sm:text-5xl font-extrabold mb-6 sm:mb-8">One Stop Agro-Energy Hub</h2>
+          <p className="max-w-2xl mx-auto mb-8 sm:mb-12 text-lg sm:text-xl leading-relaxed">
+            From organic fertilizers to renewable ethanol — we deliver complete, sustainable agro-energy solutions for farmers, industry, and the planet.
+          </p>
+          <a
+            href="/contact"
+            className="bg-yellow-400 text-green-900 font-bold px-12 py-4 rounded-full shadow-lg hover:bg-yellow-500 transition"
           >
-            <div className="relative z-10">
-              <h3 className="text-4xl font-extrabold mb-6">One Stop Agro-Energy Hub</h3>
-              <h2 className="text-5xl font-extrabold mb-12 leading-tight">
-                From Organic Fertilizers to Renewable Ethanol
-              </h2>
-              <motion.a
-                href="/contact"
-                whileHover={{ scale: 1.1 }}
-                className="bg-yellow-500 hover:bg-yellow-600 text-green-900 font-bold py-4 px-14 rounded-full shadow-lg transition focus:ring-4 focus:ring-yellow-300"
-              >
-                Get in Touch
-              </motion.a>
-            </div>
-            <div className="absolute inset-0 bg-yellow-500 opacity-10 blur-3xl rounded-3xl"></div>
-          </motion.div>
+            Contact Us
+          </a>
         </div>
-      </div>
-    </section>
+      </main>
+
+    
+      {/* <footer className="bg-green-900 text-white py-8 mt-auto text-center">
+        <p>&copy; {new Date().getFullYear()} AgroEnergy Hub. All rights reserved.</p>
+      </footer> */}
+    </div>
   );
 };
 

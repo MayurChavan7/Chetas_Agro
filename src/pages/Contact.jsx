@@ -28,7 +28,7 @@ const Contact = () => {
             transition={{ delay: 0.3, duration: 1 }}
             className="text-lg md:text-xl font-light drop-shadow-md"
           >
-            Let’s grow together. Reach out for partnerships, queries, or support.
+            We're here to support you. Reach out with your questions, partnership ideas, or feedback.
           </motion.p>
         </motion.div>
 
@@ -49,8 +49,11 @@ const Contact = () => {
             className="relative bg-white p-10 rounded-3xl shadow-2xl overflow-hidden"
           >
             <h2 className="text-3xl font-bold text-green-800 mb-6">
-              Drop Us a Message
+              Send Us a Message
             </h2>
+            <p className="text-gray-700 mb-8 max-w-lg">
+              Whether you have a question, want to collaborate, or need support, please fill out the form below. We look forward to hearing from you!
+            </p>
             <ContactForm />
 
             {/* Additional Background Blobs */}
@@ -72,17 +75,16 @@ const Contact = () => {
               className="bg-gradient-to-r from-green-600 to-green-500 text-white p-8 rounded-3xl shadow-xl transition-all duration-300"
             >
               <h3 className="text-2xl font-bold mb-5 flex items-center gap-3">
-                📞 Contact Info
+                📞 Contact Information
               </h3>
-              <p className="mb-3 text-lg font-medium">📧 info@chetasagro.com</p>
-              <p className="mb-3 text-lg font-medium">☎️ 020-25871111 / 25870370</p>
+              <p className="mb-3 text-lg font-medium">📧 Email: info@chetasagro.com</p>
+              <p className="mb-3 text-lg font-medium">☎️ Phone: 020-25871111 / 25870370</p>
               <p className="mb-3 text-lg font-medium">💬 WhatsApp: +91 9876543210</p>
               <p className="text-lg leading-relaxed">
-                📍 Chetas House, Plot No. 1, Survey No. 8+9,
-                Sutarwadi, Pashan, Pune – 411021, Maharashtra, India
+                📍 Registered Office: Chetas House, Plot No. 1, Survey No. 8+9, Sutarwadi, Pashan, Pune – 411021, Maharashtra, India
               </p>
               <p className="mt-4 text-lg leading-relaxed">
-                🏭 Plant Address: Gat No. 123, Agrotech Industrial Park, Ahmednagar, Maharashtra
+                🏭 Manufacturing Plant: Gat No. 123, Agrotech Industrial Park, Ahmednagar, Maharashtra
               </p>
             </motion.div>
 
@@ -113,7 +115,7 @@ const Contact = () => {
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
+              />
             </motion.div>
           </motion.div>
         </div>
@@ -129,21 +131,21 @@ const Contact = () => {
             {[
               {
                 q: "Do you export internationally?",
-                a: "Yes, we export fertilizers and ethanol products across Asia, Africa, Europe, and the Middle East.",
+                a: "Yes, we export fertilizers and ethanol across Asia, Africa, Europe, and the Middle East, ensuring global quality standards.",
               },
               {
                 q: "Are your fertilizers certified organic?",
-                a: "Absolutely. Every batch is tested and certified as per international organic farming standards.",
+                a: "Absolutely. Each batch undergoes strict testing and certification as per international organic farming standards.",
               },
               {
                 q: "Can I request custom packaging?",
-                a: "Yes, we offer flexible packaging and private labeling options for global clients.",
+                a: "Yes, we offer flexible packaging and private labeling tailored to meet global client requirements.",
               },
             ].map((faq, i) => (
               <motion.div
                 key={i}
                 whileHover={{ scale: 1.02 }}
-                className="bg-gray-50 p-6 rounded-2xl shadow-md"
+                className="bg-gray-50 p-6 rounded-2xl shadow-md cursor-pointer transition"
               >
                 <h3 className="text-lg font-semibold text-green-800 mb-2">{faq.q}</h3>
                 <p className="text-gray-600">{faq.a}</p>
@@ -163,7 +165,7 @@ const Contact = () => {
       >
         <h2 className="text-4xl font-extrabold mb-6">Partner with Chetas Agrotech</h2>
         <p className="text-lg max-w-2xl mx-auto mb-8">
-          Be a part of the movement — building a sustainable future with organic fertilizers and renewable ethanol solutions.
+          Join us on the journey to build a sustainable future with premium organic fertilizers and renewable ethanol solutions.
         </p>
         <motion.a
           href="/contact"

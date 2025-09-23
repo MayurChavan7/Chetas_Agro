@@ -1,328 +1,300 @@
-// import React from "react";
-// import { motion } from "framer-motion";
-// import Hero from "../components/Hero.jsx";
-// import Testimonials from "./Testimonials.jsx";
-
-// const features = [
-//   {
-//     emoji: "🌱",
-//     title: "Organic Fertilizers",
-//     description:
-//       "Export-quality dewatered cow dung that restores nutrients, boosts microbial life, and builds healthier soils naturally.",
-//   },
-//   {
-//     emoji: "⚡",
-//     title: "Renewable Ethanol",
-//     description:
-//       "65 KLPD grain-based ethanol production for fuel blending, pharma, and industrial use with zero liquid discharge (ZLD).",
-//   },
-//   {
-//     emoji: "🌍",
-//     title: "Global Reach",
-//     description:
-//       "Supplying clients across Asia, Africa, Europe & the Middle East with timely logistics and export-ready packaging.",
-//   },
-//   {
-//     emoji: "🔬",
-//     title: "Advanced Technology",
-//     description:
-//       "From RFID farm monitoring to GMP-grade ethanol distillation — we combine tradition with innovation.",
-//   },
-// ];
-
-// const Home = () => {
-//   return (
-//     <div className="overflow-hidden">
-//       {/* Hero Section */}
-//       <Hero />
-
-//       {/* Mission Section */}
-//       <section className="py-24 px-6 bg-gray-50 relative">
-//         <div className="max-w-6xl mx-auto text-center">
-//           <motion.h2
-//             className="text-5xl font-extrabold text-green-900 mb-8"
-//             initial={{ opacity: 0, y: -40 }}
-//             whileInView={{ opacity: 1, y: 0 }}
-//             transition={{ duration: 0.8 }}
-//           >
-//             Our Mission
-//           </motion.h2>
-//           <p className="max-w-3xl mx-auto text-lg md:text-xl text-gray-700 leading-relaxed">
-//             To lead in sustainable agriculture and renewable energy by providing{" "}
-//             <span className="font-semibold text-green-800">organic fertilizers</span>{" "}
-//             and{" "}
-//             <span className="font-semibold text-green-800">
-//               high-quality ethanol biofuels
-//             </span>
-//             . Healthier soils. Empowered farmers. A cleaner planet.
-//           </p>
-//         </div>
-
-//         {/* Features */}
-//         <div className="grid md:grid-cols-4 gap-10 mt-16">
-//           {features.map((f, i) => (
-//             <motion.div
-//               key={i}
-//               className="bg-white rounded-2xl shadow-lg p-8 text-center hover:-translate-y-2 transition"
-//               initial={{ opacity: 0, y: 30 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               transition={{ delay: i * 0.2, duration: 0.7 }}
-//             >
-//               <div className="text-5xl mb-4">{f.emoji}</div>
-//               <h3 className="text-2xl font-bold text-green-900 mb-2">{f.title}</h3>
-//               <p className="text-gray-600">{f.description}</p>
-//             </motion.div>
-//           ))}
-//         </div>
-//       </section>
-
-//       {/* Product Highlights */}
-//       <section className="py-28 bg-white">
-//         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 px-6 items-center">
-//           {/* Cow dung fertilizer */}
-//           <motion.div
-//             initial={{ x: -50, opacity: 0 }}
-//             whileInView={{ x: 0, opacity: 1 }}
-//             transition={{ duration: 0.7 }}
-//           >
-//             <img
-//               src="/Image3.jpg"
-//               alt="Cow dung fertilizer"
-//               className="rounded-3xl shadow-xl mb-6"
-//             />
-//             <h3 className="text-3xl font-bold text-green-900 mb-4">
-//               Cow Dung Fertilizers
-//             </h3>
-//             <p className="text-gray-700 mb-6">
-//               Hygienically processed from 10,000+ cattle farm. Export-ready,
-//               nutrient-rich organic compost trusted by organic farmers worldwide.
-//             </p>
-//             <a
-//               href="/products/fertilizers"
-//               className="bg-green-700 text-white px-6 py-3 rounded-full shadow hover:bg-green-800 transition"
-//             >
-//               Explore Fertilizers
-//             </a>
-//           </motion.div>
-
-//           {/* Ethanol */}
-//           <motion.div
-//             initial={{ x: 50, opacity: 0 }}
-//             whileInView={{ x: 0, opacity: 1 }}
-//             transition={{ duration: 0.7 }}
-//           >
-//             <img
-//               src="/Image2.jpg"
-//               alt="Ethanol Solutions"
-//               className="rounded-3xl shadow-xl mb-6"
-//             />
-//             <h3 className="text-3xl font-bold text-green-900 mb-4">
-//               Ethanol Solutions
-//             </h3>
-//             <p className="text-gray-700 mb-6">
-//               65 KLPD modern plant producing ethanol, ENA, EQRS, and pharma-grade
-//               ethanol with ZLD effluent treatment and GMP standards.
-//             </p>
-//             <a
-//               href="/products/ethanol"
-//               className="bg-green-700 text-white px-6 py-3 rounded-full shadow hover:bg-green-800 transition"
-//             >
-//               Explore Ethanol
-//             </a>
-//           </motion.div>
-//         </div>
-//       </section>
-
-//       {/* Testimonials */}
-//       <Testimonials />
-
-//       {/* CTA */}
-//       <section className="py-20 bg-gradient-to-r from-green-900 via-green-700 to-green-600 text-center text-white">
-//         <h2 className="text-4xl font-bold mb-4">Ready to Partner with Us?</h2>
-//         <p className="mb-8 max-w-2xl mx-auto">
-//           From farms to fuel, Chetas Agrotech is shaping a greener future. Join
-//           our journey toward sustainable agriculture and renewable energy.
-//         </p>
-//         <a
-//           href="/contact"
-//           className="bg-yellow-400 text-green-900 font-semibold px-10 py-4 rounded-full shadow-lg hover:bg-yellow-500 transition"
-//         >
-//           Get in Touch
-//         </a>
-//       </section>
-//     </div>
-//   );
-// };
-
-// export default Home;
 import React from "react";
 import { motion } from "framer-motion";
 import Hero from "../components/Hero.jsx";
 import Testimonials from "./Testimonials.jsx";
 
+// Feature highlights
 const features = [
   {
     emoji: "🌱",
     title: "Organic Fertilizers",
     description:
-      "Export-quality dewatered cow dung restoring nutrients and building healthier soils naturally.",
+      "Export-quality dewatered cow dung restoring nutrients and building healthier soils.",
   },
   {
     emoji: "⚡",
     title: "Renewable Ethanol",
     description:
-      "65 KLPD grain-based ethanol production for fuel, pharma, and industrial use with zero liquid discharge.",
+      "65 KLPD ethanol plant with zero liquid discharge for clean energy & pharma.",
   },
   {
     emoji: "🌍",
     title: "Global Reach",
     description:
-      "Supplying clients across Asia, Africa, Europe & the Middle East with timely logistics.",
+      "Supplying clients across Asia, Africa, Europe & the Middle East.",
   },
   {
     emoji: "🔬",
     title: "Advanced Technology",
     description:
-      "Combining RFID farm monitoring with GMP-grade ethanol distillation for smart, efficient solutions.",
+      "RFID livestock monitoring + GMP ethanol distillation for efficiency.",
   },
+];
+
+// Stats
+const stats = [
+  { value: "10,000+", label: "Farms Served" },
+  { value: "65 KLPD", label: "Ethanol Capacity" },
+  { value: "50+", label: "Countries Exported" },
 ];
 
 const Home = () => {
   return (
-    <div className="overflow-x-hidden">
-      {/* Hero Section */}
+    <div className="overflow-x-hidden font-sans text-gray-800">
+      {/* =================== Hero =================== */}
       <Hero />
 
-      {/* Mission + Features */}
-      <section className="relative py-32 bg-gradient-to-b from-green-50 to-white overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-64 bg-green-200 rounded-b-[50%] opacity-30 -z-10"></div>
-        <div className="max-w-6xl mx-auto text-center px-6">
+      {/* =================== Mission =================== */}
+      <section className="relative py-16 sm:py-24 md:py-32 bg-gradient-to-b from-green-50 to-white overflow-hidden">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
           <motion.h2
-            className="text-5xl md:text-6xl font-extrabold text-green-900 mb-8"
-            initial={{ opacity: 0, y: -60 }}
+            className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-green-900 mb-6"
+            initial={{ opacity: 0, y: -50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
             Our Mission
           </motion.h2>
           <motion.p
-            className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed mb-12 sm:mb-20"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.3 }}
           >
             Leading sustainable agriculture & renewable energy with{" "}
-            <span className="font-semibold text-green-800">organic fertilizers</span>{" "}
+            <span className="font-semibold text-green-800">
+              organic fertilizers
+            </span>{" "}
             and{" "}
-            <span className="font-semibold text-green-800">high-quality ethanol biofuels</span>. 
-            Healthier soils. Empowered farmers. A cleaner planet.
+            <span className="font-semibold text-yellow-600">
+              high-quality ethanol biofuels
+            </span>
+            . Healthier soils. Empowered farmers. A cleaner planet.
           </motion.p>
 
           {/* Features Grid */}
-          <div className="grid md:grid-cols-4 gap-10 mt-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10">
             {features.map((f, i) => (
               <motion.div
                 key={i}
-                className="bg-white rounded-3xl shadow-2xl p-8 text-center hover:scale-105 transition-transform duration-500"
+                className="bg-gradient-to-br from-green-100 via-green-200 to-white rounded-3xl shadow-2xl p-6 sm:p-8 text-center hover:scale-105 hover:shadow-xl transition-transform duration-500"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.2, duration: 0.7 }}
               >
-                <div className="text-6xl mb-4">{f.emoji}</div>
-                <h3 className="text-2xl md:text-3xl font-bold text-green-900 mb-3">{f.title}</h3>
-                <p className="text-gray-600">{f.description}</p>
+                <div className="text-5xl sm:text-6xl mb-4">{f.emoji}</div>
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-green-900 mb-3">
+                  {f.title}
+                </h3>
+                <p className="text-gray-600 text-sm sm:text-base">
+                  {f.description}
+                </p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Product Highlights with Overlap */}
-      <section className="py-32 bg-white relative">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-          {/* Cow Dung Fertilizer */}
-          <motion.div
-            className="relative z-10"
-            initial={{ x: -100, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="overflow-hidden rounded-3xl shadow-2xl">
-              <img
-                src="/Image3.jpg"
-                alt="Cow dung fertilizer"
-                className="w-full object-cover transform hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <h3 className="text-4xl font-extrabold text-green-900 mt-6 mb-4">Cow Dung Fertilizers</h3>
-            <p className="text-gray-700 mb-6">
-              Hygienically processed from 10,000+ cattle farm. Export-ready, nutrient-rich organic compost trusted worldwide.
-            </p>
-            <a
-              href="/products/fertilizers"
-              className="inline-block bg-green-700 text-white px-8 py-3 rounded-full shadow-lg hover:bg-green-800 transition"
+      {/* =================== Product Highlights =================== */}
+      <section className="py-16 sm:py-24 md:py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-16 sm:space-y-24">
+          {[
+            {
+              img: "/Image3.jpg",
+              title: "Cow Dung Fertilizers",
+              desc: "Hygienically processed from 10,000+ cattle farm. Export-ready, nutrient-rich organic compost trusted worldwide.",
+              link: "/products#fertilizers",
+              left: true,
+            },
+            {
+              img: "/Image2.jpg",
+              title: "Ethanol Solutions",
+              desc: "65 KLPD modern plant producing ethanol, ENA, EQRS, and pharma-grade ethanol with ZLD and GMP standards.",
+              link: "/products#ethanol",
+              left: false,
+            },
+          ].map((p, i) => (
+            <motion.div
+              key={i}
+              className={`grid grid-cols-1 md:grid-cols-2 items-center gap-8 sm:gap-12 ${
+                p.left ? "" : "md:flex-row-reverse"
+              }`}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
             >
-              Explore Fertilizers
-            </a>
-          </motion.div>
-
-          {/* Ethanol */}
-          <motion.div
-            className="relative z-10"
-            initial={{ x: 100, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="overflow-hidden rounded-3xl shadow-2xl">
-              <img
-                src="/Image2.jpg"
-                alt="Ethanol Solutions"
-                className="w-full object-cover transform hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <h3 className="text-4xl font-extrabold text-green-900 mt-6 mb-4">Ethanol Solutions</h3>
-            <p className="text-gray-700 mb-6">
-              65 KLPD modern plant producing ethanol, ENA, EQRS, and pharma-grade ethanol with ZLD and GMP standards.
-            </p>
-            <a
-              href="/products/ethanol"
-              className="inline-block bg-green-700 text-white px-8 py-3 rounded-full shadow-lg hover:bg-green-800 transition"
-            >
-              Explore Ethanol
-            </a>
-          </motion.div>
+              <div className="overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl">
+                <img
+                  src={p.img}
+                  alt={p.title}
+                  className="w-full h-56 sm:h-72 md:h-[400px] object-cover transform hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="space-y-4 sm:space-y-6 text-center md:text-left">
+                <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-green-900">
+                  {p.title}
+                </h3>
+                <p className="text-gray-700 text-base sm:text-lg">{p.desc}</p>
+                <a
+                  href={p.link}
+                  className="inline-block bg-green-700 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full shadow-lg hover:bg-green-800 transition"
+                >
+                  Explore
+                </a>
+              </div>
+            </motion.div>
+          ))}
         </div>
-
-        {/* Decorative curved background */}
-        <div className="absolute -bottom-32 left-0 w-full h-64 bg-green-100 rounded-t-[50%] -z-10 opacity-30"></div>
       </section>
 
-      {/* Testimonials */}
+      {/* =================== Statistics =================== */}
+      <section className="py-12 sm:py-20 bg-green-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+          {stats.map((s, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: i * 0.2 }}
+            >
+              <h3 className="text-3xl sm:text-5xl font-extrabold text-green-900">
+                {s.value}
+              </h3>
+              <p className="text-gray-700 mt-2 text-base sm:text-lg">
+                {s.label}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* =================== Testimonials =================== */}
       <Testimonials />
 
-      {/* CTA Section */}
-      <section className="py-28 bg-gradient-to-r from-green-900 via-green-700 to-green-600 text-center text-white relative overflow-hidden">
+      {/* =================== Partners =================== */}
+      <section className="py-16 sm:py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-green-900 mb-8 sm:mb-10">
+            Our Trusted Partners
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 items-center">
+            {["/partner1.png", "/partner2.png", "/partner3.png", "/partner4.png"].map(
+              (p, i) => (
+                <motion.img
+                  key={i}
+                  src={p}
+                  alt={`Partner ${i}`}
+                  className="mx-auto max-h-12 sm:max-h-20 object-contain opacity-70 hover:opacity-100 transition"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: i * 0.2 }}
+                />
+              )
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* =================== Blog Highlights =================== */}
+      <section className="py-20 sm:py-28 bg-green-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-green-900 mb-8 sm:mb-12">
+            Latest Insights
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+            {[1, 2, 3].map((i) => (
+              <motion.div
+                key={i}
+                className="bg-white rounded-2xl sm:rounded-3xl shadow-xl overflow-hidden hover:scale-105 transition"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: i * 0.2 }}
+              >
+                <img
+                  src={`/blog${i}.jpg`}
+                  alt={`Blog ${i}`}
+                  className="w-full h-40 sm:h-48 object-cover"
+                />
+                <div className="p-4 sm:p-6 text-left">
+                  <h3 className="text-xl sm:text-2xl font-bold text-green-900 mb-2 sm:mb-3">
+                    Blog Post Title {i}
+                  </h3>
+                  <p className="text-gray-700 text-sm sm:text-base mb-3 sm:mb-4">
+                    Short snippet about the blog content goes here...
+                  </p>
+                  <a
+                    href="/blog"
+                    className="text-green-700 font-semibold hover:underline text-sm sm:text-base"
+                  >
+                    Read More →
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* =================== CTA =================== */}
+      <section className="py-20 sm:py-28 bg-gradient-to-r from-green-900 via-green-700 to-green-600 text-center text-white relative overflow-hidden">
         <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
+          initial={{ scale: 0.9, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-5xl font-extrabold mb-6">Ready to Partner with Us?</h2>
-          <p className="mb-10 max-w-2xl mx-auto text-lg md:text-xl">
-            From farms to fuel, Chetas Agrotech is shaping a greener future. Join our journey toward sustainable agriculture and renewable energy.
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold mb-4 sm:mb-6">
+            Ready to Partner with Us?
+          </h2>
+          <p className="mb-6 sm:mb-10 max-w-xl sm:max-w-2xl mx-auto text-base sm:text-lg md:text-xl">
+            From farms to fuel, Chetas Agrotech is shaping a greener future. Join
+            our journey toward sustainable agriculture and renewable energy.
           </p>
           <a
             href="/contact"
-            className="bg-yellow-400 text-green-900 font-bold px-12 py-4 rounded-full shadow-2xl hover:bg-yellow-500 transition"
+            className="bg-yellow-400 text-green-900 font-bold px-8 sm:px-12 py-3 sm:py-4 rounded-full shadow-2xl hover:bg-yellow-500 transition text-sm sm:text-base"
           >
             Get in Touch
           </a>
         </motion.div>
-
-        {/* Subtle background shapes */}
-        <div className="absolute top-0 left-0 w-40 h-40 bg-yellow-200 rounded-full mix-blend-multiply opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-0 right-0 w-64 h-64 bg-green-400 rounded-full mix-blend-multiply opacity-15 animate-pulse"></div>
       </section>
+
+      {/* =================== Footer =================== */}
+      <footer className="bg-green-900 text-white py-12">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center sm:text-left">
+          <div>
+            <h3 className="font-bold mb-3 sm:mb-4 text-lg">Chetas Agrotech</h3>
+            <p className="text-sm sm:text-base">
+              Empowering sustainable agriculture and renewable energy across the
+              globe.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-bold mb-3 sm:mb-4 text-lg">Quick Links</h3>
+            <ul className="space-y-2 text-sm sm:text-base">
+              <li>
+                <a href="/products" className="hover:underline">
+                  Products
+                </a>
+              </li>
+              <li>
+                <a href="/blog" className="hover:underline">
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a href="/contact" className="hover:underline">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-bold mb-3 sm:mb-4 text-lg">Connect</h3>
+            <p className="text-sm sm:text-base">Email: info@chetasagro.com</p>
+            <p className="text-sm sm:text-base">Phone: +91-XXXXXXXXXX</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
