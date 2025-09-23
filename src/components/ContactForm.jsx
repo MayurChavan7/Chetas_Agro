@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Mail, User, MessageSquare } from "lucide-react";
+import emailjs from "emailjs-com"; // ✅ Added EmailJS
 
 // Motion variants
 const formVariants = {
@@ -17,19 +18,28 @@ const inputVariants = {
 };
 
 const ContactForm = () => {
-  // Function to handle form submission via mailto
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const form = e.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const message = form.message.value;
 
-    // Construct mailto link
-    const subject = encodeURIComponent(`Contact Form Submission from ${name}`);
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-
-    window.location.href = `mailto:info@chetascontrol.com?subject=${subject}&body=${body}`;
+    emailjs
+      .sendForm(
+        "YOUR_SERVICE_ID",  // Replace with your EmailJS Service ID
+        "YOUR_TEMPLATE_ID", // Replace with your EmailJS Template ID
+        form,
+        "YOUR_PUBLIC_KEY"   // Replace with your EmailJS Public Key
+      )
+      .then(
+        (result) => {
+          alert("Message sent successfully!");
+          form.reset();
+        },
+        (error) => {
+          console.error(error.text);
+          alert("Failed to send message. Please try again.");
+        }
+      );
   };
 
   return (
