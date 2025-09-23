@@ -115,14 +115,14 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-6 space-y-24">
           {[
             {
-              img: "/Image3.jpg",
+              img: "/CowFertilizer.jpg",
               title: "Cow Dung Fertilizers",
               desc: "Hygienically processed from 10,000+ cattle farm. Export-ready, nutrient-rich organic compost trusted worldwide.",
               link: "/products#fertilizers",
               left: true,
             },
             {
-              img: "/Image2.jpg",
+              img: "/EthonolFertilizer.jpg",
               title: "Ethanol Solutions",
               desc: "65 KLPD modern plant producing ethanol, ENA, EQRS, and pharma-grade ethanol with ZLD and GMP standards.",
               link: "/products#ethanol",

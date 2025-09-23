@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 
 const slogans = [
   "Transforming Waste into Wealth – Cow Dung to Fertilizer",
@@ -78,7 +77,7 @@ const About = () => {
       {/* Navbar */}
       <Navbar />
 
-      {/* Slogan Carousel (pushed below navbar) */}
+      {/* Slogan Carousel */}
       <div className="relative z-10 py-8 sm:py-12 max-w-7xl mx-auto px-4 sm:px-8 mt-20 sm:mt-24">
         <motion.div className="relative h-20 sm:h-24 overflow-hidden flex items-center justify-start rounded-2xl border bg-green-900/90 shadow-lg">
           <motion.div
@@ -202,9 +201,6 @@ const About = () => {
           </a>
         </div>
       </main>
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 };

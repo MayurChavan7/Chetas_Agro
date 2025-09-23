@@ -344,7 +344,7 @@ const Hero = () => {
 
       {/* Cow silhouettes (floating animation) */}
       <motion.img
-        src="/cow.png"
+        src="/Image4.png"
         alt="Cow silhouette"
         className="absolute bottom-20 left-12 w-28 md:w-40 opacity-90 z-30"
         animate={{ y: [0, -10, 0], x: [0, 10, -5] }}
