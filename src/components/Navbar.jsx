@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const MotionLink = motion(Link);
+const MotionLink = motion(Link); // ✅ Correct motion version of Link
 
 const menuItems = [
   { name: "Home", path: "/" },
@@ -37,7 +37,11 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-3">
         {/* Logo */}
         <Link to="/" className="flex items-center z-50">
-          <img src="/Logo.png" alt="Chetas Agro Logo" className="h-14 md:h-16 w-auto object-contain" />
+          <img
+            src="/Logo.png"
+            alt="Chetas Agro Logo"
+            className="h-14 md:h-16 w-auto object-contain"
+          />
         </Link>
 
         {/* Desktop Menu */}
@@ -60,14 +64,7 @@ const Navbar = () => {
           onClick={toggleMenu}
           aria-label="Toggle Menu"
         >
-          <motion.div
-            key={isOpen ? "open" : "closed"}
-            initial={{ rotate: 0 }}
-            animate={{ rotate: isOpen ? 90 : 0 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
-          </motion.div>
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
@@ -75,7 +72,7 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed top-0 left-0 w-full h-screen bg-white/95 backdrop-blur-md shadow-2xl flex flex-col items-center justify-center space-y-8 text-2xl text-gray-900 z-40 px-6 sm:px-12"
+            className="fixed inset-0 w-full h-screen bg-white/95 backdrop-blur-md shadow-2xl flex flex-col items-center justify-center space-y-8 text-2xl text-gray-900 z-40 px-6 sm:px-12"
             variants={menuVariants}
             initial="hidden"
             animate="visible"
@@ -94,15 +91,13 @@ const Navbar = () => {
             ))}
 
             {/* Close Button */}
-            <motion.button
+            <button
               onClick={toggleMenu}
               className="absolute top-6 right-6 p-2 rounded-full text-gray-800 hover:text-green-700 focus:outline-none z-50"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
               aria-label="Close Menu"
             >
               <X size={28} />
-            </motion.button>
+            </button>
           </motion.div>
         )}
       </AnimatePresence>

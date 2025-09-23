@@ -17,14 +17,30 @@ const inputVariants = {
 };
 
 const ContactForm = () => {
+  // Function to handle form submission via mailto
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const message = form.message.value;
+
+    // Construct mailto link
+    const subject = encodeURIComponent(`Contact Form Submission from ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+
+    window.location.href = `mailto:info@chetascontrol.com?subject=${subject}&body=${body}`;
+  };
+
   return (
     <motion.form
       className="max-w-2xl mx-auto bg-white shadow-2xl rounded-3xl p-10 space-y-6 border border-gray-200 relative overflow-hidden"
       initial="hidden"
       animate="visible"
       variants={formVariants}
+      onSubmit={handleSubmit}
     >
-      {/* Floating gradient background circles for style */}
+      {/* Floating gradient background circles */}
       <div className="absolute -top-16 -left-16 w-40 h-40 bg-green-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
       <div className="absolute -bottom-16 -right-16 w-60 h-60 bg-green-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
 
@@ -39,9 +55,10 @@ const ContactForm = () => {
 
       {/* Name */}
       <motion.div className="relative" variants={inputVariants}>
-        <User className="absolute left-3 top-5 text-green-600 transition-transform group-focus-within:scale-110" size={20} />
+        <User className="absolute left-3 top-5 text-green-600" size={20} />
         <input
           type="text"
+          name="name"
           required
           placeholder=" "
           className="peer w-full pl-10 pr-3 pt-5 pb-2 border-2 border-gray-300 rounded-xl focus:border-green-600 focus:ring-2 focus:ring-green-200 outline-none transition"
@@ -53,9 +70,10 @@ const ContactForm = () => {
 
       {/* Email */}
       <motion.div className="relative" variants={inputVariants}>
-        <Mail className="absolute left-3 top-5 text-green-600 transition-transform group-focus-within:scale-110" size={20} />
+        <Mail className="absolute left-3 top-5 text-green-600" size={20} />
         <input
           type="email"
+          name="email"
           required
           placeholder=" "
           className="peer w-full pl-10 pr-3 pt-5 pb-2 border-2 border-gray-300 rounded-xl focus:border-green-600 focus:ring-2 focus:ring-green-200 outline-none transition"
@@ -67,8 +85,9 @@ const ContactForm = () => {
 
       {/* Message */}
       <motion.div className="relative" variants={inputVariants}>
-        <MessageSquare className="absolute left-3 top-5 text-green-600 transition-transform group-focus-within:scale-110" size={20} />
+        <MessageSquare className="absolute left-3 top-5 text-green-600" size={20} />
         <textarea
+          name="message"
           rows="5"
           required
           placeholder=" "

@@ -158,7 +158,7 @@ const About = () => {
           </div>
         </section>
 
-        {/* Team Section */}
+        {/* Team Section
         <section className="py-12 sm:py-16 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-900 mb-12">Our Leadership Team</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
@@ -181,7 +181,7 @@ const About = () => {
               </motion.div>
             ))}
           </div>
-        </section>
+        </section> */}
 
         {/* CTA Section */}
         <div className="py-10 px-6 sm:px-10 text-center bg-gradient-to-r from-green-800 to-green-600 text-white rounded-3xl max-w-2xl mx-auto shadow-xl">

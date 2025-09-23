@@ -104,7 +104,7 @@ const Contact = () => {
               </h3>
               <p className="mb-2 sm:mb-3 text-sm sm:text-base font-medium text-green-100">📧 Email: info@chetasagro.com</p>
               <p className="mb-2 sm:mb-3 text-sm sm:text-base font-medium text-green-100">☎️ Phone: 020-25871111 / 25870370</p>
-              <p className="mb-2 sm:mb-3 text-sm sm:text-base font-medium text-green-100">💬 WhatsApp: +91 9876543210</p>
+              {/* <p className="mb-2 sm:mb-3 text-sm sm:text-base font-medium text-green-100">💬 WhatsApp: +91 9876543210</p> */}
               <p className="text-sm sm:text-base leading-relaxed text-green-200">
                 📍 Registered Office: Chetas House, Plot No. 1, Survey No. 8+9, Sutarwadi, Pashan, Pune – 411021, Maharashtra, India
               </p>

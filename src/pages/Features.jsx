@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 
 const featuresData = [
@@ -60,13 +60,29 @@ const generateCrops = (num) =>
   }));
 
 const Features = () => {
-  const crops = generateCrops(8);
+  // ✅ Memoized crops (less objects = faster render)
+  const crops = useMemo(
+    () => generateCrops(window.innerWidth < 768 ? 5 : 10),
+    []
+  );
 
   return (
-    <section className="relative pt-32 pb-32 sm:pt-36 sm:pb-36 px-4 sm:px-6 lg:px-12 bg-gradient-to-b from-green-50 via-white to-green-100 overflow-hidden">
+    <section className="relative pt-28 pb-28 sm:pt-32 sm:pb-32 px-4 sm:px-6 lg:px-12 bg-gradient-to-b from-green-50 via-white to-green-100 overflow-hidden">
       {/* Floating Background Icons */}
-      <motion.div animate={{ y: [0, 15, 0] }} transition={{ repeat: Infinity, duration: 4 }} className="absolute top-10 left-10 text-6xl opacity-10">🌿</motion.div>
-      <motion.div animate={{ y: [0, -15, 0] }} transition={{ repeat: Infinity, duration: 5 }} className="absolute bottom-20 right-16 text-7xl opacity-10">🍃</motion.div>
+      <motion.div 
+        animate={{ y: [0, 15, 0] }} 
+        transition={{ repeat: Infinity, duration: 4 }} 
+        className="absolute top-10 left-10 text-6xl opacity-10"
+      >
+        🌿
+      </motion.div>
+      <motion.div 
+        animate={{ y: [0, -15, 0] }} 
+        transition={{ repeat: Infinity, duration: 5 }} 
+        className="absolute bottom-20 right-16 text-7xl opacity-10"
+      >
+        🍃
+      </motion.div>
 
       {/* Animated Crops */}
       {crops.map((crop, index) => (
@@ -99,7 +115,13 @@ const Features = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
-        <motion.div className="text-center mb-16" initial={{ opacity: 0, y: -40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
+        <motion.div 
+          className="text-center mb-16" 
+          initial={{ opacity: 0, y: -40 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          viewport={{ once: true }} 
+          transition={{ duration: 0.7 }}
+        >
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-green-900 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-green-600 to-green-700">
             Why Choose Chetas Agrotech?
           </h2>
@@ -112,9 +134,15 @@ const Features = () => {
         {/* Features List */}
         <div className="space-y-24">
           {featuresData.map(({ title, description, image }, index) => {
-            const isEven = index % 3 === 0;
-            const layoutClass = isEven ? "md:flex-row" : index % 3 === 1 ? "md:flex-row-reverse" : "flex-col items-center";
-            const textAlign = isEven ? "md:text-left text-center" : index % 3 === 1 ? "md:text-right text-center" : "text-center";
+            const layoutClass = 
+              index % 3 === 0 ? "md:flex-row" : 
+              index % 3 === 1 ? "md:flex-row-reverse" : 
+              "flex-col items-center";
+
+            const textAlign = 
+              index % 3 === 0 ? "md:text-left text-center" : 
+              index % 3 === 1 ? "md:text-right text-center" : 
+              "text-center";
 
             return (
               <motion.div
@@ -122,19 +150,34 @@ const Features = () => {
                 className={`flex flex-col md:flex ${layoutClass} gap-10`}
                 initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: index * 0.05 }}
               >
                 {/* Image */}
-                <motion.div className="flex-1 w-full relative rounded-2xl overflow-hidden shadow-2xl" whileHover={{ scale: 1.04, rotate: isEven ? 1 : -1 }} transition={{ type: "spring", stiffness: 200 }}>
-                  <img src={image} alt={title} className="w-full h-72 md:h-96 object-cover rounded-2xl" loading="lazy" />
+                <motion.div 
+                  className="flex-1 w-full relative rounded-2xl overflow-hidden shadow-2xl" 
+                  whileHover={{ scale: 1.04, rotate: index % 2 === 0 ? 1 : -1 }} 
+                  transition={{ type: "spring", stiffness: 200 }}
+                >
+                  <img 
+                    src={image} 
+                    alt={title} 
+                    className="w-full h-72 md:h-96 object-cover rounded-2xl" 
+                    loading="lazy" 
+                    decoding="async" 
+                    fetchpriority="low"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"></div>
                 </motion.div>
 
                 {/* Text */}
                 <div className={`flex-1 ${textAlign}`}>
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-green-800">{title}</h3>
-                  <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">{description}</p>
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-green-800">
+                    {title}
+                  </h3>
+                  <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
+                    {description}
+                  </p>
                 </div>
               </motion.div>
             );
