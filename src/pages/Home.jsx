@@ -3,6 +3,16 @@ import { motion } from "framer-motion";
 import Hero from "../components/Hero.jsx";
 import Testimonials from "./Testimonials.jsx";
 
+// Motion variants
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i = 1) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.2, duration: 0.8, ease: "easeOut" },
+  }),
+};
+
 // Feature highlights
 const features = [
   {
@@ -45,21 +55,24 @@ const Home = () => {
       <Hero />
 
       {/* =================== Mission =================== */}
-      <section className="relative py-16 sm:py-24 md:py-32 bg-gradient-to-b from-green-50 to-white overflow-hidden">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+      <section className="relative py-20 sm:py-28 bg-gradient-to-b from-green-50 to-white overflow-hidden">
+        <div className="max-w-6xl mx-auto px-6 text-center">
           <motion.h2
-            className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-green-900 mb-6"
-            initial={{ opacity: 0, y: -50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
+            className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-green-900 mb-6"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
           >
             Our Mission
           </motion.h2>
           <motion.p
-            className="text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed mb-12 sm:mb-20"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.3 }}
+            className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed mb-14"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            custom={2}
+            viewport={{ once: true }}
           >
             Leading sustainable agriculture & renewable energy with{" "}
             <span className="font-semibold text-green-800">
@@ -73,31 +86,33 @@ const Home = () => {
           </motion.p>
 
           {/* Features Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10">
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             {features.map((f, i) => (
               <motion.div
                 key={i}
-                className="bg-gradient-to-br from-green-100 via-green-200 to-white rounded-3xl shadow-2xl p-6 sm:p-8 text-center hover:scale-105 hover:shadow-xl transition-transform duration-500"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.2, duration: 0.7 }}
+                className="bg-gradient-to-br from-green-100 via-green-200 to-white rounded-3xl shadow-xl p-8 text-center hover:scale-105 hover:shadow-2xl transition-transform duration-500"
+                variants={fadeUp}
+                custom={i + 3}
               >
-                <div className="text-5xl sm:text-6xl mb-4">{f.emoji}</div>
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-green-900 mb-3">
+                <div className="text-6xl mb-4">{f.emoji}</div>
+                <h3 className="text-2xl font-bold text-green-900 mb-3">
                   {f.title}
                 </h3>
-                <p className="text-gray-600 text-sm sm:text-base">
-                  {f.description}
-                </p>
+                <p className="text-gray-600 text-base">{f.description}</p>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* =================== Product Highlights =================== */}
-      <section className="py-16 sm:py-24 md:py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-16 sm:space-y-24">
+      <section className="py-20 sm:py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6 space-y-24">
           {[
             {
               img: "/Image3.jpg",
@@ -116,28 +131,34 @@ const Home = () => {
           ].map((p, i) => (
             <motion.div
               key={i}
-              className={`grid grid-cols-1 md:grid-cols-2 items-center gap-8 sm:gap-12 ${
+              className={`grid grid-cols-1 md:grid-cols-2 items-center gap-10 ${
                 p.left ? "" : "md:flex-row-reverse"
               }`}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={i}
             >
-              <div className="overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl">
+              <motion.div
+                className="overflow-hidden rounded-3xl shadow-2xl"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.4 }}
+              >
                 <img
                   src={p.img}
                   alt={p.title}
-                  className="w-full h-56 sm:h-72 md:h-[400px] object-cover transform hover:scale-105 transition-transform duration-500"
+                  className="w-full h-64 sm:h-80 md:h-[420px] object-cover"
                 />
-              </div>
-              <div className="space-y-4 sm:space-y-6 text-center md:text-left">
-                <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-green-900">
+              </motion.div>
+              <div className="space-y-6 text-center md:text-left">
+                <h3 className="text-3xl sm:text-4xl font-extrabold text-green-900">
                   {p.title}
                 </h3>
-                <p className="text-gray-700 text-base sm:text-lg">{p.desc}</p>
+                <p className="text-gray-700 text-lg">{p.desc}</p>
                 <a
                   href={p.link}
-                  className="inline-block bg-green-700 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full shadow-lg hover:bg-green-800 transition"
+                  className="inline-block bg-green-700 text-white px-8 py-3 rounded-full shadow-lg hover:bg-green-800 hover:shadow-xl transition"
                 >
                   Explore
                 </a>
@@ -148,21 +169,21 @@ const Home = () => {
       </section>
 
       {/* =================== Statistics =================== */}
-      <section className="py-12 sm:py-20 bg-green-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+      <section className="py-16 sm:py-24 bg-green-50">
+        <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-3 gap-10 text-center">
           {stats.map((s, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: i * 0.2 }}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={i}
             >
-              <h3 className="text-3xl sm:text-5xl font-extrabold text-green-900">
+              <h3 className="text-4xl sm:text-5xl font-extrabold text-green-900">
                 {s.value}
               </h3>
-              <p className="text-gray-700 mt-2 text-base sm:text-lg">
-                {s.label}
-              </p>
+              <p className="text-gray-700 mt-3 text-lg">{s.label}</p>
             </motion.div>
           ))}
         </div>
@@ -171,130 +192,29 @@ const Home = () => {
       {/* =================== Testimonials =================== */}
       <Testimonials />
 
-      {/* =================== Partners =================== */}
-      <section className="py-16 sm:py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-green-900 mb-8 sm:mb-10">
-            Our Trusted Partners
-          </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 items-center">
-            {["/partner1.png", "/partner2.png", "/partner3.png", "/partner4.png"].map(
-              (p, i) => (
-                <motion.img
-                  key={i}
-                  src={p}
-                  alt={`Partner ${i}`}
-                  className="mx-auto max-h-12 sm:max-h-20 object-contain opacity-70 hover:opacity-100 transition"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: i * 0.2 }}
-                />
-              )
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* =================== Blog Highlights =================== */}
-      <section className="py-20 sm:py-28 bg-green-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-green-900 mb-8 sm:mb-12">
-            Latest Insights
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-            {[1, 2, 3].map((i) => (
-              <motion.div
-                key={i}
-                className="bg-white rounded-2xl sm:rounded-3xl shadow-xl overflow-hidden hover:scale-105 transition"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: i * 0.2 }}
-              >
-                <img
-                  src={`/blog${i}.jpg`}
-                  alt={`Blog ${i}`}
-                  className="w-full h-40 sm:h-48 object-cover"
-                />
-                <div className="p-4 sm:p-6 text-left">
-                  <h3 className="text-xl sm:text-2xl font-bold text-green-900 mb-2 sm:mb-3">
-                    Blog Post Title {i}
-                  </h3>
-                  <p className="text-gray-700 text-sm sm:text-base mb-3 sm:mb-4">
-                    Short snippet about the blog content goes here...
-                  </p>
-                  <a
-                    href="/blog"
-                    className="text-green-700 font-semibold hover:underline text-sm sm:text-base"
-                  >
-                    Read More →
-                  </a>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* =================== CTA =================== */}
-      <section className="py-20 sm:py-28 bg-gradient-to-r from-green-900 via-green-700 to-green-600 text-center text-white relative overflow-hidden">
+      <section className="py-24 sm:py-32 bg-gradient-to-r from-green-900 via-green-700 to-green-600 text-center text-white relative overflow-hidden">
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
         >
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold mb-4 sm:mb-6">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6">
             Ready to Partner with Us?
           </h2>
-          <p className="mb-6 sm:mb-10 max-w-xl sm:max-w-2xl mx-auto text-base sm:text-lg md:text-xl">
-            From farms to fuel, Chetas Agrotech is shaping a greener future. Join
-            our journey toward sustainable agriculture and renewable energy.
+          <p className="mb-10 max-w-2xl mx-auto text-lg sm:text-xl">
+            From farms to fuel, Chetas Agrotech is shaping a greener future.
+            Join our journey toward sustainable agriculture and renewable energy.
           </p>
           <a
             href="/contact"
-            className="bg-yellow-400 text-green-900 font-bold px-8 sm:px-12 py-3 sm:py-4 rounded-full shadow-2xl hover:bg-yellow-500 transition text-sm sm:text-base"
+            className="bg-yellow-400 text-green-900 font-bold px-10 py-4 rounded-full shadow-xl hover:bg-yellow-500 transition"
           >
             Get in Touch
           </a>
         </motion.div>
       </section>
-
-      {/* =================== Footer =================== */}
-      <footer className="bg-green-900 text-white py-12">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center sm:text-left">
-          <div>
-            <h3 className="font-bold mb-3 sm:mb-4 text-lg">Chetas Agrotech</h3>
-            <p className="text-sm sm:text-base">
-              Empowering sustainable agriculture and renewable energy across the
-              globe.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-bold mb-3 sm:mb-4 text-lg">Quick Links</h3>
-            <ul className="space-y-2 text-sm sm:text-base">
-              <li>
-                <a href="/products" className="hover:underline">
-                  Products
-                </a>
-              </li>
-              <li>
-                <a href="/blog" className="hover:underline">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="/contact" className="hover:underline">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-bold mb-3 sm:mb-4 text-lg">Connect</h3>
-            <p className="text-sm sm:text-base">Email: info@chetasagro.com</p>
-            <p className="text-sm sm:text-base">Phone: +91-XXXXXXXXXX</p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };

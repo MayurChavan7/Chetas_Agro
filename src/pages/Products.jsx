@@ -155,7 +155,7 @@ const Products = () => {
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <img src="/Image3.jpg" alt="Cow dung fertilizer" className="w-full object-cover max-h-[320px] md:max-h-[520px] rounded-3xl" />
+          <img src="/CowFertilizer2.webp" alt="Cow dung fertilizer" className="w-full object-cover max-h-[320px] md:max-h-[520px] rounded-3xl" />
           <div className="absolute top-4 right-4 bg-green-700 text-white px-5 py-2 rounded-full shadow-lg text-sm md:text-base font-semibold">
             100% Organic ♻️
           </div>
@@ -190,7 +190,7 @@ const Products = () => {
               ))}
             </ul>
           </div>
-          <img src="/Image2.jpg" alt="Fertilizer application" className="w-full rounded-3xl shadow-2xl object-cover max-h-[480px]" />
+          <img src="/CowFertilizer3.jpg" alt="Fertilizer application" className="w-full rounded-3xl shadow-2xl object-cover max-h-[480px]" />
         </div>
       </div>
 
@@ -202,7 +202,7 @@ const Products = () => {
 
         {/* Image with Capacity */}
         <motion.div className="relative w-full max-w-5xl mx-auto mb-14 md:mb-20 rounded-3xl shadow-2xl overflow-hidden" initial={{ scale: 0.95, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} transition={{ duration: 0.8 }}>
-          <img src="/Image1st.jpg" alt="Ethanol Plant" className="w-full object-cover max-h-[320px] md:max-h-[520px] rounded-3xl" />
+          <img src="/EthonolFertilizer1.jpg" alt="Ethanol Plant" className="w-full object-cover max-h-[320px] md:max-h-[520px] rounded-3xl" />
           <div className="absolute top-4 right-4 bg-yellow-600 text-white px-5 py-2 rounded-full shadow-lg text-sm md:text-base font-semibold">
             65 KLPD Capacity ⚡
           </div>
@@ -230,7 +230,7 @@ const Products = () => {
               ))}
             </ul>
           </div>
-          <img src="/Image2.jpg" alt="Ethanol application" className="w-full rounded-3xl shadow-2xl object-cover max-h-[480px]" />
+          <img src="/EthonolFertilizer2.jpg" alt="Ethanol application" className="w-full rounded-3xl shadow-2xl object-cover max-h-[480px]" />
         </div>
       </div>
 
