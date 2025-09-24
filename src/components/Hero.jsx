@@ -61,7 +61,7 @@ const Hero = () => {
 
   return (
     <section
-      className="relative h-screen overflow-hidden flex flex-col items-center justify-center text-white"
+      className="relative h-screen overflow-hidden flex flex-col items-center justify-center"
       onMouseMove={handleMouseMove}
     >
       {/* Background Sky */}
@@ -164,7 +164,9 @@ const Hero = () => {
       {/* Slogans */}
       <motion.div className="absolute top-28 w-full flex justify-center z-40 px-4 overflow-hidden">
         <motion.div
-          className="flex space-x-10 text-xl md:text-2xl font-semibold text-amber-100"
+          className={`flex space-x-10 text-xl md:text-2xl font-semibold ${
+            isNight ? "text-yellow-200" : "text-green-900"
+          }`}
           animate={{ x: ["100%", "-100%"] }}
           transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
         >
@@ -193,7 +195,11 @@ const Hero = () => {
           {"Rooted in Nature, Fueling the Future".split(" ").map((word, i) => (
             <motion.span
               key={i}
-              className="inline-block bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-amber-300 to-green-400"
+              className={`inline-block bg-clip-text text-transparent bg-gradient-to-r ${
+                isNight
+                  ? "from-yellow-300 via-yellow-200 to-amber-400"
+                  : "from-green-900 via-amber-700 to-green-700"
+              }`}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: i * 0.15 }}
@@ -204,7 +210,7 @@ const Hero = () => {
         </motion.h1>
 
         <motion.p
-          className="max-w-2xl mx-auto text-lg md:text-2xl font-light mb-12 drop-shadow-lg text-amber-50"
+          className={`${isNight ? "text-yellow-100" : "text-green-800"} max-w-2xl mx-auto text-lg md:text-2xl font-light mb-12 drop-shadow-lg`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 1 }}
@@ -222,7 +228,9 @@ const Hero = () => {
           </motion.a>
           <motion.a
             href="/products"
-            className="border border-amber-400 rounded-full px-10 py-4 font-semibold hover:bg-amber-400 hover:text-gray-900 transition"
+            className={`border rounded-full px-10 py-4 font-semibold hover:text-gray-900 transition ${
+              isNight ? "border-yellow-300 hover:bg-yellow-300 text-yellow-200" : "border-amber-700 hover:bg-amber-400 text-green-900"
+            }`}
             whileHover={{ scale: 1.12 }}
           >
             Explore Products

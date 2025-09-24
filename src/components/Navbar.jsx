@@ -70,8 +70,12 @@ const Navbar = () => {
 
         {/* Mobile Hamburger */}
         <button
+          type="button"
           className="md:hidden flex items-center justify-center w-12 h-12 rounded-full bg-green-100 hover:bg-green-200 text-gray-800 z-[1100]"
-          onClick={toggleMenu}
+          onClick={(e) => {
+            e.stopPropagation(); // stop click event from bubbling to overlay
+            toggleMenu();
+          }}
           aria-label="Toggle Menu"
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -87,11 +91,11 @@ const Navbar = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            onClick={() => setIsOpen(false)} // close if clicking outside
+            onClick={() => setIsOpen(false)} // close if clicking outside menu content
           >
             <div
               className="flex flex-col items-center space-y-8 text-2xl text-gray-900 relative"
-              onClick={(e) => e.stopPropagation()} // prevent closing on inner clicks
+              onClick={(e) => e.stopPropagation()} // prevent inner clicks from closing
             >
               {menuItems.map(({ name, path }) => (
                 <MotionLink
@@ -99,7 +103,7 @@ const Navbar = () => {
                   to={path}
                   variants={menuItemVariants}
                   className="hover:text-green-700 font-semibold transition-transform transform hover:scale-105 text-center"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => setIsOpen(false)} // close menu when clicking a link
                 >
                   {name}
                 </MotionLink>
@@ -107,6 +111,7 @@ const Navbar = () => {
 
               {/* Close button inside menu */}
               <button
+                type="button"
                 onClick={toggleMenu}
                 className="absolute top-6 right-6 p-2 rounded-full text-gray-800 hover:text-green-700 focus:outline-none"
                 aria-label="Close Menu"
