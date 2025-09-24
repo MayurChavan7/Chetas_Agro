@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const MotionLink = motion(Link); // ✅ Correct motion version of Link
+// Use motion.create for React Router Link (fixes warning)
+const MotionLink = motion.create(Link);
 
 const menuItems = [
   { name: "Home", path: "/" },
@@ -22,9 +23,18 @@ const Navbar = () => {
     visible: {
       x: 0,
       opacity: 1,
-      transition: { type: "spring", stiffness: 120, damping: 20, staggerChildren: 0.1 },
+      transition: {
+        type: "spring",
+        stiffness: 120,
+        damping: 20,
+        staggerChildren: 0.1,
+      },
     },
-    exit: { x: "-100%", opacity: 0, transition: { type: "spring", stiffness: 120, damping: 20 } },
+    exit: {
+      x: "-100%",
+      opacity: 0,
+      transition: { type: "spring", stiffness: 120, damping: 20 },
+    },
   };
 
   const menuItemVariants = {
@@ -33,10 +43,10 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-md">
+    <nav className="fixed w-full z-[100] bg-white/90 backdrop-blur-md shadow-md">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-3">
         {/* Logo */}
-        <Link to="/" className="flex items-center z-50">
+        <Link to="/" className="flex items-center z-[1000]">
           <img
             src="/Logo.png"
             alt="Chetas Agro Logo"
@@ -60,7 +70,7 @@ const Navbar = () => {
 
         {/* Mobile Hamburger */}
         <button
-          className="md:hidden flex items-center justify-center w-12 h-12 rounded-full bg-green-100 hover:bg-green-200 text-gray-800 z-50"
+          className="md:hidden flex items-center justify-center w-12 h-12 rounded-full bg-green-100 hover:bg-green-200 text-gray-800 z-[1100]"
           onClick={toggleMenu}
           aria-label="Toggle Menu"
         >
@@ -72,32 +82,38 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed inset-0 w-full h-screen bg-white/95 backdrop-blur-md shadow-2xl flex flex-col items-center justify-center space-y-8 text-2xl text-gray-900 z-40 px-6 sm:px-12"
+            className="fixed inset-0 w-full h-screen bg-white/95 backdrop-blur-md flex items-center justify-center z-[1000]"
             variants={menuVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
+            onClick={() => setIsOpen(false)} // close if clicking outside
           >
-            {menuItems.map(({ name, path }) => (
-              <MotionLink
-                key={name}
-                to={path}
-                variants={menuItemVariants}
-                className="hover:text-green-700 font-semibold transition-transform transform hover:scale-105 text-center"
-                onClick={() => setIsOpen(false)}
-              >
-                {name}
-              </MotionLink>
-            ))}
-
-            {/* Close Button */}
-            <button
-              onClick={toggleMenu}
-              className="absolute top-6 right-6 p-2 rounded-full text-gray-800 hover:text-green-700 focus:outline-none z-50"
-              aria-label="Close Menu"
+            <div
+              className="flex flex-col items-center space-y-8 text-2xl text-gray-900 relative"
+              onClick={(e) => e.stopPropagation()} // prevent closing on inner clicks
             >
-              <X size={28} />
-            </button>
+              {menuItems.map(({ name, path }) => (
+                <MotionLink
+                  key={name}
+                  to={path}
+                  variants={menuItemVariants}
+                  className="hover:text-green-700 font-semibold transition-transform transform hover:scale-105 text-center"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {name}
+                </MotionLink>
+              ))}
+
+              {/* Close button inside menu */}
+              <button
+                onClick={toggleMenu}
+                className="absolute top-6 right-6 p-2 rounded-full text-gray-800 hover:text-green-700 focus:outline-none"
+                aria-label="Close Menu"
+              >
+                <X size={32} />
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
