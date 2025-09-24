@@ -20,7 +20,6 @@ const Footer = React.memo(() => {
       { to: "/about", label: "About Us" },
       { to: "/products", label: "Products" },
       { to: "/features", label: "Features" },
-      { to: "/why-choose-us", label: "Why Us" },
       { to: "/contact", label: "Contact" },
     ],
     []
@@ -50,7 +49,7 @@ const Footer = React.memo(() => {
 
       {/* Footer Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-4 gap-12 text-left">
-        {/* About Section */}
+        {/* About / Commitment Section */}
         <motion.div
           custom={0}
           variants={sectionVariants}
@@ -63,8 +62,14 @@ const Footer = React.memo(() => {
           </h5>
           <p className="text-gray-300 leading-relaxed text-lg">
             At <span className="font-semibold text-green-300">Chetas Agro</span>, we are
-            committed to building a sustainable future. Transforming organic waste
-            into eco-friendly fertilizers for healthier soils and better yields.
+            committed to a sustainable future.  
+            We transform{" "}
+            <span className="font-semibold text-green-300">organic cow dung</span> into
+            nutrient-rich fertilizers that restore soil health,  
+            and produce{" "}
+            <span className="font-semibold text-yellow-300">renewable ethanol</span> for
+            clean energy and pharmaceutical applications.  
+            Together, we empower farmers, protect the environment, and fuel a greener tomorrow.
           </p>
         </motion.div>
 

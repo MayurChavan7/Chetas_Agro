@@ -45,12 +45,12 @@ const Navbar = () => {
   return (
     <nav className="fixed w-full z-[100] bg-white/90 backdrop-blur-md shadow-md">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-3">
-        {/* Logo */}
+        {/* Logo - Left aligned & larger */}
         <Link to="/" className="flex items-center z-[1000]">
           <img
             src="/Logo.png"
             alt="Chetas Agro Logo"
-            className="h-14 md:h-16 w-auto object-contain"
+            className="h-16 md:h-20 w-auto object-contain"
           />
         </Link>
 
@@ -73,7 +73,7 @@ const Navbar = () => {
           type="button"
           className="md:hidden flex items-center justify-center w-12 h-12 rounded-full bg-green-100 hover:bg-green-200 text-gray-800 z-[1100]"
           onClick={(e) => {
-            e.stopPropagation(); // stop click event from bubbling to overlay
+            e.stopPropagation();
             toggleMenu();
           }}
           aria-label="Toggle Menu"
@@ -91,11 +91,11 @@ const Navbar = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            onClick={() => setIsOpen(false)} // close if clicking outside menu content
+            onClick={() => setIsOpen(false)}
           >
             <div
               className="flex flex-col items-center space-y-8 text-2xl text-gray-900 relative"
-              onClick={(e) => e.stopPropagation()} // prevent inner clicks from closing
+              onClick={(e) => e.stopPropagation()}
             >
               {menuItems.map(({ name, path }) => (
                 <MotionLink
@@ -103,7 +103,7 @@ const Navbar = () => {
                   to={path}
                   variants={menuItemVariants}
                   className="hover:text-green-700 font-semibold transition-transform transform hover:scale-105 text-center"
-                  onClick={() => setIsOpen(false)} // close menu when clicking a link
+                  onClick={() => setIsOpen(false)}
                 >
                   {name}
                 </MotionLink>

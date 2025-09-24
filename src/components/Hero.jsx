@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { Leaf, Flame, Droplets } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const slogans = [
   "🌾 From Crops to Clean Ethanol – A Greener Tomorrow",
@@ -12,6 +13,7 @@ const slogans = [
 
 const Hero = () => {
   const [isNight, setIsNight] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const hour = new Date().getHours();
@@ -21,8 +23,6 @@ const Hero = () => {
   // Mouse parallax
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-
-  // Use a spring to smooth motion updates
   const smoothX = useSpring(mouseX, { damping: 20, stiffness: 90 });
   const smoothY = useSpring(mouseY, { damping: 20, stiffness: 90 });
 
@@ -86,7 +86,7 @@ const Hero = () => {
               left: s.left,
               willChange: "opacity, transform",
             }}
-            animate={{ opacity: [0.2, 1, 0.2] }}
+            animate={{ opacity: [0, 1, 0] }}
             transition={{ duration: s.duration, repeat: Infinity }}
           />
         ))}
@@ -102,8 +102,8 @@ const Hero = () => {
           height: "16vw",
           maxHeight: 140,
           background: isNight
-            ? "radial-gradient(circle, rgba(200,200,255,0.9), rgba(120,120,200,0.6))"
-            : "radial-gradient(circle, rgba(255,223,77,0.9), rgba(255,180,50,0.7))",
+            ? "radial-gradient(circle, rgba(200,200,255,0.95), rgba(120,120,200,0.7))"
+            : "radial-gradient(circle, rgba(255,223,77,0.95), rgba(255,180,50,0.8))",
           filter: "blur(6px)",
           x: sunX,
           y: sunY,
@@ -119,20 +119,20 @@ const Hero = () => {
             key={i}
             className="relative flex flex-col items-center"
             animate={{
-              rotate: [0, 1.5, -1.5, 0],
-              y: [0, -4, 0],
+              rotate: [0, 2, -2, 0],
+              y: [0, -6, 0],
             }}
             transition={{
               duration: 4,
-              delay: i * 0.2,
+              delay: i * 0.15,
               repeat: Infinity,
               ease: "easeInOut",
             }}
             style={{ transformOrigin: "bottom center", willChange: "transform" }}
           >
-            <div className="w-[2px] bg-green-600 h-28 md:h-48 rounded-full"></div>
-            <div className="absolute left-2 top-1/3 w-6 h-2 bg-green-500 rounded-full"></div>
-            <div className="absolute right-2 top-1/2 w-6 h-2 bg-green-500 rounded-full"></div>
+            <div className="w-[2px] bg-green-700 h-28 md:h-48 rounded-full shadow" />
+            <div className="absolute left-2 top-1/3 w-6 h-2 bg-green-500 rounded-full" />
+            <div className="absolute right-2 top-1/2 w-6 h-2 bg-green-500 rounded-full" />
           </motion.div>
         ))}
       </div>
@@ -141,8 +141,8 @@ const Hero = () => {
       <motion.img
         src="/Image4.png"
         alt="Cow silhouette"
-        className="absolute bottom-20 left-12 w-28 md:w-40 opacity-90 z-30 will-change-transform"
-        animate={{ y: [0, -10, 0], x: [0, 10, -5] }}
+        className="absolute bottom-20 left-12 w-28 md:w-40 opacity-95 z-30 will-change-transform"
+        animate={{ y: [0, -12, 0], x: [0, 12, -6] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
 
@@ -151,12 +151,12 @@ const Hero = () => {
         {[Leaf, Flame, Droplets].map((Icon, i) => (
           <motion.div
             key={i}
-            className="p-3 bg-white/20 backdrop-blur-md rounded-full shadow-lg will-change-transform"
-            whileHover={{ scale: 1.2 }}
-            animate={{ y: [0, -12, 0] }}
+            className="p-3 bg-white/30 backdrop-blur-md rounded-full shadow-lg"
+            whileHover={{ scale: 1.25 }}
+            animate={{ y: [0, -14, 0] }}
             transition={{ duration: 3 + i, repeat: Infinity }}
           >
-            <Icon className="text-amber-300 w-6 h-6" />
+            <Icon className="text-amber-500 w-6 h-6" />
           </motion.div>
         ))}
       </div>
@@ -164,11 +164,11 @@ const Hero = () => {
       {/* Slogans */}
       <motion.div className="absolute top-28 w-full flex justify-center z-40 px-4 overflow-hidden">
         <motion.div
-          className={`flex space-x-10 text-xl md:text-2xl font-semibold ${
-            isNight ? "text-yellow-200" : "text-green-900"
+          className={`flex space-x-12 text-xl md:text-2xl font-semibold drop-shadow-lg ${
+            isNight ? "text-yellow-100" : "text-green-900"
           }`}
           animate={{ x: ["100%", "-100%"] }}
-          transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
         >
           {slogans.map((s, i) => (
             <span key={i} className="whitespace-nowrap">
@@ -182,27 +182,41 @@ const Hero = () => {
       {particles.map((p, i) => (
         <motion.div
           key={i}
-          className={`absolute rounded-full ${isNight ? "bg-yellow-200" : "bg-green-300"}`}
-          style={{ width: p.size, height: p.size, top: p.top, left: p.left, zIndex: 25, willChange: "transform, opacity" }}
-          animate={{ opacity: [0, 1, 0], y: [0, -15, 0], x: [0, 10, -10] }}
+          className={`absolute rounded-full ${isNight ? "bg-yellow-200" : "bg-green-400"}`}
+          style={{
+            width: p.size,
+            height: p.size,
+            top: p.top,
+            left: p.left,
+            zIndex: 25,
+            willChange: "transform, opacity",
+          }}
+          animate={{ opacity: [0, 0.8, 0], y: [0, -18, 0], x: [0, 8, -8] }}
           transition={{ duration: p.duration, repeat: Infinity }}
         />
       ))}
 
       {/* Headline + CTA */}
       <div className="relative z-40 text-center px-4 max-w-6xl">
-        <motion.h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold leading-tight mb-8">
+        {/* Animated Yellow-Green Headline */}
+        <motion.h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-8 relative">
           {"Rooted in Nature, Fueling the Future".split(" ").map((word, i) => (
             <motion.span
               key={i}
-              className={`inline-block bg-clip-text text-transparent bg-gradient-to-r ${
-                isNight
-                  ? "from-yellow-300 via-yellow-200 to-amber-400"
-                  : "from-green-900 via-amber-700 to-green-700"
-              }`}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: i * 0.15 }}
+              className="inline-block bg-clip-text text-transparent"
+              style={{
+                backgroundImage: "linear-gradient(90deg, #facc15, #22c55e, #facc15, #22c55e)",
+                backgroundSize: "200% 200%",
+              }}
+              animate={{
+                backgroundPosition: ["0% 0%", "100% 0%", "0% 0%"],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "linear",
+                delay: i * 0.1,
+              }}
             >
               {word}&nbsp;
             </motion.span>
@@ -210,31 +224,36 @@ const Hero = () => {
         </motion.h1>
 
         <motion.p
-          className={`${isNight ? "text-yellow-100" : "text-green-800"} max-w-2xl mx-auto text-lg md:text-2xl font-light mb-12 drop-shadow-lg`}
+          className={`max-w-2xl mx-auto text-lg md:text-2xl font-light mb-12 drop-shadow-md ${
+            isNight ? "text-yellow-100" : "text-green-900"
+          }`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 1 }}
+          transition={{ delay: 1.0, duration: 1 }}
         >
           Turning waste into wealth – organic fertilizers, renewable ethanol, and sustainable energy that empowers farmers & industries.
         </motion.p>
 
         <div className="flex flex-col sm:flex-row justify-center gap-6">
-          <motion.a
-            href="/contact"
+          <motion.button
+            onClick={() => navigate("/contact")}
             className="bg-amber-400 text-gray-900 font-semibold rounded-full px-10 py-4 shadow-lg hover:shadow-amber-300/50 transition"
             whileHover={{ scale: 1.12 }}
           >
             Get in Touch
-          </motion.a>
-          <motion.a
-            href="/products"
+          </motion.button>
+
+          <motion.button
+            onClick={() => navigate("/products")}
             className={`border rounded-full px-10 py-4 font-semibold hover:text-gray-900 transition ${
-              isNight ? "border-yellow-300 hover:bg-yellow-300 text-yellow-200" : "border-amber-700 hover:bg-amber-400 text-green-900"
+              isNight
+                ? "border-yellow-300 hover:bg-yellow-300 text-yellow-200"
+                : "border-amber-700 hover:bg-amber-400 text-green-900"
             }`}
             whileHover={{ scale: 1.12 }}
           >
             Explore Products
-          </motion.a>
+          </motion.button>
         </div>
       </div>
     </section>

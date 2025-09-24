@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import Hero from "../components/Hero.jsx";
 import Testimonials from "./Testimonials.jsx";
 
@@ -13,6 +14,8 @@ const fadeUp = {
 };
 
 const Home = () => {
+  const navigate = useNavigate();
+
   const features = useMemo(
     () => [
       {
@@ -70,6 +73,10 @@ const Home = () => {
     ],
     []
   );
+
+  const handleExplore = (link) => {
+    navigate(link); // SPA-friendly navigation
+  };
 
   return (
     <div className="overflow-x-hidden font-sans text-gray-800">
@@ -136,11 +143,10 @@ const Home = () => {
               className={`grid grid-cols-1 md:grid-cols-2 items-center gap-10 ${
                 p.left ? "" : "md:flex-row-reverse"
               }`}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
+              initial={{ opacity: 0, x: p.left ? -100 : 100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true }}
-              custom={i}
             >
               <div className="overflow-hidden rounded-3xl shadow-2xl will-change-transform transition-transform duration-400 hover:scale-105">
                 <img
@@ -153,12 +159,12 @@ const Home = () => {
               <div className="space-y-6 text-center md:text-left">
                 <h3 className="text-3xl sm:text-4xl font-extrabold text-green-900">{p.title}</h3>
                 <p className="text-gray-700 text-lg">{p.desc}</p>
-                <a
-                  href={p.link}
+                <button
+                  onClick={() => handleExplore(p.link)}
                   className="inline-block bg-green-700 text-white px-8 py-3 rounded-full shadow-lg hover:bg-green-800 hover:shadow-xl transition will-change-transform"
                 >
                   Explore
-                </a>
+                </button>
               </div>
             </motion.div>
           ))}
@@ -203,12 +209,12 @@ const Home = () => {
           <p className="mb-10 max-w-2xl mx-auto text-lg sm:text-xl">
             From farms to fuel, Chetas Agrotech is shaping a greener future. Join our journey toward sustainable agriculture and renewable energy.
           </p>
-          <a
-            href="/contact"
+          <button
+            onClick={() => navigate("/contact")}
             className="bg-yellow-400 text-green-900 font-bold px-10 py-4 rounded-full shadow-xl hover:bg-yellow-500 transition will-change-transform"
           >
             Get in Touch
-          </a>
+          </button>
         </motion.div>
       </section>
     </div>
