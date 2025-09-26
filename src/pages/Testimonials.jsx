@@ -7,21 +7,21 @@ const reviews = [
     country: "India",
     review:
       "The organic fertilizer quality is excellent! My farm’s soil health has improved drastically.",
-    photo: "/Ramesh.jpeg",
+    photo: "/Images/Ramesh.jpeg",
     rating: 5,
   },
   {
     name: "Amina Yusuf",
     country: "Kenya",
     review: "Eco-friendly and effective. We now get better yields without chemicals.",
-    photo: "/Amina.jpeg",
+    photo: "/Images/Amina.jpeg",
     rating: 4,
   },
   {
     name: "John Smith",
     country: "UK",
     review: "Reliable export partner. Great packaging and timely delivery every time.",
-    photo: "/John.jpeg",
+    photo: "/Images/John.jpeg",
     rating: 5,
   },
   {
@@ -29,7 +29,7 @@ const reviews = [
     country: "Singapore",
     review:
       "The ethanol supply is pharma-grade and consistent. Perfect for our industrial needs.",
-    photo: "/Sophia.jpeg",
+    photo: "/Images/Sophia.jpeg",
     rating: 5,
   },
 ];

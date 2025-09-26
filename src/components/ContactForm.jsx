@@ -1,8 +1,6 @@
 import { motion } from "framer-motion";
 import { Mail, User, MessageSquare } from "lucide-react";
-import emailjs from "emailjs-com"; // ✅ Added EmailJS
 
-// Motion variants
 const formVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: {
@@ -22,24 +20,17 @@ const ContactForm = () => {
     e.preventDefault();
 
     const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const message = form.message.value;
 
-    emailjs
-      .sendForm(
-        "YOUR_SERVICE_ID",  // Replace with your EmailJS Service ID
-        "YOUR_TEMPLATE_ID", // Replace with your EmailJS Template ID
-        form,
-        "YOUR_PUBLIC_KEY"   // Replace with your EmailJS Public Key
-      )
-      .then(
-        (result) => {
-          alert("Message sent successfully!");
-          form.reset();
-        },
-        (error) => {
-          console.error(error.text);
-          alert("Failed to send message. Please try again.");
-        }
-      );
+    // Build mailto link
+    const mailtoLink = `mailto:YOUR_EMAIL@example.com?subject=New message from ${encodeURIComponent(
+      name
+    )}&body=${encodeURIComponent(message)}%0D%0A%0D%0AFrom: ${encodeURIComponent(email)}`;
+
+    // Open default mail app
+    window.location.href = mailtoLink;
   };
 
   return (

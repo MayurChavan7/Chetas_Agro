@@ -5,47 +5,47 @@ const featuresData = [
   { 
     title: "🐄 Cow Care & Sustainability", 
     description: "Managing 10,000+ healthy cattle with automated feeding, hygiene, and health monitoring — ensuring well-being and high-quality raw material for organic fertilizers.", 
-    image: "/CowSuntain1.jpeg" 
+    image: "/Images/CowSuntain1.jpeg" 
   },
   { 
     title: "🌱 Organic Fertilizers", 
     description: "Premium dewatered cow dung processed into nutrient-rich, hygienic fertilizers that improve soil fertility, boost microbial life, and maximize crop yields.", 
-    image: "/OrganicFertilizer.jpg" 
+    image: "/Images/OrganicFertilizer.jpg" 
   },
   { 
     title: "⚡ Renewable Ethanol", 
     description: "Our 65 KLPD grain-based ethanol plant with Zero Liquid Discharge (ZLD) produces pharma-grade, ENA, and biofuel ethanol, supporting clean energy and reduced emissions.", 
-    image: "/Renewable1.jpeg" 
+    image: "/Images/Renewable1.jpeg" 
   },
   { 
     title: "⚙️ Advanced Technology", 
     description: "State-of-the-art technology including RFID livestock tracking, remote health monitoring, modern distillation, and composting lines ensures precision, hygiene, and world-class output.", 
-    image: "/Technology1.jpeg" 
+    image: "/Images/Technology1.jpeg" 
   },
   { 
     title: "🏭 World-Class Facilities", 
     description: "GMP-compliant ethanol plants, effluent treatment units, and advanced composting facilities designed for scalability, safety, and global operational standards.", 
-    image: "/World1.jpeg" 
+    image: "/Images/World1.jpeg" 
   },
   { 
     title: "✅ Quality & Certifications", 
     description: "Every batch of fertilizer and ethanol is lab-tested and certified to meet international organic and pharmaceutical standards, ensuring safety and reliability.", 
-    image: "/Certificate1.png" 
+    image: "/Images/Certificate1.png" 
   },
   { 
     title: "🌍 Global Reach", 
     description: "Supplying fertilizers and ethanol across Asia, Africa, Europe, and the Middle East with export-ready packaging, timely delivery, and reliable logistics.", 
-    image: "/Global1.png" 
+    image: "/Images/Global1.png" 
   },
   { 
     title: "♻️ Eco-Friendly Model", 
     description: "Closed-loop circular model: cow dung → fertilizers → crops → ethanol → renewable energy — reducing carbon footprint and promoting sustainable farming.", 
-    image: "/Eco.jpg" 
+    image: "/Images/Eco.jpg" 
   },
   { 
     title: "👨‍🌾 Farmer Empowerment", 
     description: "1M+ farmers benefit from fertilizers, training programs, and sustainable practices — improving soil health, increasing yields, and reducing chemical dependency.", 
-    image: "/Power1.jpeg" 
+    image: "/Images/Power1.jpeg" 
   },
 ];
 

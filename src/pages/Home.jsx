@@ -57,17 +57,17 @@ const Home = () => {
   const products = useMemo(
     () => [
       {
-        img: "/CowFertilizer.jpg",
+        img: "/Images/CowFertilizer.jpg",
         title: "Cow Dung Fertilizers",
         desc: "Hygienically processed from 10,000+ cattle farm. Export-ready, nutrient-rich organic compost trusted worldwide.",
-        link: "/products#fertilizers",
+        link: "/Images/products#fertilizers",
         left: true,
       },
       {
-        img: "/EthonolFertilizer.jpg",
+        img: "/Images/EthonolFertilizer.jpg",
         title: "Ethanol Solutions",
         desc: "65 KLPD modern plant producing ethanol, ENA, EQRS, and pharma-grade ethanol with ZLD and GMP standards.",
-        link: "/products#ethanol",
+        link: "/Images/products#ethanol",
         left: false,
       },
     ],

@@ -174,7 +174,12 @@ const InfoSection = ({ title, highlightData, applications, image1, image2, highl
         } rounded-3xl`}
       />
       <div
-        className={`absolute top-4 right-4 bg-${highlightColor}-600 text-white px-5 py-2 rounded-full shadow-lg text-sm md:text-base font-semibold`}
+        className={`absolute top-4 right-4 px-5 py-2 rounded-full shadow-lg text-sm md:text-base font-semibold
+          ${
+            highlightColor === "green"
+              ? "bg-green-600 text-white"
+              : "bg-purple-600 text-white" // 👈 ethanol badge color changed
+          }`}
       >
         {highlightColor === "green" ? "100% Organic ♻️" : "65 KLPD Capacity ⚡"}
       </div>
@@ -273,8 +278,8 @@ const Products = () => {
         title="Premium Cow Dung Fertilizers"
         highlightData={fertilizerInfo}
         applications={fertilizerApplications}
-        image1="/CowFertilizer2.webp"
-        image2="/CowFertilizer3.jpg"
+        image1="/Images/CowFertilizer7.png"
+        image2="/Images/CowFertilizer6.png"
         highlightColor="green"
       />
 
@@ -282,8 +287,8 @@ const Products = () => {
         title="Advanced Ethanol Solutions"
         highlightData={ethanolInfo}
         applications={ethanolApplications}
-        image1="/EthonolFertilizer4.png"
-        image2="/EthonolFertilizer2.jpg"
+        image1="/Images/EthonolFertilizer6.jpeg"
+        image2="/Images/EthonolFertilizer2.jpg"
         highlightColor="yellow"
       />
 

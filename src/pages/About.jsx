@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Navbar from "../components/Navbar";
+// import Navbar from "../components/Navbar";
 
 const slogans = [
   "Transforming Waste into Wealth – Cow Dung to Fertilizer",
@@ -33,11 +33,11 @@ const About = () => {
     { step: "5", title: "Co-Products", desc: "DDGS, CO₂, power & biogas from by-products ensuring zero waste." },
   ];
 
-  const teamMembers = [
-    { name: "Mr. Ramesh Patel", role: "Founder & CEO", image: "/team1.jpg" },
-    { name: "Ms. Priya Sharma", role: "Head of Operations", image: "/team2.jpg" },
-    { name: "Dr. Anil Kumar", role: "Sustainability Lead", image: "/team3.jpg" },
-  ];
+  // const teamMembers = [
+  //   { name: "Mr. Ramesh Patel", role: "Founder & CEO", image: "/team1.jpg" },
+  //   { name: "Ms. Priya Sharma", role: "Head of Operations", image: "/team2.jpg" },
+  //   { name: "Dr. Anil Kumar", role: "Sustainability Lead", image: "/team3.jpg" },
+  // ];
 
   const Timeline = ({ steps, color }) => (
     <div className="relative max-w-2xl mx-auto px-4">
@@ -67,7 +67,7 @@ const About = () => {
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-green-50 via-white to-green-100 overflow-x-hidden">
       {/* Navbar */}
-      <Navbar />
+      {/* <Navbar /> */}
 
       {/* Slogan Carousel */}
       <div className="relative z-10 py-8 sm:py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 sm:mt-24">
@@ -92,7 +92,7 @@ const About = () => {
         <section className="rounded-3xl shadow-md p-6 sm:p-10 bg-green-50">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 items-center">
             <motion.img
-              src="/CowFertilizer.jpg"
+              src="/Images/CowFertilizer.jpg"
               alt="Organic Fertilizers"
               className="rounded-2xl shadow-lg w-full h-auto object-cover"
               initial={{ opacity: 0, x: -80 }}
@@ -139,7 +139,7 @@ const About = () => {
               </ul>
             </div>
             <motion.img
-              src="/EthonolFertilizer.jpg"
+              src="/Images/EthonolFertilizer.jpg"
               alt="Renewable Ethanol Plant"
               className="rounded-2xl shadow-lg w-full h-auto object-cover"
               initial={{ opacity: 0, x: 80 }}
