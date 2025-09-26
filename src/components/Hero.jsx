@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { Leaf, Flame, Droplets } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom"; // ✅ using Link
 
 const slogans = [
   "🌾 From Crops to Clean Ethanol – A Greener Tomorrow",
@@ -13,7 +13,6 @@ const slogans = [
 
 const Hero = () => {
   const [isNight, setIsNight] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const hour = new Date().getHours();
@@ -182,7 +181,9 @@ const Hero = () => {
       {particles.map((p, i) => (
         <motion.div
           key={i}
-          className={`absolute rounded-full ${isNight ? "bg-yellow-200" : "bg-green-400"}`}
+          className={`absolute rounded-full ${
+            isNight ? "bg-yellow-200" : "bg-green-400"
+          }`}
           style={{
             width: p.size,
             height: p.size,
@@ -205,7 +206,8 @@ const Hero = () => {
               key={i}
               className="inline-block bg-clip-text text-transparent"
               style={{
-                backgroundImage: "linear-gradient(90deg, #facc15, #22c55e, #facc15, #22c55e)",
+                backgroundImage:
+                  "linear-gradient(90deg, #facc15, #22c55e, #facc15, #22c55e)",
                 backgroundSize: "200% 200%",
               }}
               animate={{
@@ -231,29 +233,33 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.0, duration: 1 }}
         >
-          Turning waste into wealth – organic fertilizers, renewable ethanol, and sustainable energy that empowers farmers & industries.
+          Turning waste into wealth – organic fertilizers, renewable ethanol,
+          and sustainable energy that empowers farmers & industries.
         </motion.p>
 
+        {/* ✅ Fixed CTA buttons */}
         <div className="flex flex-col sm:flex-row justify-center gap-6">
-          <motion.button
-            onClick={() => navigate("/contact")}
-            className="bg-amber-400 text-gray-900 font-semibold rounded-full px-10 py-4 shadow-lg hover:shadow-amber-300/50 transition"
-            whileHover={{ scale: 1.12 }}
-          >
-            Get in Touch
-          </motion.button>
+          <motion.div whileHover={{ scale: 1.12 }}>
+            <Link
+              to="/contact"
+              className="bg-amber-400 text-gray-900 font-semibold rounded-full px-10 py-4 shadow-lg hover:shadow-amber-300/50 transition inline-block"
+            >
+              Get in Touch
+            </Link>
+          </motion.div>
 
-          <motion.button
-            onClick={() => navigate("/products")}
-            className={`border rounded-full px-10 py-4 font-semibold hover:text-gray-900 transition ${
-              isNight
-                ? "border-yellow-300 hover:bg-yellow-300 text-yellow-200"
-                : "border-amber-700 hover:bg-amber-400 text-green-900"
-            }`}
-            whileHover={{ scale: 1.12 }}
-          >
-            Explore Products
-          </motion.button>
+          <motion.div whileHover={{ scale: 1.12 }}>
+            <Link
+              to="/products"
+              className={`border rounded-full px-10 py-4 font-semibold hover:text-gray-900 transition inline-block ${
+                isNight
+                  ? "border-yellow-300 hover:bg-yellow-300 text-yellow-200"
+                  : "border-amber-700 hover:bg-amber-400 text-green-900"
+              }`}
+            >
+              Explore Products
+            </Link>
+          </motion.div>
         </div>
       </div>
     </section>

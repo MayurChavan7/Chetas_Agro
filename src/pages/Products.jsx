@@ -1,11 +1,12 @@
 import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Link } from "react-router-dom"; // ✅ Added Link
 
 // Static Data
 const ecoIcons = [
-  { src: "/Image5.png", alt: "Leaf", size: 40, delay: 0 },
-  { src: "/Image5.png", alt: "Leaf", size: 30, delay: 1000 },
-  { src: "/Image5.png", alt: "Sprout", size: 35, delay: 2000 },
+  { src: "/Images/Image5.png", alt: "Leaf", size: 40, delay: 0 },
+  { src: "/Images/Image5.png", alt: "Leaf", size: 30, delay: 1000 },
+  { src: "/Images/Image5.png", alt: "Sprout", size: 35, delay: 2000 },
 ];
 
 const fertilizerInfo = [
@@ -113,8 +114,8 @@ const HeroSection = ({ scrollY }) => {
         </h2>
         <div className="h-1 w-20 md:w-28 bg-green-600 mx-auto rounded-full mb-6" />
         <p className="text-base md:text-xl text-gray-700 leading-relaxed">
-          At <span className="font-semibold text-green-800">Chetas Agrotech</span>, we empower farmers and industries through
-          <span className="text-green-700 font-semibold"> organic fertilizers</span> and{" "}
+          At <span className="font-semibold text-green-800">Chetas Agrotech</span>, we empower farmers and industries through{" "}
+          <span className="text-green-700 font-semibold">organic fertilizers</span> and{" "}
           <span className="text-yellow-600 font-semibold">renewable ethanol</span> solutions for a sustainable future.
         </p>
       </motion.div>
@@ -178,7 +179,7 @@ const InfoSection = ({ title, highlightData, applications, image1, image2, highl
           ${
             highlightColor === "green"
               ? "bg-green-600 text-white"
-              : "bg-purple-600 text-white" // 👈 ethanol badge color changed
+              : "bg-purple-600 text-white"
           }`}
       >
         {highlightColor === "green" ? "100% Organic ♻️" : "65 KLPD Capacity ⚡"}
@@ -258,12 +259,15 @@ const CTASection = () => (
     <p className="text-lg md:text-xl mb-10 max-w-xl mx-auto">
       Our fertilizers and ethanol solutions empower farmers and industries alike to build a sustainable and prosperous tomorrow.
     </p>
-    <a
-      href="/contact"
-      className="bg-yellow-500 hover:bg-yellow-600 text-green-900 font-bold py-4 px-14 rounded-full shadow-lg transition text-lg"
-    >
-      Contact Us
-    </a>
+    {/* ✅ Changed from <a> to <Link> */}
+    <motion.div whileHover={{ scale: 1.05 }}>
+      <Link
+        to="/contact"
+        className="bg-yellow-500 hover:bg-yellow-600 text-green-900 font-bold py-4 px-14 rounded-full shadow-lg transition text-lg"
+      >
+        Contact Us
+      </Link>
+    </motion.div>
   </div>
 );
 

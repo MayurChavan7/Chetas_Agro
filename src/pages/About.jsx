@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Link } from "react-router-dom";
 // import Navbar from "../components/Navbar";
 
 const slogans = [
@@ -189,12 +190,18 @@ const About = () => {
           <p className="max-w-xl mx-auto mb-8 text-base md:text-lg leading-relaxed">
             From organic fertilizers to renewable ethanol — we deliver complete, sustainable agro-energy solutions for farmers, industry, and the planet.
           </p>
-          <a
+          {/* <a
             href="/contact"
             className="bg-yellow-400 text-green-900 font-bold px-8 py-3 rounded-full shadow-md hover:bg-yellow-500 transition text-base md:text-lg"
           >
             Contact Us
-          </a>
+          </a> */}
+          <Link
+  to="/contact"
+  className="bg-yellow-400 text-green-900 font-bold px-8 py-3 rounded-full shadow-md hover:bg-yellow-500 transition text-base md:text-lg"
+>
+  Contact Us
+</Link>
         </div>
       </main>
     </div>

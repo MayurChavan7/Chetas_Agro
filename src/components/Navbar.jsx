@@ -18,12 +18,21 @@ const Navbar = () => {
 
   const menuVariants = {
     hidden: { x: "-100%", opacity: 0 },
-    visible: { 
-      x: 0, 
-      opacity: 1, 
-      transition: { type: "spring", stiffness: 120, damping: 20, staggerChildren: 0.1 } 
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 120,
+        damping: 20,
+        staggerChildren: 0.1,
+      },
     },
-    exit: { x: "-100%", opacity: 0, transition: { type: "spring", stiffness: 120, damping: 20 } },
+    exit: {
+      x: "-100%",
+      opacity: 0,
+      transition: { type: "spring", stiffness: 120, damping: 20 },
+    },
   };
 
   const menuItemVariants = {
@@ -72,29 +81,31 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed top-0 left-0 h-full w-64 bg-white/95 backdrop-blur-md shadow-xl z-[1000] flex flex-col p-6"
+            className="fixed top-0 left-0 h-full w-64 bg-white backdrop-blur-md shadow-xl z-[1000] flex flex-col p-6"
             variants={menuVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
           >
+            {/* Close Button */}
             <div className="flex justify-end mb-6">
               <button
                 onClick={() => setIsOpen(false)}
                 aria-label="Close Menu"
-                className="text-gray-800 hover:text-green-700 transition-colors duration-300"
+                className="text-green-700 hover:text-green-900 transition-colors duration-300"
               >
                 <X size={28} />
               </button>
             </div>
 
-            <motion.div className="flex flex-col space-y-6 mt-4">
+            {/* Mobile Nav Items */}
+            <motion.div className="flex flex-col space-y-4 mt-4">
               {menuItems.map(({ name, path }) => (
                 <MotionLink
                   key={name}
                   to={path}
                   variants={menuItemVariants}
-                  className="text-green-800 hover:text-yellow-400 font-semibold text-xl transition-colors duration-300"
+                  className="bg-green-600 text-yellow-300 hover:bg-green-800 hover:text-yellow-100 font-semibold text-lg px-4 py-2 rounded-md transition-colors duration-300"
                   onClick={() => setIsOpen(false)}
                 >
                   {name}
