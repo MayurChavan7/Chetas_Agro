@@ -8,6 +8,8 @@ import About from "./pages/About.jsx";
 import Products from "./pages/Products.jsx";
 import Features from "./pages/Features.jsx";
 import Contact from "./pages/Contact.jsx";
+import FertilizerDetails from "./pages/FertilizerDetails.jsx";
+import EthanolDetails from "./pages/EthanolDetails.jsx";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/products/fertilizer" element={<FertilizerDetails />} />
+        <Route path="/products/ethanol" element={<EthanolDetails />} />
         <Route path="/features" element={<Features />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
