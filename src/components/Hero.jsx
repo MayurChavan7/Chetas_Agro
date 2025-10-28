@@ -137,13 +137,13 @@ const Hero = () => {
       </div>
 
       {/* Cow */}
-      <motion.img
+      {/* <motion.img
         src="/Image4.png"
         alt="Cow silhouette"
         className="absolute bottom-20 left-12 w-28 md:w-40 opacity-95 z-30 will-change-transform"
         animate={{ y: [0, -12, 0], x: [0, 12, -6] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      />
+      /> */}
 
       {/* Renewable icons */}
       <div className="absolute top-40 right-10 flex flex-col gap-6 z-40">

@@ -13,29 +13,23 @@ const steps = [
 
 const FertilizerDetails = () => {
   return (
-    <main className="relative pt-24 pb-16 px-4 sm:px-6 lg:px-12 min-h-screen overflow-hidden bg-green-50">
+    <main className="relative pt-32 pb-5 px-4 sm:px-6 lg:px-12 min-h-screen overflow-hidden bg-green-50">
 
       {/* Background Images */}
-      {/* Desert */}
+      {/* Farm background - covers whole page on desktop, positioned top on mobile */}
       <img
-        src="/Images/Desert.webp"
-        alt="Desert"
-        className="absolute bottom-0 left-0 w-full z-0 object-cover pointer-events-none"
+        src="/Images/farm_front_angle.png"
+        alt="Farm Background"
+        // className="absolute top-0 left-0 w-full h-full lg:h-auto z-0 object-cover lg:object-contain pointer-events-none"
+        className="absolute top-0 left-0 w-full min-h-full z-0 object-cover pointer-events-none"
       />
 
-      {/* Rainbow */}
-      <img
-        src="/images/rainbow.png"
+      {/* Rainbow - adjusted for better visibility */}
+      {/* <img
+        src="/Images/rainbow.png"
         alt="Rainbow"
-        className="absolute top-10 left-1/2 transform -translate-x-1/2 w-80 z-0 pointer-events-none"
-      />
-
-      {/* Crops */}
-      <div className="absolute bottom-20 left-0 w-full flex justify-around z-0 pointer-events-none">
-        <img src="/Images/crop1.webp" alt="Crop" className="h-20 animate-grow" />
-        <img src="/Images/crop1.webp" alt="Crop" className="h-24 animate-grow delay-200" />
-        <img src="/Images/crop1.webp" alt="Crop" className="h-20 animate-grow delay-400" />
-      </div>
+        className="absolute top-20 lg:top-10 left-1/2 transform -translate-x-1/2 w-60 lg:w-80 z-0 pointer-events-none"
+      /> */}
 
       {/* Raindrops */}
       {[...Array(15)].map((_, i) => (
@@ -56,6 +50,7 @@ const FertilizerDetails = () => {
 
       {/* Page Content */}
       <div className="relative z-10 max-w-6xl mx-auto text-center">
+        {/* Heading - no background */}
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-green-800 mb-6">
           🌱 How Cow Dung Fertilizer is Made
         </h1>
@@ -64,22 +59,114 @@ const FertilizerDetails = () => {
           sustainable, eco-friendly process.
         </p>
 
-        {/* Process Steps */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-          {steps.map((step, i) => (
-            <motion.div
-              key={i}
-              className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:-translate-y-2 transition-transform text-center"
+        {/* Process Steps: Responsive Grid/Staircase Layout */}
+        <div className="relative z-10 max-w-6xl mx-auto mt-8 px-4 sm:px-6 lg:px-0">
+          {/* Mobile & Tablet: Vertical Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:hidden">
+            {steps.map((step, i) => (
+              <motion.div
+                key={i}
+                className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-lg text-center"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+              >
+                <div className="text-5xl mb-4">{step.icon}</div>
+                <h3 className="text-xl font-semibold text-green-700 mb-2">{step.title}</h3>
+                <p className="text-base text-gray-600">{step.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Desktop: Staircase Layout */}
+          <div className="hidden lg:flex justify-between items-start gap-6">
+            {steps.map((step, i) => (
+              <motion.div
+                key={i}
+                className={`flex flex-col items-center bg-white p-8 rounded-2xl shadow-lg text-center w-56
+                  ${i % 2 === 0 ? "mt-0" : "mt-12"}`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.15 }}
+              >
+                <div className="text-5xl mb-4">{step.icon}</div>
+                <h3 className="text-xl font-semibold text-green-700 mb-2">{step.title}</h3>
+                <p className="text-base text-gray-600">{step.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Nutrient Composition Section */}
+        <div className="relative z-10 max-w-6xl mx-auto mt-10 lg:mt-10 px-4 sm:px-6 lg:px-0 text-center">
+          <h1 className="inline-block px-6 py-2 text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-green-950 bg-white/40 rounded-2xl mb-6 lg:mb-10">
+            🌿 Nutrient Composition of Cow Dung Fertilizer
+          </h1>
+          {/* Nutrient Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Card 1: Plant Fibers */}
+            <motion.div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg" 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
-            >
-              <div className="text-4xl sm:text-5xl mb-4">{step.icon}</div>
-              <h3 className="text-lg sm:text-xl font-semibold text-green-700 mb-2">{step.title}</h3>
-              <p className="text-sm sm:text-base md:text-lg text-gray-600">{step.desc}</p>
+              transition={{ duration: 0.6, delay: 0 }}>
+              <h3 className="text-lg sm:text-xl font-semibold text-green-700 mb-4">Rich in Undigested Plant Fibers</h3>
+              <ul className="list-disc list-inside space-y-1 text-gray-700">
+                <li>Cellulose</li>
+                <li>Hemicellulose</li>
+                <li>Lignin</li>
+              </ul>
             </motion.div>
-          ))}
+
+            {/* Card 2: Macronutrients */}
+            <motion.div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0 }}
+            >
+              <h3 className="text-lg sm:text-xl font-semibold text-green-700 mb-4">Macronutrients (NPK)</h3>
+              <ul className="list-disc list-inside space-y-1 text-gray-700">
+                <li>Nitrogen (N) – Promotes leafy growth</li>
+                <li>Phosphorus (P) – Supports root development and flowering</li>
+                <li>Potassium (K) – Improves plant resilience and fruit quality</li>
+              </ul>
+            </motion.div>
+
+            {/* Card 3: Other Minerals */}
+            <motion.div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0 }}
+            >
+              <h3 className="text-lg sm:text-xl font-semibold text-green-700 mb-4">Other Essential Minerals</h3>
+              <p className="text-gray-700">
+                Calcium (Ca), Magnesium (Mg), Sulphur (S), Iron (Fe), Zinc (Zn), Copper (Cu), Cobalt (Co), Manganese (Mn), and other trace elements
+              </p>
+            </motion.div>
+
+            {/* Card 4: Microbial Diversity */}
+            <motion.div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0 }}
+            >
+              <h3 className="text-lg sm:text-xl font-semibold text-green-700 mb-4">Microbial Diversity</h3>
+              <p className="text-gray-700">
+                Cow dung powder contains a diverse community of microorganisms and bacteria beneficial for soil and plant health.
+              </p>
+            </motion.div>
+          </div>
         </div>
 
         {/* CTA */}
@@ -87,6 +174,7 @@ const FertilizerDetails = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="bg-gradient-to-r from-green-700 to-green-500 p-8 sm:p-10 rounded-3xl shadow-xl text-white"

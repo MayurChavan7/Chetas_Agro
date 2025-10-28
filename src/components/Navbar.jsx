@@ -205,9 +205,11 @@ const menuItems = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [desktopDropdown, setDesktopDropdown] = useState(null);
+  const [isHovering, setIsHovering] = useState(false);
 
   const menuVariants = {
-    hidden: { x: "-100%", opacity: 0 },
+    hidden: { x: "100%", opacity: 0 },
     visible: {
       x: 0,
       opacity: 1,
@@ -219,7 +221,7 @@ const Navbar = () => {
       },
     },
     exit: {
-      x: "-100%",
+      x: "100%",
       opacity: 0,
       transition: { type: "spring", stiffness: 120, damping: 20 },
     },
@@ -230,11 +232,29 @@ const Navbar = () => {
     visible: { x: 0, opacity: 1, transition: { duration: 0.25 } },
   };
 
+  const handleDropdownClick = (index) => {
+    // Toggle dropdown on click
+    setDesktopDropdown(desktopDropdown === index ? null : index);
+  };
+
+  const handleMouseEnter = (index) => {
+    setIsHovering(true);
+    setDesktopDropdown(index);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+    // Only close if it was opened by hover, not by click
+    if (isHovering) {
+      setDesktopDropdown(null);
+    }
+  };
+
   return (
-    <nav className="fixed w-full z-[100] bg-white/90 backdrop-blur-md shadow-md">
+    <nav className="fixed top-0 w-full z-[9999] bg-white/90 backdrop-blur-md shadow-md">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-3">
         {/* Logo */}
-        <Link to="/" className="flex items-center z-[1000]">
+        <Link to="/" className="flex items-center z-[10001]">
           <img
             src="/Images/Logo.png"
             alt="Chetas Agro Logo"
@@ -244,24 +264,39 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-10 font-semibold text-lg relative">
-          {menuItems.map(({ name, path, subItems }) =>
+          {menuItems.map(({ name, path, subItems }, index) =>
             subItems ? (
-              <div key={name} className="relative group">
-                <button className="flex items-center gap-1 text-gray-800 hover:text-green-700 transition-colors duration-300">
+              <div 
+                key={name} 
+                className="relative"
+                onMouseEnter={() => handleMouseEnter(index)}
+                onMouseLeave={handleMouseLeave}
+              >
+                <button 
+                  onClick={() => handleDropdownClick(index)}
+                  className="flex items-center gap-1 text-gray-800 hover:text-green-700 transition-colors duration-300"
+                >
                   {name}
-                  <ChevronDown size={16} />
+                  <ChevronDown 
+                    size={16} 
+                    className={`transition-transform duration-200 ${desktopDropdown === index ? "rotate-180" : ""}`}
+                  />
                 </button>
-                <div className="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-lg rounded-md py-2 w-56">
-                  {subItems.map((sub) => (
-                    <Link
-                      key={sub.name}
-                      to={sub.path}
-                      className="block px-4 py-2 text-gray-700 hover:bg-green-100 hover:text-green-700"
-                    >
-                      {sub.name}
-                    </Link>
-                  ))}
-                </div>
+                {/* Dropdown */}
+                {desktopDropdown === index && (
+                  <div className="absolute left-0 mt-2 bg-white shadow-lg rounded-md py-2 w-56 z-50">
+                    {subItems.map((sub) => (
+                      <Link
+                        key={sub.name}
+                        to={sub.path}
+                        className="block px-4 py-2 text-gray-700 hover:bg-green-100 hover:text-green-700 transition-colors"
+                        onClick={() => setDesktopDropdown(null)}
+                      >
+                        {sub.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
             ) : (
               <Link
@@ -279,7 +314,7 @@ const Navbar = () => {
         {/* Mobile Hamburger */}
         <button
           type="button"
-          className="md:hidden flex items-center justify-center w-12 h-12 rounded-full bg-green-100 hover:bg-green-200 text-gray-800 z-[1100]"
+          className="md:hidden flex items-center justify-center w-12 h-12 rounded-full bg-green-100 hover:bg-green-200 text-gray-800 z-[10000]"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle Menu"
         >
@@ -291,23 +326,23 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed top-0 left-0 h-full w-64 bg-white backdrop-blur-md shadow-xl z-[1000] flex flex-col p-6 overflow-y-auto"
+            className="fixed top-[88px] right-0 w-full bg-white backdrop-blur-md shadow-xl z-[10000] flex flex-col px-6 pb-4"
             variants={menuVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
           >
             <div className="flex justify-end mb-6">
-              <button
+              {/* <button
                 onClick={() => setIsOpen(false)}
                 aria-label="Close Menu"
                 className="text-green-700 hover:text-green-900 transition-colors duration-300"
               >
                 <X size={28} />
-              </button>
+              </button> */}
             </div>
 
-            <motion.div className="flex flex-col space-y-4 mt-4">
+            <motion.div className="flex flex-col space-y-4 mt-0">
               {menuItems.map(({ name, path, subItems }, index) =>
                 subItems ? (
                   <div key={name} className="flex flex-col">
