@@ -2,107 +2,163 @@ import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 
 const featuresData = [
-  { 
-    title: "🐄 Cow Care & Sustainability", 
-    description: "Managing 10,000+ healthy cattle with automated feeding, hygiene, and health monitoring — ensuring well-being and high-quality raw material for organic fertilizers.", 
-    image: "/Images/CowSuntain1.jpeg" 
+  {
+    title: "🐄 Cow Care & Sustainability",
+    description:
+      "We manage over 10,000 cattle with automated feeding, hydration, and health monitoring systems. Each animal is tagged with RFID for real-time tracking, ensuring welfare and disease prevention. The cow dung collected serves as the foundation for high-grade organic fertilizers, promoting a circular ecosystem.",
+    highlights: [
+      "Automated health and feeding systems",
+      "RFID-based livestock monitoring",
+      "Organic waste management for fertilizer production",
+    ],
+    image: "/Images/CowSuntain1.jpeg",
   },
-  { 
-    title: "🌱 Organic Fertilizers", 
-    description: "Premium dewatered cow dung processed into nutrient-rich, hygienic fertilizers that improve soil fertility, boost microbial life, and maximize crop yields.", 
-    image: "/Images/OrganicFertilizer.jpg" 
+  {
+    title: "🌱 Organic Fertilizers",
+    description:
+      "We convert dewatered cow dung into nutrient-dense compost fertilizers through a controlled aerobic process. This ensures balanced NPK ratios, high humic acid content, and superior microbial activity — improving soil structure, water retention, and long-term fertility.",
+    highlights: [
+      "100% organic, chemical-free formulation",
+      "Improves soil structure and moisture retention",
+      "Rich in humic substances and beneficial microbes",
+    ],
+    image: "/Images/OrganicFertilizer.jpg",
   },
-  { 
-    title: "⚡ Renewable Ethanol", 
-    description: "Our 65 KLPD grain-based ethanol plant with Zero Liquid Discharge (ZLD) produces pharma-grade, ENA, and biofuel ethanol, supporting clean energy and reduced emissions.", 
-    image: "/Images/Renewable1.jpeg" 
+  {
+    title: "⚡ Renewable Ethanol",
+    description:
+      "Our 65 KLPD grain-based ethanol plant follows Zero Liquid Discharge (ZLD) standards, producing pharma-grade and biofuel ethanol. The process generates renewable energy from distillery waste, significantly cutting carbon emissions and fossil fuel dependence.",
+    highlights: [
+      "65 KLPD grain-based ethanol capacity",
+      "Pharma-grade ENA & fuel-grade ethanol",
+      "ZLD-compliant eco-friendly operation",
+    ],
+    image: "/Images/Renewable1.jpeg",
   },
-  { 
-    title: "⚙️ Advanced Technology", 
-    description: "State-of-the-art technology including RFID livestock tracking, remote health monitoring, modern distillation, and composting lines ensures precision, hygiene, and world-class output.", 
-    image: "/Images/Technology1.jpeg" 
+  {
+    title: "⚙️ Advanced Technology",
+    description:
+      "We employ modern automation, IoT sensors, and AI-based analytics to ensure process accuracy from cattle health monitoring to compost maturity. Our distillation units and composting lines integrate SCADA and remote control for seamless operations.",
+    highlights: [
+      "AI & IoT integration for real-time insights",
+      "SCADA-based automation for precision control",
+      "Smart composting & distillation monitoring",
+    ],
+    image: "/Images/Technology1.jpeg",
   },
-  { 
-    title: "🏭 World-Class Facilities", 
-    description: "GMP-compliant ethanol plants, effluent treatment units, and advanced composting facilities designed for scalability, safety, and global operational standards.", 
-    image: "/Images/World1.jpeg" 
+  {
+    title: "🏭 World-Class Facilities",
+    description:
+      "Chetas Agrotech’s facilities are designed for global scalability and operational safety. GMP-compliant ethanol plants, effluent treatment units, biogas recovery systems, and automated packaging lines ensure top-quality output that meets export-grade standards.",
+    highlights: [
+      "GMP-compliant ethanol and fertilizer plants",
+      "Effluent treatment and odor control systems",
+      "Modern packaging & logistics centers",
+    ],
+    image: "/Images/World1.jpeg",
   },
-  { 
-    title: "✅ Quality & Certifications", 
-    description: "Every batch of fertilizer and ethanol is lab-tested and certified to meet international organic and pharmaceutical standards, ensuring safety and reliability.", 
-    image: "/Images/Certificate1.png" 
+  {
+    title: "✅ Quality & Certifications",
+    description:
+      "Every product undergoes rigorous quality control in ISO-certified labs. Our fertilizers and ethanol meet BIS, FSSAI, and international organic certification standards, ensuring purity, consistency, and reliability across every batch.",
+    highlights: [
+      "ISO 9001, FSSAI, and BIS certifications",
+      "Batch-wise nutrient and quality testing",
+      "Compliance with international export standards",
+    ],
+    image: "/Images/Certificate1.png",
   },
-  { 
-    title: "🌍 Global Reach", 
-    description: "Supplying fertilizers and ethanol across Asia, Africa, Europe, and the Middle East with export-ready packaging, timely delivery, and reliable logistics.", 
-    image: "/Images/Global1.png" 
+  {
+    title: "🌍 Global Reach",
+    description:
+      "With an extensive export network, our fertilizers and ethanol reach over 15 countries across Asia, Africa, and Europe. Our international packaging, logistics, and documentation systems ensure safe, compliant, and timely global delivery.",
+    highlights: [
+      "Supplying across 15+ countries",
+      "Export-compliant packaging standards",
+      "Reliable and on-time global logistics",
+    ],
+    image: "/Images/Global1.png",
   },
-  { 
-    title: "♻️ Eco-Friendly Model", 
-    description: "Closed-loop circular model: cow dung → fertilizers → crops → ethanol → renewable energy — reducing carbon footprint and promoting sustainable farming.", 
-    image: "/Images/Eco.jpg" 
+  {
+    title: "♻️ Eco-Friendly Model",
+    description:
+      "We operate a closed-loop circular economy — where livestock waste is repurposed into fertilizers and bioenergy. This reduces landfill impact, conserves resources, and drives the green energy transition for sustainable agriculture.",
+    highlights: [
+      "Zero-waste circular ecosystem",
+      "Energy-efficient biogas recovery",
+      "Reduced carbon footprint across operations",
+    ],
+    image: "/Images/Eco.jpg",
   },
-  { 
-    title: "👨‍🌾 Farmer Empowerment", 
-    description: "1M+ farmers benefit from fertilizers, training programs, and sustainable practices — improving soil health, increasing yields, and reducing chemical dependency.", 
-    image: "/Images/Power1.jpeg" 
+  {
+    title: "👨‍🌾 Farmer Empowerment",
+    description:
+      "Our mission extends beyond products — we empower farmers through soil testing, crop advisory, and training programs. Over 1 million farmers benefit from improved soil fertility, higher yields, and reduced chemical dependency.",
+    highlights: [
+      "1M+ farmers supported nationwide",
+      "Training programs for sustainable farming",
+      "Boosts yield while reducing chemical inputs",
+    ],
+    image: "/Images/Power1.jpeg",
   },
 ];
 
-// Generate multiple falling crops with random properties
+// 🌾 Generate soft floating particles
 const generateCrops = (num) =>
   Array.from({ length: num }).map(() => ({
-    size: 20 + Math.random() * 20,
-    color: `hsl(${Math.random() * 120 + 100}, 70%, 50%)`,
-    left: Math.random() * 90,
+    size: 14 + Math.random() * 14,
+    color: `hsl(${Math.random() * 60 + 100}, 60%, 45%)`,
+    left: Math.random() * 95,
     duration: 8 + Math.random() * 6,
-    delay: Math.random() * 5,
+    delay: Math.random() * 6,
   }));
 
 const Features = () => {
-  // ✅ Memoized crops (less objects = faster render)
   const crops = useMemo(
-    () => generateCrops(window.innerWidth < 768 ? 5 : 10),
+    () => generateCrops(typeof window !== "undefined" && window.innerWidth < 768 ? 6 : 12),
     []
   );
 
   return (
-    <section className="relative pt-28 pb-28 sm:pt-32 sm:pb-32 px-4 sm:px-6 lg:px-12 bg-gradient-to-b from-green-50 via-white to-green-100 overflow-hidden">
-      {/* Floating Background Icons */}
-      <motion.div 
-        animate={{ y: [0, 15, 0] }} 
-        transition={{ repeat: Infinity, duration: 4 }} 
-        className="absolute top-10 left-10 text-6xl opacity-10"
+    <section
+      id="features"
+      className="relative py-24 sm:py-32 px-4 sm:px-8 lg:px-12 bg-gradient-to-b from-green-50 via-white to-green-100 overflow-hidden"
+    >
+      {/* Floating Background Emojis */}
+      <motion.div
+        animate={{ y: [0, 20, 0] }}
+        transition={{ repeat: Infinity, duration: 5 }}
+        className="absolute top-12 left-12 text-7xl opacity-10 select-none"
+        aria-hidden="true"
       >
         🌿
       </motion.div>
-      <motion.div 
-        animate={{ y: [0, -15, 0] }} 
-        transition={{ repeat: Infinity, duration: 5 }} 
-        className="absolute bottom-20 right-16 text-7xl opacity-10"
+      <motion.div
+        animate={{ y: [0, -20, 0] }}
+        transition={{ repeat: Infinity, duration: 6 }}
+        className="absolute bottom-24 right-20 text-8xl opacity-10 select-none"
+        aria-hidden="true"
       >
         🍃
       </motion.div>
 
-      {/* Animated Crops */}
-      {crops.map((crop, index) => (
+      {/* Floating particles */}
+      {crops.map((crop, i) => (
         <motion.div
-          key={index}
-          className="absolute rounded-full"
+          key={i}
+          className="absolute rounded-full blur-sm"
           style={{
             width: crop.size,
             height: crop.size,
             backgroundColor: crop.color,
             left: `${crop.left}%`,
-            top: -50,
+            top: -60,
           }}
-          initial={{ y: -50, opacity: 0, rotate: 0, scale: 0.8 }}
+          initial={{ y: -60, opacity: 0 }}
           animate={{
-            y: [ -50, 800 ],
+            y: [0, 900],
             opacity: [0, 1, 0],
             rotate: [0, 360],
-            x: [0, Math.random() * 50 - 25, 0], // zigzag
-            scale: [0.8, 1, 0.8],
           }}
           transition={{
             duration: crop.duration,
@@ -113,71 +169,81 @@ const Features = () => {
         />
       ))}
 
+      {/* Content */}
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section Header */}
-        <motion.div 
-          className="text-center mb-16" 
-          initial={{ opacity: 0, y: -40 }} 
-          whileInView={{ opacity: 1, y: 0 }} 
-          viewport={{ once: true }} 
-          transition={{ duration: 0.7 }}
+        {/* Header */}
+        <motion.div
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: -50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-green-900 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-green-600 to-green-700">
-            Why Choose Chetas Agrotech?
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-green-900 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-500 via-green-700 to-green-900">
+            Why Choose <span className="text-green-800">Chetas Agrotech?</span>
           </h2>
-          <div className="h-1 w-24 bg-green-600 mx-auto rounded-full"></div>
+          <div className="h-1.5 w-28 mx-auto bg-green-600 rounded-full"></div>
           <p className="text-base sm:text-lg md:text-xl text-gray-700 mt-6 max-w-3xl mx-auto leading-relaxed">
-            Blending tradition with innovation — from <span className="font-semibold text-green-800">organic fertilizers</span> to <span className="font-semibold text-yellow-600">renewable ethanol</span>, we deliver sustainable, eco-friendly solutions empowering farmers & industries worldwide.
+            Bridging tradition and technology — delivering{" "}
+            <span className="text-green-800 font-semibold">organic fertilizers</span> and{" "}
+            <span className="text-yellow-600 font-semibold">renewable ethanol</span>{" "}
+            that power sustainable growth worldwide.
           </p>
         </motion.div>
 
-        {/* Features List */}
+        {/* Feature cards */}
         <div className="space-y-24">
-          {featuresData.map(({ title, description, image }, index) => {
-            const layoutClass = 
-              index % 3 === 0 ? "md:flex-row" : 
-              index % 3 === 1 ? "md:flex-row-reverse" : 
-              "flex-col items-center";
-
-            const textAlign = 
-              index % 3 === 0 ? "md:text-left text-center" : 
-              index % 3 === 1 ? "md:text-right text-center" : 
-              "text-center";
-
+          {featuresData.map(({ title, description, image, highlights }, index) => {
+            const isEven = index % 2 === 0;
             return (
               <motion.div
                 key={index}
-                className={`flex flex-col md:flex ${layoutClass} gap-10`}
-                initial={{ opacity: 0, y: 60 }}
+                className={`flex flex-col md:flex-row ${
+                  isEven ? "" : "md:flex-row-reverse"
+                } items-center gap-10 md:gap-16`}
+                initial={{ opacity: 0, y: 80 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, delay: index * 0.05 }}
+                viewport={{ once: true, amount: 0.3 }}
               >
                 {/* Image */}
-                <motion.div 
-                  className="flex-1 w-full relative rounded-2xl overflow-hidden shadow-2xl" 
-                  whileHover={{ scale: 1.04, rotate: index % 2 === 0 ? 1 : -1 }} 
-                  transition={{ type: "spring", stiffness: 200 }}
+                <motion.div
+                  className="flex-1 relative rounded-3xl overflow-hidden shadow-2xl group"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 180 }}
                 >
-                  <img 
-                    src={image} 
-                    alt={title} 
-                    className="w-full h-72 md:h-96 object-cover rounded-2xl" 
-                    loading="lazy" 
-                    decoding="async" 
-                    fetchpriority="low"
+                  <img
+                    src={image}
+                    alt={title}
+                    className="w-full h-80 md:h-[26rem] object-cover rounded-3xl transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"></div>
                 </motion.div>
 
-                {/* Text */}
-                <div className={`flex-1 ${textAlign}`}>
+                {/* Text Section */}
+                <div
+                  className={`flex-1 text-center md:text-${isEven ? "left" : "right"} px-2`}
+                >
                   <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-green-800">
                     {title}
                   </h3>
-                  <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
+                  <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-4">
                     {description}
                   </p>
+
+                  <ul
+                    className={`text-gray-600 text-sm sm:text-base space-y-2 ${
+                      isEven ? "md:pl-5" : "md:pr-5"
+                    }`}
+                  >
+                    {highlights.map((point, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <span className="text-green-600 mt-0.5">✔️</span>
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </motion.div>
             );

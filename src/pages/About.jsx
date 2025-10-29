@@ -1,9 +1,9 @@
+
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
-// import Navbar from "../components/Navbar";
 
 const slogans = [
   "Transforming Waste into Wealth – Cow Dung to Fertilizer",
@@ -34,31 +34,27 @@ const About = () => {
     { step: "5", title: "Co-Products", desc: "DDGS, CO₂, power & biogas from by-products ensuring zero waste." },
   ];
 
-  // const teamMembers = [
-  //   { name: "Mr. Ramesh Patel", role: "Founder & CEO", image: "/team1.jpg" },
-  //   { name: "Ms. Priya Sharma", role: "Head of Operations", image: "/team2.jpg" },
-  //   { name: "Dr. Anil Kumar", role: "Sustainability Lead", image: "/team3.jpg" },
-  // ];
-
   const Timeline = ({ steps, color }) => (
     <div className="relative max-w-2xl mx-auto px-4">
       {steps.map((step, i) => (
         <motion.div
           key={i}
           className="flex flex-col md:flex-row items-start md:items-center mb-10 relative"
-          initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
+          initial={{ opacity: 0, x: i % 2 === 0 ? -60 : 60 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: i * 0.2 }}
+          transition={{ duration: 0.7, delay: i * 0.15 }}
         >
-          <div className="relative flex items-center justify-center w-12 h-12 bg-green-600 text-white font-bold rounded-full shadow-md md:mr-6 flex-shrink-0">
+          <div className={`relative flex items-center justify-center w-12 h-12 bg-${color}-600 text-white font-bold text-lg rounded-full shadow-md md:mr-6 flex-shrink-0`}>
             {step.step}
           </div>
-          <div className="md:ml-10 mt-4 md:mt-0">
-            <h3 className={`text-lg sm:text-xl md:text-2xl font-semibold text-${color}-800`}>
+          <div className="md:ml-8 mt-4 md:mt-0">
+            <h3 className={`text-xl md:text-2xl font-semibold text-${color}-800 mb-1 tracking-wide`}>
               {step.title}
             </h3>
-            <p className="text-gray-700 mt-1 text-sm sm:text-base md:text-lg">{step.desc}</p>
+            <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+              {step.desc}
+            </p>
           </div>
         </motion.div>
       ))}
@@ -66,83 +62,85 @@ const About = () => {
   );
 
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-br from-green-50 via-white to-green-100 overflow-x-hidden">
-      {/* Navbar */}
-      {/* <Navbar /> */}
-
-      {/* Slogan Carousel */}
-      <div className="relative z-10 py-8 sm:py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 sm:mt-24">
-        <motion.div className="relative h-16 sm:h-20 overflow-hidden flex items-center justify-start rounded-2xl border bg-green-900/90 shadow-lg">
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-green-50 via-white to-green-100 overflow-x-hidden font-[Poppins]">
+      {/* ========== SLOGAN BAR ========== */}
+      <div className="relative z-10 py-6 sm:py-10 max-w-6xl mx-auto px-6 mt-24">
+        <motion.div className="relative h-14 sm:h-16 overflow-hidden flex items-center justify-start rounded-2xl border bg-green-800/95 shadow-lg">
           <motion.div
-            className="flex whitespace-nowrap gap-6 sm:gap-12 text-green-100 font-bold uppercase text-sm sm:text-lg md:text-2xl tracking-wide select-none"
+            className="flex whitespace-nowrap gap-10 sm:gap-16 text-green-100 font-semibold uppercase text-sm sm:text-lg md:text-xl tracking-wide select-none"
             animate={{ x: ["0%", "-50%"] }}
             transition={{
               x: { repeat: Infinity, repeatType: "loop", duration: slogans.length * 2, ease: "linear" },
             }}
           >
             {slogans.concat(slogans).map((text, i) => (
-              <span key={i} className="px-2 sm:px-4">{text}</span>
+              <span key={i} className="px-3 sm:px-6">{text}</span>
             ))}
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Main Content */}
-      <main className="flex-1 max-w-5xl mx-auto space-y-16 sm:space-y-24 px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
-        {/* Cow Dung Fertilizer Section */}
-        <section className="rounded-3xl shadow-md p-6 sm:p-10 bg-green-50">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 items-center">
+      {/* ========== MAIN CONTENT ========== */}
+      <main className="flex-1 max-w-6xl mx-auto space-y-20 sm:space-y-28 px-6 py-12 sm:py-16">
+        
+        {/* 🟩 Organic Fertilizer Section */}
+        <section className="rounded-3xl shadow-lg p-8 sm:p-12 bg-gradient-to-br from-green-50 to-green-100 border border-green-100">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <motion.img
               src="/Images/CowFertilizer.jpg"
               alt="Organic Fertilizers"
-              className="rounded-2xl shadow-lg w-full h-auto object-cover"
+              className="rounded-2xl shadow-lg w-full object-cover h-72 md:h-96"
               initial={{ opacity: 0, x: -80 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             />
             <div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-green-900 mb-6">Organic Fertilizers</h2>
-              <p className="text-gray-700 mb-6 text-base md:text-lg leading-relaxed">
-                Premium export-quality cow dung fertilizers, nutrient-rich, hygienically processed, and certified to meet global standards.
+              <h2 className="text-3xl md:text-4xl font-extrabold text-green-900 mb-6 tracking-tight">
+                Organic Fertilizers
+              </h2>
+              <p className="text-gray-700 mb-6 text-lg leading-relaxed">
+                Premium export-quality cow dung fertilizers — nutrient-rich, hygienically processed, and certified to meet global agricultural standards.
               </p>
-              <ul className="space-y-2 list-disc list-inside text-gray-800 text-base md:text-lg leading-relaxed">
-                <li>🌱 Enhances soil fertility and stimulates beneficial microbial life.</li>
+              <ul className="space-y-3 list-disc list-inside text-gray-800 text-base md:text-lg">
+                <li>🌱 Enhances soil fertility and microbial balance.</li>
                 <li>🥕 Ideal for horticulture, vineyards, and sustainable farming.</li>
-                <li>🧪 Certified lab-tested for quality assurance and safety.</li>
-                <li>📦 Customizable packaging and export-ready options.</li>
+                <li>🧪 Certified and lab-tested for nutrient consistency.</li>
+                <li>📦 Available in customizable, export-ready packaging.</li>
               </ul>
             </div>
           </div>
 
           {/* Timeline */}
-          <div className="py-10">
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-8 text-green-900 text-center">
-              Organic Fertilizer Process
+          <div className="py-12">
+            <h3 className="text-2xl md:text-3xl font-bold mb-10 text-green-900 text-center">
+              Organic Fertilizer Production Process
             </h3>
             <Timeline steps={cowDungProcessSteps} color="green" />
           </div>
         </section>
 
-        {/* Ethanol Section */}
-        <section className="rounded-3xl shadow-md p-6 sm:p-10 bg-yellow-50">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 items-center">
+        {/* 🟨 Renewable Ethanol Section */}
+        <section className="rounded-3xl shadow-lg p-8 sm:p-12 bg-gradient-to-br from-yellow-50 to-yellow-100 border border-yellow-100">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-yellow-700 mb-6">Renewable Ethanol</h2>
-              <p className="text-gray-700 mb-6 text-base md:text-lg leading-relaxed">
-                Our 65 KLPD ethanol plant produces fuel ethanol, pharma-grade ethanol, ENA, and EQRS worldwide with zero liquid discharge.
+              <h2 className="text-3xl md:text-4xl font-extrabold text-yellow-700 mb-6 tracking-tight">
+                Renewable Ethanol
+              </h2>
+              <p className="text-gray-700 mb-6 text-lg leading-relaxed">
+                Our 65 KLPD ethanol facility produces fuel ethanol, pharma-grade ENA, and EQRS — adhering to global quality and zero-liquid-discharge standards.
               </p>
-              <ul className="space-y-2 list-disc list-inside text-yellow-800 text-base md:text-lg leading-relaxed">
-                <li>⚡ Compliant with E20 fuel blending standards for cleaner energy.</li>
-                <li>💊 Pharma & healthcare-grade ethanol for rigorous global standards.</li>
-                <li>♻️ Environmentally responsible with advanced Zero Liquid Discharge systems.</li>
-                <li>🌍 Exporting across Asia, Africa, Europe, & the Middle East.</li>
+              <ul className="space-y-3 list-disc list-inside text-yellow-800 text-base md:text-lg">
+                <li>⚡ E20 fuel-blending compliant for sustainable mobility.</li>
+                <li>💊 Pharma & industrial-grade ethanol for diverse sectors.</li>
+                <li>♻️ Advanced ZLD systems ensuring no effluent discharge.</li>
+                <li>🌍 Global supply across Asia, Africa, Europe & Middle East.</li>
               </ul>
             </div>
             <motion.img
               src="/Images/EthonolFertilizer.jpg"
               alt="Renewable Ethanol Plant"
-              className="rounded-2xl shadow-lg w-full h-auto object-cover"
+              className="rounded-2xl shadow-lg w-full object-cover h-72 md:h-96"
               initial={{ opacity: 0, x: 80 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -151,57 +149,28 @@ const About = () => {
           </div>
 
           {/* Timeline */}
-          <div className="py-10">
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-8 text-yellow-700 text-center">
-              Renewable Ethanol Process
+          <div className="py-12">
+            <h3 className="text-2xl md:text-3xl font-bold mb-10 text-yellow-700 text-center">
+              Ethanol Production Process
             </h3>
             <Timeline steps={ethanolProcessSteps} color="yellow" />
           </div>
         </section>
 
-        {/* Team Section
-        <section className="py-12 sm:py-16 text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-900 mb-12">Our Leadership Team</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-            {teamMembers.map((member, i) => (
-              <motion.div
-                key={i}
-                className="space-y-5"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.2 }}
-              >
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="rounded-full mx-auto w-28 h-28 sm:w-32 sm:h-32 object-cover shadow-md"
-                />
-                <h3 className="text-lg sm:text-xl md:text-2xl font-semibold">{member.name}</h3>
-                <p className="text-gray-700 text-sm sm:text-base md:text-lg">{member.role}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section> */}
-
-        {/* CTA Section */}
-        <div className="py-10 px-6 sm:px-10 text-center bg-gradient-to-r from-green-800 to-green-600 text-white rounded-3xl max-w-2xl mx-auto shadow-xl">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-6">One Stop Agro-Energy Hub</h2>
-          <p className="max-w-xl mx-auto mb-8 text-base md:text-lg leading-relaxed">
-            From organic fertilizers to renewable ethanol — we deliver complete, sustainable agro-energy solutions for farmers, industry, and the planet.
+        {/* 🌿 CTA */}
+        <div className="py-12 px-8 sm:px-10 text-center bg-gradient-to-r from-green-800 to-green-600 text-white rounded-3xl max-w-3xl mx-auto shadow-xl">
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-6">
+            One Stop Agro-Energy Hub
+          </h2>
+          <p className="max-w-xl mx-auto mb-8 text-lg leading-relaxed text-green-50">
+            From organic fertilizers to renewable ethanol — Chetas Agro powers sustainability through technology and eco-innovation.
           </p>
-          {/* <a
-            href="/contact"
-            className="bg-yellow-400 text-green-900 font-bold px-8 py-3 rounded-full shadow-md hover:bg-yellow-500 transition text-base md:text-lg"
+          <Link
+            to="/contact"
+            className="bg-yellow-400 text-green-900 font-semibold px-10 py-4 rounded-full shadow-md hover:bg-yellow-500 hover:scale-105 transition-transform text-lg"
           >
             Contact Us
-          </a> */}
-          <Link
-  to="/contact"
-  className="bg-yellow-400 text-green-900 font-bold px-8 py-3 rounded-full shadow-md hover:bg-yellow-500 transition text-base md:text-lg"
->
-  Contact Us
-</Link>
+          </Link>
         </div>
       </main>
     </div>
