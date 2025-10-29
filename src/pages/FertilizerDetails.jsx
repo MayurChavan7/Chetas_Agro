@@ -1,200 +1,239 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import {
+  Factory,
+  FlaskRound,
+  Microscope,
+  Package,
+  Droplets,
+  Leaf,
+  Recycle,
+  Gauge,
+  ShieldCheck,
+  Globe,
+} from "lucide-react";
 
-// Process steps
-const steps = [
-  { title: "Cow Dung Collection", desc: "Dung collected from 10,000+ healthy cattle.", icon: "🐄" },
-  { title: "Dewatering", desc: "Dung is dried & dewatered using modern machinery.", icon: "💧" },
-  { title: "Composting", desc: "Material undergoes aerobic composting for nutrient enrichment.", icon: "🌱" },
-  { title: "Testing & Certification", desc: "Each batch is lab tested for organic purity.", icon: "✅" },
-  { title: "Packaging", desc: "Eco-friendly packaging ready for farmers worldwide.", icon: "📦" },
+// ======================= DATA =======================
+const processSteps = [
+  {
+    icon: <Factory className="w-10 h-10 text-emerald-600" />,
+    title: "Automated Cow Dung Collection",
+    desc: "Dung collected hygienically from over 10,000 cattle using conveyor-based systems for continuous operation.",
+  },
+  {
+    icon: <Droplets className="w-10 h-10 text-teal-600" />,
+    title: "Dewatering & Drying",
+    desc: "Moisture removed through PLC-controlled screw presses and rotary dryers ensuring consistent texture.",
+  },
+  {
+    icon: <FlaskRound className="w-10 h-10 text-green-600" />,
+    title: "Aerobic Composting",
+    desc: "Dung enriched with organic additives and biologically treated to improve nutrient balance.",
+  },
+  {
+    icon: <Microscope className="w-10 h-10 text-emerald-700" />,
+    title: "Testing & Certification",
+    desc: "Lab analysis ensures NPK ratios, microbial counts, and heavy metal safety meet export-grade standards.",
+  },
+  {
+    icon: <Package className="w-10 h-10 text-lime-600" />,
+    title: "Eco-Packaging & Export",
+    desc: "Final product packed in biodegradable bags with private labeling options for global distribution.",
+  },
 ];
 
+const technicalHighlights = [
+  { label: "Rotary Dryers", detail: "High-efficiency with temperature control" },
+  { label: "Screw Conveyors", detail: "Seamless material handling system" },
+  { label: "Grinding Units", detail: "Particle size reduction & uniformity" },
+  { label: "Sieving Units", detail: "Dust-free fine granule processing" },
+  { label: "Automatic Packaging", detail: "20–50 kg bags with sealing automation" },
+];
+
+const nutrients = [
+  { name: "Nitrogen (N)", role: "Leaf growth & chlorophyll formation", value: "1.5–2%" },
+  { name: "Phosphorus (P)", role: "Root development & flowering", value: "1–1.5%" },
+  { name: "Potassium (K)", role: "Plant resilience & fruit formation", value: "1–1.8%" },
+  { name: "Organic Carbon", role: "Improves soil structure", value: "20–25%" },
+  { name: "Moisture Content", role: "Maintains microbial activity", value: "< 20%" },
+];
+
+const impactStats = [
+  { value: "10,000+", label: "Cattle Managed" },
+  { value: "100%", label: "Organic Certified" },
+  { value: "1M+", label: "Farmers Benefited" },
+  { value: "0%", label: "Chemical Additives" },
+];
+
+// ======================= COMPONENT =======================
 const FertilizerDetails = () => {
   return (
-    <main className="relative pt-32 pb-5 px-4 sm:px-6 lg:px-12 min-h-screen overflow-hidden bg-green-50">
-
-      {/* Background Images */}
-      {/* Farm background - covers whole page on desktop, positioned top on mobile */}
-      <img
-        src="/Images/farm_front_angle.png"
-        alt="Farm Background"
-        // className="absolute top-0 left-0 w-full h-full lg:h-auto z-0 object-cover lg:object-contain pointer-events-none"
-        className="absolute top-0 left-0 w-full min-h-full z-0 object-cover pointer-events-none"
-      />
-
-      {/* Rainbow - adjusted for better visibility */}
-      {/* <img
-        src="/Images/rainbow.png"
-        alt="Rainbow"
-        className="absolute top-20 lg:top-10 left-1/2 transform -translate-x-1/2 w-60 lg:w-80 z-0 pointer-events-none"
-      /> */}
-
-      {/* Raindrops */}
-      {[...Array(15)].map((_, i) => (
+    <main className="bg-gradient-to-b from-white via-slate-50 to-gray-100 min-h-screen font-[Inter] overflow-hidden">
+      {/* ========== HERO SECTION ========== */}
+      <section className="relative py-28 text-center overflow-hidden">
         <motion.div
-          key={i}
-          className="absolute w-1 h-6 bg-blue-400 rounded-full"
-          style={{ left: `${Math.random() * 100}%` }}
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 700, opacity: 1 }}
-          transition={{
-            duration: 2 + Math.random() * 2,
-            repeat: Infinity,
-            repeatType: "loop",
-            delay: Math.random() * 2,
-          }}
+          className="absolute inset-0 bg-gradient-to-r from-emerald-700 via-green-700 to-lime-600 opacity-95"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2 }}
         />
-      ))}
-
-      {/* Page Content */}
-      <div className="relative z-10 max-w-6xl mx-auto text-center">
-        {/* Heading - no background */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-green-800 mb-6">
-          🌱 How Cow Dung Fertilizer is Made
-        </h1>
-        <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto mb-12">
-          We transform cattle waste into nutrient-rich, certified organic fertilizers through a 
-          sustainable, eco-friendly process.
-        </p>
-
-        {/* Process Steps: Responsive Grid/Staircase Layout */}
-        <div className="relative z-10 max-w-6xl mx-auto mt-8 px-4 sm:px-6 lg:px-0">
-          {/* Mobile & Tablet: Vertical Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:hidden">
-            {steps.map((step, i) => (
-              <motion.div
-                key={i}
-                className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-lg text-center"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-              >
-                <div className="text-5xl mb-4">{step.icon}</div>
-                <h3 className="text-xl font-semibold text-green-700 mb-2">{step.title}</h3>
-                <p className="text-base text-gray-600">{step.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Desktop: Staircase Layout */}
-          <div className="hidden lg:flex justify-between items-start gap-6">
-            {steps.map((step, i) => (
-              <motion.div
-                key={i}
-                className={`flex flex-col items-center bg-white p-8 rounded-2xl shadow-lg text-center w-56
-                  ${i % 2 === 0 ? "mt-0" : "mt-12"}`}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.15 }}
-              >
-                <div className="text-5xl mb-4">{step.icon}</div>
-                <h3 className="text-xl font-semibold text-green-700 mb-2">{step.title}</h3>
-                <p className="text-base text-gray-600">{step.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Nutrient Composition Section */}
-        <div className="relative z-10 max-w-6xl mx-auto mt-10 lg:mt-10 px-4 sm:px-6 lg:px-0 text-center">
-          <h1 className="inline-block px-6 py-2 text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-green-950 bg-white/40 rounded-2xl mb-6 lg:mb-10">
-            🌿 Nutrient Composition of Cow Dung Fertilizer
+        <motion.div
+          className="relative z-10 text-white max-w-4xl mx-auto px-6"
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          <h1 className="text-5xl md:text-6xl font-extrabold mb-6">
+            Smart Organic Fertilizer Manufacturing
           </h1>
-          {/* Nutrient Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Card 1: Plant Fibers */}
-            <motion.div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg" 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              animate={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0 }}>
-              <h3 className="text-lg sm:text-xl font-semibold text-green-700 mb-4">Rich in Undigested Plant Fibers</h3>
-              <ul className="list-disc list-inside space-y-1 text-gray-700">
-                <li>Cellulose</li>
-                <li>Hemicellulose</li>
-                <li>Lignin</li>
-              </ul>
-            </motion.div>
+          <p className="text-lg md:text-xl text-emerald-50 max-w-2xl mx-auto leading-relaxed">
+            Precision-engineered fertilizers from cow dung — combining nature’s nutrients
+            with industrial innovation.
+          </p>
+        </motion.div>
+      </section>
 
-            {/* Card 2: Macronutrients */}
-            <motion.div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg"
+      {/* ========== PROCESS SECTION ========== */}
+      <section className="py-24 px-6 lg:px-16 max-w-7xl mx-auto text-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-12">
+          Automated Manufacturing Process
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          {processSteps.map((step, i) => (
+            <motion.div
+              key={i}
+              className="bg-white/80 backdrop-blur-sm border border-gray-100 rounded-3xl shadow-lg p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              animate={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0 }}
+              transition={{ delay: i * 0.1 }}
             >
-              <h3 className="text-lg sm:text-xl font-semibold text-green-700 mb-4">Macronutrients (NPK)</h3>
-              <ul className="list-disc list-inside space-y-1 text-gray-700">
-                <li>Nitrogen (N) – Promotes leafy growth</li>
-                <li>Phosphorus (P) – Supports root development and flowering</li>
-                <li>Potassium (K) – Improves plant resilience and fruit quality</li>
-              </ul>
+              <div className="flex justify-center mb-4">{step.icon}</div>
+              <h3 className="font-bold text-lg text-emerald-700 mb-2">
+                {step.title}
+              </h3>
+              <p className="text-gray-600 text-sm">{step.desc}</p>
             </motion.div>
+          ))}
+        </div>
+      </section>
 
-            {/* Card 3: Other Minerals */}
-            <motion.div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              animate={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0 }}
-            >
-              <h3 className="text-lg sm:text-xl font-semibold text-green-700 mb-4">Other Essential Minerals</h3>
-              <p className="text-gray-700">
-                Calcium (Ca), Magnesium (Mg), Sulphur (S), Iron (Fe), Zinc (Zn), Copper (Cu), Cobalt (Co), Manganese (Mn), and other trace elements
-              </p>
-            </motion.div>
-
-            {/* Card 4: Microbial Diversity */}
-            <motion.div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              animate={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0 }}
-            >
-              <h3 className="text-lg sm:text-xl font-semibold text-green-700 mb-4">Microbial Diversity</h3>
-              <p className="text-gray-700">
-                Cow dung powder contains a diverse community of microorganisms and bacteria beneficial for soil and plant health.
-              </p>
-            </motion.div>
+      {/* ========== TECHNICAL HIGHLIGHTS ========== */}
+      <section className="py-20 bg-white border-t border-gray-200">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold text-gray-800 mb-10">
+            Inside Our Facility
+          </h2>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+            {technicalHighlights.map((t, i) => (
+              <motion.div
+                key={i}
+                className="bg-slate-50 rounded-2xl p-6 shadow-md hover:shadow-xl transition-all"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <h3 className="text-emerald-700 font-semibold text-lg mb-2">
+                  {t.label}
+                </h3>
+                <p className="text-gray-600">{t.detail}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
+      </section>
 
-        {/* CTA */}
-        <div className="mt-16 sm:mt-20 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            animate={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-gradient-to-r from-green-700 to-green-500 p-8 sm:p-10 rounded-3xl shadow-xl text-white"
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-              Supporting Farmers, Nurturing Nature 🌍
-            </h2>
-            <p className="text-sm sm:text-base md:text-lg mb-6 max-w-2xl mx-auto">
-              Our organic fertilizers enrich soils, boost yields, and reduce chemical dependency — 
-              building a sustainable future for agriculture.
-            </p>
+      {/* ========== NUTRIENT SECTION ========== */}
+      <section className="py-20 bg-gradient-to-b from-slate-100 to-white">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-12">
+            Nutrient Composition & Quality Parameters
+          </h2>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+            {nutrients.map((n, i) => (
+              <motion.div
+                key={i}
+                className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-lg transition-all"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <h3 className="text-xl font-bold text-emerald-700 mb-2">
+                  {n.name}
+                </h3>
+                <p className="text-gray-600 text-sm mb-2">{n.role}</p>
+                <p className="text-lg font-semibold text-gray-800">
+                  {n.value}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========== SUSTAINABILITY SECTION ========== */}
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-12">
+            Sustainability & Impact
+          </h2>
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
+            {impactStats.map((stat, i) => (
+              <motion.div
+                key={i}
+                className="bg-emerald-50 rounded-2xl p-8 shadow-md hover:shadow-lg transition"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <h3 className="text-4xl font-extrabold text-emerald-700 mb-2">
+                  {stat.value}
+                </h3>
+                <p className="text-gray-600 font-medium">{stat.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========== CTA SECTION ========== */}
+      <section className="py-24 px-6">
+        <motion.div
+          className="max-w-5xl mx-auto text-center bg-white/60 backdrop-blur-xl border border-emerald-200 shadow-2xl rounded-3xl p-12"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="text-4xl font-bold text-emerald-800 mb-4">
+            Building a Greener Future, One Farm at a Time 🌎
+          </h2>
+          <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
+            Join Chetas Agrotech in transforming waste into wealth through
+            smart, sustainable, and scalable fertilizer technology.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
-              className="inline-block bg-yellow-400 hover:bg-yellow-500 text-green-900 font-semibold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105 text-base sm:text-lg"
+              className="bg-emerald-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-emerald-700 shadow-lg transition"
             >
               Contact Us
             </Link>
-          </motion.div>
-        </div>
-      </div>
+            <a
+              href="/brochure/CowDungFertilizer.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white text-emerald-700 border border-emerald-700 px-10 py-4 rounded-full font-bold text-lg hover:bg-emerald-50 transition"
+            >
+              Download Brochure
+            </a>
+          </div>
+        </motion.div>
+      </section>
     </main>
   );
 };
