@@ -3,15 +3,7 @@ import { motion } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
-
-// Slogans — auto-rotating banner
-const slogans = [
-  "Transforming Waste into Wealth ♻️",
-  "From Grains to Green Energy ⚡",
-  "Sustainable Growth for a Greener Tomorrow 🌿",
-  "Global Standards, Local Commitment 🌍",
-  "Fueling Growth, Nurturing Nature 🌾",
-];
+import { Leaf, Droplets, Recycle } from "lucide-react";
 
 const About = () => {
   useEffect(() => {
@@ -67,31 +59,70 @@ const About = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-green-50 via-white to-green-100 overflow-x-hidden font-[Poppins]">
-      {/* ======== MOVING SLOGAN BAR ======== */}
-      <div className="relative z-10 py-6 sm:py-10 max-w-6xl mx-auto px-6 mt-24">
-        <motion.div className="relative h-14 sm:h-16 overflow-hidden flex items-center justify-start rounded-2xl border bg-green-800/95 shadow-lg">
-          <motion.div
-            className="flex whitespace-nowrap gap-10 text-green-100 font-semibold uppercase text-sm sm:text-lg md:text-xl tracking-wide select-none"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: slogans.length * 2,
-                ease: "linear",
-              },
-            }}
-          >
-            {slogans.concat(slogans).map((text, i) => (
-              <span key={i} className="px-6">{text}</span>
-            ))}
-          </motion.div>
-        </motion.div>
-      </div>
+      
+      {/* 🌿 ======= NEW CORE VALUES SECTION (Replaces Running Text) ======= */}
+      <section className="relative z-10 py-16 sm:py-20 max-w-6xl mx-auto px-6 mt-24 text-center">
+        <motion.h2
+          className="text-3xl md:text-5xl font-extrabold text-green-900 mb-6"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          Our Core Values 🌿
+        </motion.h2>
+        <motion.p
+          className="text-gray-700 text-lg md:text-xl max-w-3xl mx-auto mb-12 leading-relaxed"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+        >
+          At <strong>Chetas Agrotech</strong>, we believe true progress grows from the soil — 
+          blending technology, sustainability, and nature to build a cleaner, self-reliant future for India.
+        </motion.p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 mt-10">
+          {[
+            {
+              icon: <Leaf className="w-10 h-10 text-green-700" />,
+              title: "Innovation",
+              desc: "We transform agricultural waste into high-value energy and organic fertilizers using cutting-edge technology.",
+            },
+            {
+              icon: <Droplets className="w-10 h-10 text-green-700" />,
+              title: "Sustainability",
+              desc: "Our zero-waste circular processes protect natural resources while powering clean energy growth.",
+            },
+            {
+              icon: <Recycle className="w-10 h-10 text-green-700" />,
+              title: "Growth",
+              desc: "Empowering farmers, industries, and the planet through green initiatives and inclusive development.",
+            },
+          ].map((item, i) => (
+            <motion.div
+              key={i}
+              className="bg-white/90 backdrop-blur-md border border-green-100 shadow-lg rounded-2xl p-8 hover:scale-105 transition-transform"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.2 }}
+            >
+              <div className="flex flex-col items-center gap-4">
+                <div className="p-4 bg-green-100 rounded-full">{item.icon}</div>
+                <h3 className="text-2xl font-bold text-green-800">{item.title}</h3>
+                <p className="text-gray-700 text-base leading-relaxed">{item.desc}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
 
       {/* ======== COMPANY OVERVIEW ======== */}
       <section className="max-w-6xl mx-auto px-6 py-20 text-center">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-green-900 mb-6">About Chetas Agrotech</h1>
+        <h1 className="text-4xl md:text-5xl font-extrabold text-green-900 mb-6">
+          About Chetas Agrotech
+        </h1>
         <p className="text-gray-700 text-lg md:text-xl leading-relaxed max-w-4xl mx-auto mb-8">
           <strong>Chetas Agrotech Pvt. Ltd.</strong> — a division of the <strong>Chetas Group (Valued at ₹1300 Cr / $158M)</strong> — 
           is a pioneer in sustainable agro-energy and waste-to-resource innovation. Based in Maharashtra, India, 
@@ -199,7 +230,9 @@ const About = () => {
 
       {/* 🌿 MISSION & SUSTAINABILITY SECTION */}
       <section className="max-w-6xl mx-auto py-20 px-6 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-green-900 mb-6">Mission, Vision & Sustainability</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-green-900 mb-6">
+          Mission, Vision & Sustainability
+        </h2>
         <p className="max-w-4xl mx-auto text-gray-700 text-lg mb-10 leading-relaxed">
           Our mission is to <strong>empower farmers, protect the planet, and redefine waste utilization</strong> through green innovation. 
           We envision a world where agriculture and energy coexist sustainably — improving livelihoods and preserving the ecosystem.
@@ -218,8 +251,12 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
             >
-              <h4 className="text-2xl font-bold text-green-800 mb-3">{item.title}</h4>
-              <p className="text-gray-700 text-base leading-relaxed">{item.desc}</p>
+              <h4 className="text-2xl font-bold text-green-800 mb-3">
+                {item.title}
+              </h4>
+              <p className="text-gray-700 text-base leading-relaxed">
+                {item.desc}
+              </p>
             </motion.div>
           ))}
         </div>
