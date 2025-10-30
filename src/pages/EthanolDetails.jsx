@@ -1,26 +1,79 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import {
-  Award, Droplet, Leaf, Shield, Globe, Factory, Flame, AlertTriangle, Package
+  Award,
+  Droplet,
+  Leaf,
+  Shield,
+  Globe,
+  Factory,
+  Flame,
+  AlertTriangle,
+  Package,
 } from "lucide-react";
 
 const EthanolDetails = () => {
   const [activeSpec, setActiveSpec] = useState(0);
+  const navigate = useNavigate(); // ✅ Added for navigation
 
   const specs = [
-    { grade: "Pharma Grade Ethanol", purity: "99.9%", use: "Medicines, Cosmetics, Sanitizers", standard: "IP / BP / USP" },
-    { grade: "Fuel Grade (ENA)", purity: "99.5%", use: "Petrol Blending (E20)", standard: "IS 15464" },
-    { grade: "Industrial Grade", purity: "95–96%", use: "Solvents, Paints, Chemicals", standard: "IS 517" },
+    {
+      grade: "Pharma Grade Ethanol",
+      purity: "99.9%",
+      use: "Medicines, Cosmetics, Sanitizers",
+      standard: "IP / BP / USP",
+    },
+    {
+      grade: "Fuel Grade (ENA)",
+      purity: "99.5%",
+      use: "Petrol Blending (E20)",
+      standard: "IS 15464",
+    },
+    {
+      grade: "Industrial Grade",
+      purity: "95–96%",
+      use: "Solvents, Paints, Chemicals",
+      standard: "IS 517",
+    },
   ];
 
   const steps = [
-    { icon: "🌾", title: "Feedstock Handling", desc: "Maize / broken rice sourced locally; processed through milling and moisture control." },
-    { icon: "⚗️", title: "Liquefaction & Saccharification", desc: "Enzymatic conversion of starch into fermentable sugars using α-amylase & glucoamylase." },
-    { icon: "🧫", title: "Fermentation", desc: "Yeast-based fermentation producing ethanol from sugars under controlled temperature & pH." },
-    { icon: "🏭", title: "Distillation & Rectification", desc: "Multi-column system producing 95–96% rectified spirit." },
-    { icon: "💧", title: "Dehydration", desc: "Molecular sieves achieve ≥99.5% anhydrous ethanol purity." },
-    { icon: "🧴", title: "Pharma Polishing", desc: "Activated carbon, ion exchange & sterile filtration for GMP-grade ethanol." },
-    { icon: "♻️", title: "Effluent Handling", desc: "Anaerobic digestion + evaporation for ZLD (Zero Liquid Discharge)." },
+    {
+      icon: "🌾",
+      title: "Feedstock Handling",
+      desc: "Maize / broken rice sourced locally; processed through milling and moisture control.",
+    },
+    {
+      icon: "⚗️",
+      title: "Liquefaction & Saccharification",
+      desc: "Enzymatic conversion of starch into fermentable sugars using α-amylase & glucoamylase.",
+    },
+    {
+      icon: "🧫",
+      title: "Fermentation",
+      desc: "Yeast-based fermentation producing ethanol from sugars under controlled temperature & pH.",
+    },
+    {
+      icon: "🏭",
+      title: "Distillation & Rectification",
+      desc: "Multi-column system producing 95–96% rectified spirit.",
+    },
+    {
+      icon: "💧",
+      title: "Dehydration",
+      desc: "Molecular sieves achieve ≥99.5% anhydrous ethanol purity.",
+    },
+    {
+      icon: "🧴",
+      title: "Pharma Polishing",
+      desc: "Activated carbon, ion exchange & sterile filtration for GMP-grade ethanol.",
+    },
+    {
+      icon: "♻️",
+      title: "Effluent Handling",
+      desc: "Anaerobic digestion + evaporation for ZLD (Zero Liquid Discharge).",
+    },
   ];
 
   const certifications = [
@@ -76,7 +129,7 @@ const EthanolDetails = () => {
             </ul>
           </motion.div>
           <motion.img
-            src="/Images/EthanolPlant.jpg"
+            src="/Images/EthonolFertilizer3.png"
             alt="Ethanol Plant"
             className="rounded-3xl shadow-2xl"
             initial={{ opacity: 0, x: 50 }}
@@ -180,7 +233,11 @@ const EthanolDetails = () => {
           >
             📄 Download Brochure
           </a>
-          <button className="bg-yellow-800 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-900 transition">
+          {/* ✅ Updated Contact Button */}
+          <button
+            onClick={() => navigate("/contact")}
+            className="bg-yellow-800 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-900 transition"
+          >
             📞 Contact Us
           </button>
         </div>

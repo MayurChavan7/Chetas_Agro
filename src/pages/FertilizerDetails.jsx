@@ -59,11 +59,11 @@ const nutrients = [
   { name: "Moisture Content", role: "Maintains microbial activity", value: "< 20%" },
 ];
 
+// ✅ UPDATED Sustainability & Impact data
 const impactStats = [
-  { value: "10,000+", label: "Cattle Managed" },
-  { value: "100%", label: "Organic Certified" },
-  { value: "1M+", label: "Farmers Benefited" },
-  { value: "0%", label: "Chemical Additives" },
+  { value: "65 KLPD", label: "Ethanol Capacity" },
+  { value: "75,000+", label: "Cattle Managed" },
+  { value: "100%", label: "ZLD & Organic Certified" },
 ];
 
 // ======================= COMPONENT =======================
@@ -174,13 +174,13 @@ const FertilizerDetails = () => {
         </div>
       </section>
 
-      {/* ========== SUSTAINABILITY SECTION ========== */}
+      {/* ========== UPDATED SUSTAINABILITY SECTION ========== */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-12">
             Sustainability & Impact
           </h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
             {impactStats.map((stat, i) => (
               <motion.div
                 key={i}
