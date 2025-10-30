@@ -40,22 +40,22 @@ const ImageCard = React.memo(({ img, title }) => (
 const Testimonials = () => {
   const cowVarieties = useMemo(
     () => [
-      { img: "/Images/cow1.jpg", title: "Gir Cow" },
-      { img: "/Images/cow2.jpg", title: "Sahiwal Cow" },
-      { img: "/Images/cow3.jpg", title: "Rathi Cow" },
-      { img: "/Images/cow4.jpg", title: "Tharparkar Cow" },
-      { img: "/Images/cow5.jpg", title: "Red Sindhi Cow" },
+      { img: "/Images/Gir.png", title: "Gir Cow" },
+      { img: "/Images/Sahiwal.png", title: "Sahiwal Cow" },
+      { img: "/Images/Rathi.png", title: "Rathi Cow" },
+      { img: "/Images/Tharparkar.png", title: "Tharparkar Cow" },
+      { img: "/Images/Red Sindhi.png", title: "Red Sindhi Cow" },
     ],
     []
   );
 
   const ethanolVarieties = useMemo(
     () => [
-      { img: "/Images/ethanol1.jpg", title: "Fuel Grade Ethanol" },
-      { img: "/Images/ethanol2.jpg", title: "Industrial Grade Ethanol" },
-      { img: "/Images/ethanol3.jpg", title: "Pharma Grade Ethanol" },
-      { img: "/Images/ethanol4.jpg", title: "Anhydrous Ethanol" },
-      { img: "/Images/ethanol5.jpg", title: "Bio-based Ethanol" },
+      { img: "/Images/Fuel grade Ethanol.jpg", title: "Fuel Grade Ethanol" },
+      { img: "/Images/Industrial grade Ethanol.jpg", title: "Industrial Grade Ethanol" },
+      { img: "/Images/Pharma grade Ethanol.jpg", title: "Pharma Grade Ethanol" },
+      { img: "/Images/Anhydrous Ethanol.png", title: "Anhydrous Ethanol" },
+      { img: "/Images/Bio-Based Ethanol.png", title: "Bio-based Ethanol" },
     ],
     []
   );

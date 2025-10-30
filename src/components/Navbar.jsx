@@ -23,7 +23,6 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
 
-  // Animation variants for mobile drawer
   const menuVariants = {
     hidden: { x: "100%", opacity: 0 },
     visible: {
@@ -35,18 +34,18 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 w-full z-[9999] bg-white/90 backdrop-blur-md shadow-md">
+    <nav className="fixed top-0 w-full z-[9999] bg-gradient-to-r from-green-700 via-green-600 to-lime-500 text-white backdrop-blur-md shadow-lg">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-3">
-        {/* Logo */}
+        {/* 🌿 Logo */}
         <Link to="/" className="flex items-center">
           <img
             src="/Images/Logo.png"
             alt="Chetas Agro Logo"
-            className="h-16 md:h-20 w-auto object-contain"
+            className="h-16 md:h-20 w-auto object-contain drop-shadow-md"
           />
         </Link>
 
-        {/* Desktop Menu */}
+        {/* 💻 Desktop Menu */}
         <div className="hidden md:flex space-x-10 font-semibold text-lg">
           {menuItems.map(({ name, path, subItems }, i) =>
             subItems ? (
@@ -56,7 +55,7 @@ const Navbar = () => {
                 onMouseEnter={() => setActiveDropdown(i)}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="flex items-center gap-1 text-gray-800 hover:text-green-700 transition-colors duration-300">
+                <button className="flex items-center gap-1 text-white hover:text-yellow-200 transition">
                   {name}
                   <ChevronDown
                     size={16}
@@ -66,7 +65,6 @@ const Navbar = () => {
                   />
                 </button>
 
-                {/* Dropdown */}
                 <AnimatePresence>
                   {activeDropdown === i && (
                     <motion.div
@@ -74,13 +72,13 @@ const Navbar = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute left-0 mt-2 bg-white shadow-lg rounded-md py-2 w-56"
+                      className="absolute left-0 mt-2 bg-white text-green-800 shadow-lg rounded-md py-2 w-56"
                     >
                       {subItems.map((sub) => (
                         <Link
                           key={sub.name}
                           to={sub.path}
-                          className="block px-4 py-2 text-gray-700 hover:bg-green-100 hover:text-green-700 transition-colors"
+                          className="block px-4 py-2 hover:bg-green-100 hover:text-green-700 transition-colors"
                         >
                           {sub.name}
                         </Link>
@@ -93,19 +91,19 @@ const Navbar = () => {
               <Link
                 key={i}
                 to={path}
-                className="relative group text-gray-800 hover:text-green-700 transition-colors duration-300"
+                className="relative group text-white hover:text-yellow-200 transition duration-300"
               >
                 {name}
-                <span className="absolute left-0 -bottom-1 w-0 h-[3px] bg-gradient-to-r from-green-400 to-green-700 transition-all group-hover:w-full"></span>
+                <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-yellow-300 transition-all group-hover:w-full"></span>
               </Link>
             )
           )}
         </div>
 
-        {/* Mobile Hamburger */}
+        {/* 📱 Mobile Hamburger */}
         <button
           type="button"
-          className="md:hidden flex items-center justify-center w-12 h-12 rounded-full bg-green-100 hover:bg-green-200 text-gray-800"
+          className="md:hidden flex items-center justify-center w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 text-yellow-200"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle Menu"
         >
@@ -113,11 +111,11 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* 📲 Mobile Drawer */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed top-[88px] right-0 w-full bg-white backdrop-blur-md shadow-xl z-[10000] flex flex-col px-6 pb-4"
+            className="fixed top-[88px] right-0 w-full bg-gradient-to-b from-green-700 via-green-600 to-lime-500 text-white backdrop-blur-md shadow-xl z-[10000] flex flex-col px-6 pb-4"
             variants={menuVariants}
             initial="hidden"
             animate="visible"
@@ -130,7 +128,7 @@ const Navbar = () => {
                     onClick={() =>
                       setActiveDropdown(activeDropdown === i ? null : i)
                     }
-                    className="flex justify-between items-center bg-green-600 text-yellow-300 font-semibold text-lg px-4 py-2 rounded-md"
+                    className="flex justify-between items-center bg-white/10 text-yellow-200 font-semibold text-lg px-4 py-2 rounded-md"
                   >
                     {name}
                     <ChevronDown
@@ -154,7 +152,7 @@ const Navbar = () => {
                           <Link
                             key={sub.name}
                             to={sub.path}
-                            className="px-3 py-2 text-gray-700 hover:bg-green-100 hover:text-green-700 rounded-md"
+                            className="px-3 py-2 bg-white/10 text-white hover:bg-green-100 hover:text-green-700 rounded-md"
                             onClick={() => setIsOpen(false)}
                           >
                             {sub.name}
@@ -168,7 +166,7 @@ const Navbar = () => {
                 <MotionLink
                   key={i}
                   to={path}
-                  className="bg-green-600 text-yellow-300 hover:bg-green-800 hover:text-yellow-100 font-semibold text-lg px-4 py-2 rounded-md mt-2 transition-colors duration-300"
+                  className="bg-white/10 hover:bg-white/20 text-yellow-100 font-semibold text-lg px-4 py-2 rounded-md mt-2 transition"
                   onClick={() => setIsOpen(false)}
                 >
                   {name}

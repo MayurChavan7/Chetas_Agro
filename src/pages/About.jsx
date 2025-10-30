@@ -11,7 +11,7 @@ const About = () => {
   }, []);
 
   const cowDungProcess = [
-    { step: "1", title: "Collection", desc: "Fresh dung sourced daily from 10,000+ cattle across our integrated dairy farms." },
+    { step: "1", title: "Collection", desc: "Fresh dung sourced daily from 75,000+ cattle across our integrated dairy farms." },
     { step: "2", title: "Dewatering", desc: "Automated separators reduce moisture while retaining essential nutrients." },
     { step: "3", title: "Sanitization", desc: "Controlled heat treatment removes pathogens & odors for safe organic use." },
     { step: "4", title: "Testing & Certification", desc: "Lab-tested for NPK content, microbial activity & certified as 100% organic." },
@@ -125,7 +125,7 @@ const About = () => {
           is a pioneer in sustainable agro-energy and waste-to-resource innovation. 
           Based in Maharashtra, India, we specialize in <strong>organic fertilizers</strong> 
           and <strong>renewable ethanol production</strong>, operating across <strong>14+ states</strong> 
-          and serving <strong>5 major industries</strong> — driving rural development, environmental protection, 
+            and serving <strong>5 major industries</strong> — driving rural development, environmental protection, 
           and energy independence.
         </p>
 

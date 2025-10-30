@@ -1,5 +1,13 @@
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Linkedin, Phone, Mail, MapPin } from "lucide-react";
+import {
+  Facebook,
+  Instagram,
+  Linkedin,
+  Phone,
+  Mail,
+  MapPin,
+  X,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import React, { useMemo, useState } from "react";
 
@@ -26,26 +34,22 @@ const Footer = React.memo(() => {
   );
 
   const sectionVariants = {
-    hidden: { opacity: 0, y: 40 },
+    hidden: { opacity: 0, y: 30 },
     visible: (i) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.2, duration: 0.6, type: "spring" },
+      transition: { delay: i * 0.15, duration: 0.6, type: "spring" },
     }),
   };
 
   return (
-    <footer className="relative text-white overflow-hidden">
-      {/* Background */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/footer-bg.jpg')" }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-green-900/70 to-black/80" />
+    <footer className="relative text-white overflow-hidden backdrop-blur-md bg-gradient-to-r from-green-900/70 via-green-800/60 to-lime-700/60 shadow-[0_-4px_30px_rgba(0,0,0,0.2)] border-t border-white/10">
+      {/* Background pattern */}
+      <div className="absolute inset-0 opacity-10 bg-[url('/footer-bg.jpg')] bg-cover bg-center" />
 
       {/* Footer Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-16 sm:py-20 grid grid-cols-1 md:grid-cols-4 gap-12 text-left">
-        {/* About / Commitment Section */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-14 sm:py-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 text-left">
+        {/* Our Commitment */}
         <motion.div
           custom={0}
           variants={sectionVariants}
@@ -53,16 +57,16 @@ const Footer = React.memo(() => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <h5 className="text-2xl font-bold mb-4 md:mb-6 border-b-2 border-green-400 inline-block">
+          <h5 className="text-lg sm:text-xl font-bold mb-3 border-b-2 border-lime-300 inline-block pb-1">
             Our Commitment
           </h5>
-          <p className="text-gray-300 leading-relaxed text-base sm:text-lg">
-            At <span className="font-semibold text-green-300">Chetas Agro</span>, we are
-            committed to a sustainable future. We transform{" "}
-            <span className="font-semibold text-green-300">organic cow dung</span> into
-            nutrient-rich fertilizers, and produce{" "}
-            <span className="font-semibold text-yellow-300">renewable ethanol</span> for
-            clean energy and pharmaceutical applications.
+          <p className="text-gray-100 text-sm sm:text-base leading-relaxed">
+            At <span className="font-semibold text-lime-300">Chetas Agrotech</span>, we’re
+            committed to a sustainable future — converting{" "}
+            <span className="font-semibold text-green-200">organic cow dung</span> into
+            nutrient-rich fertilizers and producing{" "}
+            <span className="font-semibold text-yellow-200">renewable ethanol</span> for
+            green energy and pharma-grade uses.
           </p>
         </motion.div>
 
@@ -74,17 +78,17 @@ const Footer = React.memo(() => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <h5 className="text-2xl font-bold mb-4 md:mb-6 border-b-2 border-green-400 inline-block">
+          <h5 className="text-lg sm:text-xl font-bold mb-3 border-b-2 border-lime-300 inline-block pb-1">
             Quick Links
           </h5>
-          <ul className="space-y-3 sm:space-y-4 text-base sm:text-lg">
+          <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base">
             {quickLinks.map(({ to, label }) => (
               <motion.li
                 key={to}
-                whileHover={{ x: 6, color: "#4ade80" }}
+                whileHover={{ x: 5, color: "#bef264" }}
                 transition={{ type: "spring", stiffness: 250 }}
               >
-                <Link to={to} className="transition duration-300">
+                <Link to={to} className="hover:text-lime-200 transition">
                   {label}
                 </Link>
               </motion.li>
@@ -99,30 +103,32 @@ const Footer = React.memo(() => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
+          className="text-sm sm:text-base"
         >
-          <h5 className="text-2xl font-bold mb-4 md:mb-6 border-b-2 border-green-400 inline-block">
+          <h5 className="text-lg sm:text-xl font-bold mb-3 border-b-2 border-lime-300 inline-block pb-1">
             Contact Us
           </h5>
-          <div className="space-y-3 sm:space-y-4">
-            <p className="flex items-center gap-3">
-              <Phone size={20} className="text-green-400" />
-              <a href="tel:02025871111" className="hover:text-green-400 transition">
+          <div className="space-y-3 sm:space-y-4 text-gray-100">
+            <p className="flex items-center gap-2">
+              <Phone size={18} className="text-lime-300" />
+              <a href="tel:02025871111" className="hover:text-lime-200 transition">
                 020-25871111 / 25870370
               </a>
             </p>
-            <p className="flex items-start gap-3">
-              <MapPin size={20} className="text-green-400 mt-1" />
-              <address className="not-italic leading-relaxed text-sm sm:text-base">
-                Chetas House, Plot No. 1, Survey No. 8+9,
-                <br />
-                Shree Siddhatek Society, Sutarwadi,
-                <br />
-                Pashan, Pune – 411021, Maharashtra, India
+            <p className="flex items-start gap-2">
+              <MapPin size={18} className="text-lime-300 mt-1" />
+              <address className="not-italic leading-relaxed">
+                Chetas House, Plot No. 1, Survey No. 8+9, <br />
+                Shree Siddhatek Society, Sutarwadi, Pashan, <br />
+                Pune – 411021, Maharashtra, India
               </address>
             </p>
-            <p className="flex items-center gap-3">
-              <Mail size={20} className="text-green-400" />
-              <a href="mailto:info@chetasagro.com" className="hover:text-green-400 transition">
+            <p className="flex items-center gap-2">
+              <Mail size={18} className="text-lime-300" />
+              <a
+                href="mailto:info@chetasagro.com"
+                className="hover:text-lime-200 transition"
+              >
                 info@chetasagro.com
               </a>
             </p>
@@ -137,19 +143,19 @@ const Footer = React.memo(() => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <h5 className="text-2xl font-bold mb-4 md:mb-6 border-b-2 border-green-400 inline-block">
+          <h5 className="text-lg sm:text-xl font-bold mb-3 border-b-2 border-lime-300 inline-block pb-1">
             Follow Us
           </h5>
-          <div className="flex gap-4 sm:gap-6">
+          <div className="flex justify-start sm:justify-start gap-4 sm:gap-5">
             {socialIcons.map(({ Icon, href }, i) => (
               <a
                 key={i}
                 href={href}
                 target="_blank"
                 rel="noreferrer"
-                className="p-2 sm:p-3 rounded-full bg-green-700 hover:bg-green-500 transition shadow-lg transform hover:scale-110"
+                className="p-3 rounded-full bg-white/10 hover:bg-lime-300 hover:text-green-800 transition transform hover:scale-110 shadow-md"
               >
-                <Icon size={24} className="text-white" />
+                <Icon size={20} />
               </a>
             ))}
           </div>
@@ -157,11 +163,14 @@ const Footer = React.memo(() => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="relative z-10 border-t border-green-600/50 py-6 text-center bg-black/40 text-gray-300 text-sm flex flex-col gap-2">
-        <p>&copy; {new Date().getFullYear()} Chetas Agrotech Pvt. Ltd. | All Rights Reserved</p>
+      <div className="relative z-10 border-t border-white/20 py-5 text-center text-sm text-gray-100 bg-black/20 backdrop-blur-md">
+        <p>
+          © {new Date().getFullYear()}{" "}
+          <span className="text-lime-300">Chetas Agrotech Pvt. Ltd.</span> | All Rights Reserved
+        </p>
         <button
           onClick={() => setShowPrivacy(true)}
-          className="hover:text-green-400 transition underline self-center"
+          className="hover:text-lime-200 underline transition mt-2"
         >
           Privacy Policy
         </button>
@@ -169,42 +178,40 @@ const Footer = React.memo(() => {
 
       {/* Privacy Policy Modal */}
       {showPrivacy && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4">
-          <div className="bg-white text-gray-900 rounded-2xl max-w-3xl w-full p-6 sm:p-8 relative overflow-y-auto max-h-[80vh]">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[99999] px-4">
+          <div className="bg-white text-gray-900 rounded-2xl max-w-2xl w-full p-6 sm:p-8 relative overflow-y-auto max-h-[80vh] shadow-2xl">
             <button
               onClick={() => setShowPrivacy(false)}
-              className="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-2xl font-bold"
+              className="absolute top-3 right-4 text-gray-500 hover:text-gray-900"
             >
-              &times;
+              <X size={28} />
             </button>
-            <h2 className="text-2xl sm:text-3xl font-bold mb-4">Privacy Policy</h2>
-            <div className="space-y-3 text-sm sm:text-base">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-green-700">
+              Privacy Policy
+            </h2>
+            <div className="space-y-3 text-sm sm:text-base text-gray-700">
               <p>
-                At Chetas Agrotech, we respect your privacy. This privacy policy explains
-                how we collect, use, and protect your personal information when you visit
-                our website.
+                At Chetas Agrotech, we respect your privacy. This policy explains how we
+                collect, use, and protect your data when you visit our website.
               </p>
               <p>
-                <strong>Information Collection:</strong> We may collect your name, email,
-                phone number, and other details only when voluntarily submitted.
+                <strong>Information Collection:</strong> We collect information voluntarily
+                provided via contact forms or inquiries.
               </p>
               <p>
-                <strong>Use of Information:</strong> The information is used solely to
-                provide services, respond to inquiries, and improve our offerings.
+                <strong>Use of Information:</strong> Data is used only to respond to
+                queries, provide services, and improve user experience.
               </p>
               <p>
-                <strong>Data Security:</strong> We take reasonable measures to protect your
-                information. We do not sell or share your personal data with third parties
-                without consent.
+                <strong>Security:</strong> We implement appropriate measures to protect
+                your information and do not sell or share it with third parties.
               </p>
               <p>
-                <strong>Cookies:</strong> Our website may use cookies to improve user
-                experience. You can disable cookies in your browser settings.
+                <strong>Cookies:</strong> Some pages may use cookies for analytics and
+                improved performance.
               </p>
-              <p>
-                By using our website, you agree to the terms of this Privacy Policy.
-              </p>
-              <p className="mt-4 text-sm text-gray-500">Last updated: September 2025</p>
+              <p>By using our site, you agree to this Privacy Policy.</p>
+              <p className="mt-4 text-xs text-gray-500">Last updated: October 2025</p>
             </div>
           </div>
         </div>
