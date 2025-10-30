@@ -122,10 +122,6 @@ const Contact = () => {
                 📍 Registered Office: Chetas House, Plot No. 1, Survey No. 8+9,
                 Sutarwadi, Pashan, Pune – 411021, Maharashtra, India
               </p>
-              <p className="mt-2 text-sm sm:text-base leading-relaxed text-green-200">
-                🏭 Manufacturing Plant: Gat No. 123, Agrotech Industrial Park,
-                Ahmednagar, Maharashtra
-              </p>
             </motion.div>
 
             {/* Business Hours */}

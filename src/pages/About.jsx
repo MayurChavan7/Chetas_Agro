@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
-import { Leaf, Droplets, Recycle } from "lucide-react";
+import { Leaf, Droplets, Recycle, ExternalLink } from "lucide-react";
 
 const About = () => {
   useEffect(() => {
@@ -43,14 +43,10 @@ const About = () => {
             {step.step}
           </div>
           <div className="md:ml-6 mt-4 md:mt-0">
-            <h3
-              className={`text-xl font-semibold text-${color}-800 mb-1 tracking-wide`}
-            >
+            <h3 className={`text-xl font-semibold text-${color}-800 mb-1 tracking-wide`}>
               {step.title}
             </h3>
-            <p className="text-gray-700 text-base leading-relaxed">
-              {step.desc}
-            </p>
+            <p className="text-gray-700 text-base leading-relaxed">{step.desc}</p>
           </div>
         </motion.div>
       ))}
@@ -59,8 +55,8 @@ const About = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-green-50 via-white to-green-100 overflow-x-hidden font-[Poppins]">
-      
-      {/* 🌿 ======= NEW CORE VALUES SECTION (Replaces Running Text) ======= */}
+
+      {/* 🌿 CORE VALUES */}
       <section className="relative z-10 py-16 sm:py-20 max-w-6xl mx-auto px-6 mt-24 text-center">
         <motion.h2
           className="text-3xl md:text-5xl font-extrabold text-green-900 mb-6"
@@ -71,6 +67,7 @@ const About = () => {
         >
           Our Core Values 🌿
         </motion.h2>
+
         <motion.p
           className="text-gray-700 text-lg md:text-xl max-w-3xl mx-auto mb-12 leading-relaxed"
           initial={{ opacity: 0 }}
@@ -118,23 +115,24 @@ const About = () => {
         </div>
       </section>
 
-      {/* ======== COMPANY OVERVIEW ======== */}
+      {/* 🏢 COMPANY OVERVIEW */}
       <section className="max-w-6xl mx-auto px-6 py-20 text-center">
         <h1 className="text-4xl md:text-5xl font-extrabold text-green-900 mb-6">
           About Chetas Agrotech
         </h1>
         <p className="text-gray-700 text-lg md:text-xl leading-relaxed max-w-4xl mx-auto mb-8">
-          <strong>Chetas Agrotech Pvt. Ltd.</strong> — a division of the <strong>Chetas Group (Valued at ₹1300 Cr / $158M)</strong> — 
-          is a pioneer in sustainable agro-energy and waste-to-resource innovation. Based in Maharashtra, India, 
-          we specialize in <strong>organic fertilizers</strong> and <strong>renewable ethanol production</strong>, 
-          driving rural development, environmental protection, and energy independence.
+          <strong>Chetas Agrotech Pvt. Ltd.</strong> — a division of the <strong>Chetas Group</strong> — 
+          is a pioneer in sustainable agro-energy and waste-to-resource innovation. 
+          Based in Maharashtra, India, we specialize in <strong>organic fertilizers</strong> 
+          and <strong>renewable ethanol production</strong>, operating across <strong>14+ states</strong> 
+          and serving <strong>5 major industries</strong> — driving rural development, environmental protection, 
+          and energy independence.
         </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-12">
           {[
             { num: "65 KLPD", label: "Ethanol Capacity" },
-            { num: "10,000+", label: "Cattle Managed" },
-            { num: "30+", label: "Countries Served" },
+            { num: "75,000+", label: "Cattle Managed" },
             { num: "100%", label: "ZLD & Organic Certified" },
           ].map((stat, i) => (
             <motion.div
@@ -152,7 +150,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* 🟩 ORGANIC FERTILIZER SECTION */}
+      {/* 🟩 ORGANIC FERTILIZER */}
       <section className="rounded-3xl shadow-lg p-8 md:p-12 bg-gradient-to-br from-green-50 to-green-100 border border-green-100 max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           <motion.img
@@ -169,8 +167,8 @@ const About = () => {
               Premium Cow Dung Fertilizers
             </h2>
             <p className="text-gray-700 mb-6 text-lg leading-relaxed">
-              Our cow dung-based organic fertilizers improve soil health, restore microbial balance, and promote sustainable agriculture — 
-              certified for export under ISO and FSSAI standards.
+              Our cow dung-based organic fertilizers improve soil health, restore microbial balance, 
+              and promote sustainable agriculture — certified for export under ISO and FSSAI standards.
             </p>
             <ul className="space-y-2 text-gray-800 text-base md:text-lg">
               <li>🌱 Enhances soil fertility & moisture retention</li>
@@ -181,7 +179,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* Timeline */}
         <div className="py-12">
           <h3 className="text-2xl md:text-3xl font-bold mb-10 text-green-900 text-center">
             Fertilizer Production Process
@@ -198,8 +195,9 @@ const About = () => {
               Renewable Ethanol Solutions
             </h2>
             <p className="text-gray-700 mb-6 text-lg leading-relaxed">
-              With a 65 KLPD distillery capacity, Chetas Agrotech produces pharma, fuel, and industrial-grade ethanol 
-              supporting India’s <strong>E20 fuel blending</strong> and global clean energy mission.
+              With a 65 KLPD distillery capacity, Chetas Agrotech produces pharma, fuel, 
+              and industrial-grade ethanol supporting India’s <strong>E20 fuel blending</strong> 
+              and national clean energy mission.
             </p>
             <ul className="space-y-2 text-yellow-800 text-base md:text-lg">
               <li>⚡ Fully automated distillation & dehydration system</li>
@@ -219,7 +217,6 @@ const About = () => {
           />
         </div>
 
-        {/* Timeline */}
         <div className="py-12">
           <h3 className="text-2xl md:text-3xl font-bold mb-10 text-yellow-700 text-center">
             Ethanol Manufacturing Process
@@ -228,41 +225,19 @@ const About = () => {
         </div>
       </section>
 
-      {/* 🌿 MISSION & SUSTAINABILITY SECTION */}
+      {/* 🌿 MISSION */}
       <section className="max-w-6xl mx-auto py-20 px-6 text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-green-900 mb-6">
           Mission, Vision & Sustainability
         </h2>
         <p className="max-w-4xl mx-auto text-gray-700 text-lg mb-10 leading-relaxed">
-          Our mission is to <strong>empower farmers, protect the planet, and redefine waste utilization</strong> through green innovation. 
-          We envision a world where agriculture and energy coexist sustainably — improving livelihoods and preserving the ecosystem.
+          Our mission is to <strong>empower farmers, protect the planet, and redefine waste utilization</strong> 
+          through green innovation. We envision a world where agriculture and energy coexist sustainably — 
+          improving livelihoods and preserving the ecosystem.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
-          {[
-            { title: "♻️ Sustainability", desc: "End-to-end zero waste operations powered by renewable energy." },
-            { title: "🌱 Rural Development", desc: "Generating jobs & improving farmer incomes through resource recycling." },
-            { title: "💧 Environmental Stewardship", desc: "Protecting water, air, and soil quality with advanced tech." },
-          ].map((item, i) => (
-            <motion.div
-              key={i}
-              className="bg-white/80 rounded-2xl shadow-lg p-8 border border-green-100"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-            >
-              <h4 className="text-2xl font-bold text-green-800 mb-3">
-                {item.title}
-              </h4>
-              <p className="text-gray-700 text-base leading-relaxed">
-                {item.desc}
-              </p>
-            </motion.div>
-          ))}
-        </div>
       </section>
 
-      {/* 🌾 CTA SECTION */}
+      {/* 🌾 CTA */}
       <div className="py-16 px-8 md:px-10 text-center bg-gradient-to-r from-green-800 to-green-600 text-white rounded-3xl max-w-4xl mx-auto shadow-xl mb-16">
         <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
           One Stop Agro-Energy Hub
@@ -277,6 +252,20 @@ const About = () => {
         >
           Contact Us
         </Link>
+      </div>
+
+      {/* 🌐 PARENT COMPANY PORTAL */}
+      <div className="text-center pb-20">
+        <motion.a
+          href="https://www.chetascontrol.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          whileHover={{ scale: 1.05 }}
+          className="inline-flex items-center gap-3 bg-gradient-to-r from-green-700 to-green-500 text-white font-semibold px-8 py-4 rounded-full shadow-md hover:shadow-lg transition-all"
+        >
+          Visit Our Parent Company: Chetas Control Systems
+          <ExternalLink className="w-5 h-5" />
+        </motion.a>
       </div>
     </div>
   );
